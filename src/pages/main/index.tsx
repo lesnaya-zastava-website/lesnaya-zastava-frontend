@@ -1,35 +1,11 @@
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { PageHeading } from '@/shared/PageHeading';
 
 export const Main: React.FC = () => {
   return (
-    <>
-      <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
-        Это заголовок со стилями tailwindcss + тема shadcn ui
-      </h1>
-      <Carousel className="w-full max-w-xs m-auto">
-        <CarouselContent>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <CarouselItem key={index}>
-              <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect- items-center justify-center p-10">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </>
+    <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+      <div className="container mx-auto py-5">
+        <PageHeading>Главная страница</PageHeading>
+      </div>
+    </section>
   );
 };

@@ -1,17 +1,33 @@
+import { ModeToggle } from '@/components/mode-toggle';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 export const Header: React.FC = () => {
+  const location = useLocation();
+
   return (
-    <header className="bg-white px-20">
-      <div className="mx-auto">
-        <div className="flex justify-between items-center">
+    <header className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+      <div className="container mx-auto border-b border-gray-200 py-5">
+        <div className="flex items-center justify-between">
           <div className="flex-shrink-0 pt-5">
-            <img
-            src="./tempLogo.png"
-            alt="logo"
-            className='w-50'
-          />
+            {location.pathname !== '/' ? (
+              <Link to="/">
+                <img
+                  src="./tempLogo.png"
+                  alt="logo"
+                  className="w-50"
+                />
+              </Link>
+            ) : (
+              <img
+                src="./tempLogo.png"
+                alt="logo"
+                className="w-50"
+              />
+            )}
           </div>
 
-          <div className="hidden md:flex items-center space-x-6 text-sm text-gray-600">
+          <div className="hidden items-center space-x-6 text-sm lg:flex">
             <div className="flex items-center space-x-1">
               <span>☎</span>
               <span>тел (администраторы)</span>
@@ -25,39 +41,51 @@ export const Header: React.FC = () => {
             </div>
             <div className="flex items-center space-x-1">
               <span>⌖</span>
-              <span>адрес</span>
+              <span className="max-w-[240px]">Челябинская область,
+              Сосновский район, д. Ключевка</span>
             </div>
+            <ModeToggle />
           </div>
         </div>
 
-        <nav className="flex pt-4 pb-4 justify-end border-b border-gray-200">
-          <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium text-gray-700 uppercase tracking-wide">
+        <nav className="flex justify-end pt-4 pb-4">
+          <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+              <Link
+                to="/about"
+                className="transition-colors duration-200">
                 О ЦЕНТРЕ
-              </a>
+              </Link>
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+              <a
+                href="#"
+                className="transition-colors duration-20">
                 ДЕТСКИЙ ОТДЫХ
               </a>
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+              <a
+                href="#"
+                className="transition-colors duration-200">
                 НАШИ ПРОЕКТЫ
               </a>
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+              <a
+                href="#"
+                className="transition-colors duration-200">
                 УСЛУГИ
               </a>
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a href="#" className="hover:text-gray-900 transition-colors duration-200">
+              <a
+                href="#"
+                className="transition-colors duration-200">
                 КОНТАКТЫ
               </a>
             </li>
