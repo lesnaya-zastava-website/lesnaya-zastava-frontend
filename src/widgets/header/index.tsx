@@ -26,7 +26,6 @@ export const Header: React.FC = () => {
               />
             )}
           </div>
-
           <div className="hidden items-center space-x-6 text-sm lg:flex">
             <div className="flex items-center space-x-1">
               <span>☎</span>
@@ -47,7 +46,6 @@ export const Header: React.FC = () => {
             <ModeToggle />
           </div>
         </div>
-
         <nav className="flex justify-end pt-4 pb-4">
           <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
@@ -59,11 +57,11 @@ export const Header: React.FC = () => {
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/ChildrenHolidaysDuringHolidays"
                 className="transition-colors duration-20">
                 ДЕТСКИЙ ОТДЫХ
-              </a>
+              </Link>
             </li>
             <li className="text-gray-400">|</li>
             <li>

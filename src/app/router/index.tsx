@@ -1,3 +1,4 @@
+import { ChildrenHolidaysDuringHolidays } from '@pages/ChildrenHolidaysDuringHolidays';
 import { Info } from '@pages/about/info';
 import { About } from '@pages/about';
 import { Main } from '@pages/main';
@@ -12,6 +13,14 @@ export const routes: RouteObject[] = [
       {
         index: true,
         element: <Main />,
+      },
+      {
+        path: '/ChildrenHolidaysDuringHolidays',
+        element: <ChildrenHolidaysDuringHolidays/>
+      },
+      {
+        path: '/admin',
+        element: '(Админ панель)',
       },
       {
         path: 'about',

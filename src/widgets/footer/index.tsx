@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Footer: React.FC = () => {
   return (
     <footer className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
@@ -18,7 +20,6 @@ export const Footer: React.FC = () => {
                   <a href="tel:+73517990151">+7(351)799-01-51</a>
                 </p>
               </div>
-
               <div>
                 <p className="mb-2 font-medium">
                   Адрес комплекса "Лесная Застава"
@@ -59,7 +60,7 @@ export const Footer: React.FC = () => {
                 href="#"
                 className="inline-block font-medium transition-colors">
                 Подписаться на рассылку →
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -71,12 +72,29 @@ export const Footer: React.FC = () => {
                 href="#"
                 className="inline-block font-medium transition-colors">
                 Задать вопрос →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
+      <div className="border-t border-gray-200">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+            <div className="text-sm text-gray-600">
+              ООО "Соц-сервис" Все права защищены
+            </div>
+            <div className="flex space-x-6">
+              <Link
+                to="#"
+                className="text-sm text-gray-600 transition-colors hover:text-gray-900">
+                Политика конфиденциальности
+              </Link>
+              <Link
+                to="#"
+                className="text-sm text-gray-600 transition-colors hover:text-gray-900">
+                Условия использования
+              </Link>
+            </div>
       <div className="container mx-auto border-t border-gray-200 py-5 text-center">
         <div className="flex flex-col items-center justify-between gap-2 space-y-4 md:flex-row md:space-y-0">
           <div className="text-sm">ООО "Соц-сервис" Все права защищены</div>
