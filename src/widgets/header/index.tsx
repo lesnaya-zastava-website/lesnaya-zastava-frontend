@@ -1,27 +1,32 @@
+import { ModeToggle } from '@/components/mode-toggle';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const Header: React.FC = () => {
-  const links: string[][] = [
-    ['О ЦЕНТРЕ', '/'],
-    ['ДЕТСКИЙ ОТДЫХ', '/ChildrenHolidaysDuringHolidays'],
-    ['НАШИ ПРОЕКТЫ', '/'],
-    ['УСЛУГИ', '/'],
-    ['КОНТАКТЫ', '/'],
-  ];
+  const location = useLocation();
 
   return (
-    <header className="bg-white px-20">
-      <div className="mx-auto border-0 border-gray-200 sm:border-b">
+    <header className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+      <div className="container mx-auto border-b border-gray-200 py-5">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0 pt-5">
-            <img
-              src="./tempLogo.png"
-              alt="logo"
-              className="w-50"
-            />
+            {location.pathname !== '/' ? (
+              <Link to="/">
+                <img
+                  src="./tempLogo.png"
+                  alt="logo"
+                  className="w-50"
+                />
+              </Link>
+            ) : (
+              <img
+                src="./tempLogo.png"
+                alt="logo"
+                className="w-50"
+              />
+            )}
           </div>
-
-          <div className="hidden items-center space-x-6 text-sm text-gray-600 md:flex">
+          <div className="hidden items-center space-x-6 text-sm lg:flex">
             <div className="flex items-center space-x-1">
               <span>☎</span>
               <span>тел (администраторы)</span>
@@ -35,25 +40,53 @@ export const Header: React.FC = () => {
             </div>
             <div className="flex items-center space-x-1">
               <span>⌖</span>
-              <span>адрес</span>
+              <span className="max-w-[240px]">Челябинская область,
+              Сосновский район, д. Ключевка</span>
             </div>
+            <ModeToggle />
           </div>
         </div>
-
-        <nav className="hidden justify-end pt-4 pb-4 sm:flex">
-          <ul className="flex items-center space-x-3 text-sm font-medium tracking-wide text-gray-700 uppercase">
-            {links.map((value, index) => (
-              <>
-                <li>{index != 0 ? "|": ""}</li>
-                <li key={index}>
-                  <Link
-                    to={value[1]}
-                    className="transition-colors duration-200 hover:text-gray-900">
-                    {value[0]}
-                  </Link>
-                </li>
-              </>
-            ))}
+        <nav className="flex justify-end pt-4 pb-4">
+          <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
+            <li>
+              <Link
+                to="/about"
+                className="transition-colors duration-200">
+                О ЦЕНТРЕ
+              </Link>
+            </li>
+            <li className="text-gray-400">|</li>
+            <li>
+              <Link
+                to="/ChildrenHolidaysDuringHolidays"
+                className="transition-colors duration-20">
+                ДЕТСКИЙ ОТДЫХ
+              </Link>
+            </li>
+            <li className="text-gray-400">|</li>
+            <li>
+              <a
+                href="#"
+                className="transition-colors duration-200">
+                НАШИ ПРОЕКТЫ
+              </a>
+            </li>
+            <li className="text-gray-400">|</li>
+            <li>
+              <a
+                href="#"
+                className="transition-colors duration-200">
+                УСЛУГИ
+              </a>
+            </li>
+            <li className="text-gray-400">|</li>
+            <li>
+              <a
+                href="#"
+                className="transition-colors duration-200">
+                КОНТАКТЫ
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
