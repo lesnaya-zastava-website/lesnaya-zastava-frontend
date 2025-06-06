@@ -12,7 +12,7 @@ export const About: React.FC = () => {
           />
         </div>
 
-        <div className="-m-2 mt-5 flex flex-wrap justify-between">
+        <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
           <SectionCard
             title="Основные сведения"
             srcImage="/pages/about/info.jpg"

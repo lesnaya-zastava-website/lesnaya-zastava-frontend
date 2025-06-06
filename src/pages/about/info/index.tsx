@@ -1,4 +1,4 @@
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@shared/PageHeading';
 
 export const Info: React.FC = () => {
   return (
@@ -11,22 +11,18 @@ export const Info: React.FC = () => {
             <dt className="font-semibold">Полное наименование:</dt>
             <dd>Оздоровительный комплекс "Лесная застава"</dd>
           </div>
-
           <div>
             <dt className="font-semibold">Сокращённое наименование:</dt>
             <dd>ОК "Лесная застава"</dd>
           </div>
-
           <div>
             <dt className="font-semibold">ФИО руководителя:</dt>
             <dd>Иванов Иван Иванович</dd>
           </div>
-
           <div>
             <dt className="font-semibold">Юридический адрес:</dt>
             <dd>454008, г. Челябинск, Свердловский тракт, 24 АО "ЧЦЗ"</dd>
           </div>
-
           <div>
             <dt className="font-semibold">Фактический адрес:</dt>
             <dd>
@@ -34,25 +30,32 @@ export const Info: React.FC = () => {
               Долгодеревенское, д. Ключевка ОК "Лесная застава"
             </dd>
           </div>
-
           <div>
             <dt className="font-semibold">ИНН/КПП:</dt>
-            <dd>1234567890 / 987654321</dd>
+            <dd>7448000013 / 744801001</dd>
           </div>
-
           <div>
             <dt className="font-semibold">ОГРН:</dt>
             <dd>1234567890123</dd>
           </div>
-
           <div>
             <dt className="font-semibold">Режим работы:</dt>
             <dd>Пн–Пт, с 9:00 до 18:00</dd>
           </div>
-
           <div>
             <dt className="font-semibold">Банковские реквизиты:</dt>
-            <dd>...</dd>
+            <dd>
+              Р/с 4070281060294000232 в ПАО "МОСКОВСКИЙ КРЕДИТНЫЙ БАНК", г.
+              Москва
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold">К/с:</dt>
+            <dd>3010181014525000659</dd>
+          </div>
+          <div>
+            <dt className="font-semibold">БИК:</dt>
+            <dd>044525659</dd>
           </div>
         </dl>
       </div>

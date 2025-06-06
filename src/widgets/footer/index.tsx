@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               <div>
                 <p className="mb-2 font-medium">Телефон</p>
                 <p className="text-sm">
-                  <a href="tel:+73517990151">+7(351)799-01-51</a>
+                  <a href="tel:+73517990151">+8(351)799-01-51</a>
                 </p>
               </div>
               <div>
@@ -77,7 +77,6 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
           <div className="container mx-auto border-t border-gray-200 py-5 text-center">

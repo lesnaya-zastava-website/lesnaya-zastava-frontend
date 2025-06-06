@@ -17,11 +17,11 @@ export const Banner: React.FC<BannerProps> = ({ title, videoSrc }) => {
 
       <div className="absolute inset-0 z-10 bg-black/40" />
 
-      <div className="relative z-20 flex h-full items-center px-8">
-        <h1 className="max-w-xl text-4xl font-bold text-white">{title}</h1>
+      <div className="relative z-20 flex h-full items-center px-4">
+        <h1 className="sm:w-max-[200px] text-2xl leading-tight font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl">
+          {title}
+        </h1>
       </div>
     </div>
   );
 };
-
-

@@ -14,12 +14,13 @@ const PATH_NAMES: Record<string, string> = {
   history: 'История',
   infrastructure: 'Инфраструктура',
   safety: 'Безопасность',
+  projects: 'Дополнительные проекты',
 };
 
 export const AppBreadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(Boolean);
-  console.log(pathnames)
+  console.log(pathnames);
 
   if (pathnames.length === 0) return null;
 

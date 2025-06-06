@@ -7,7 +7,6 @@ import { CardCollection } from '@/shared/ui/CardCollection';
 import { CardSection } from '@/shared/ui/CardSection';
 
 export const ContainerCardsDuringHolidays: React.FC = () => {
-  /** Формат данных для работы с компонентами */
 
   const announcement = [
     {

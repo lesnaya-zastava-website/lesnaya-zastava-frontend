@@ -2,6 +2,8 @@ import { ChildrenHolidaysDuringHolidays } from '@pages/ChildrenHolidaysDuringHol
 import { Info } from '@pages/about/info';
 import { About } from '@pages/about';
 import { Main } from '@pages/main';
+import { Projects } from '@pages/projects';
+import { History } from '@pages/about/history';
 import { Layout } from '@shared/layout';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
@@ -16,7 +18,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: '/ChildrenHolidaysDuringHolidays',
-        element: <ChildrenHolidaysDuringHolidays/>
+        element: <ChildrenHolidaysDuringHolidays />,
       },
       {
         path: '/admin',
@@ -40,7 +42,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'about/history',
-        element: 'история',
+        element: <History />,
       },
       {
         path: 'about/infrastructure',
@@ -49,6 +51,18 @@ export const routes: RouteObject[] = [
       {
         path: 'about/safety',
         element: 'безопасность',
+      },
+      {
+        path: 'projects',
+        element: <Projects />,
+      },
+      {
+        path: 'projects/our',
+        element: "Наши проекты",
+      },
+      {
+        path: 'projects/yours',
+        element: "Ваши проекты",
       },
     ],
   },
