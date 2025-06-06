@@ -1,10 +1,11 @@
-import { Main } from "@pages/main";
-import { Layout } from "@shared/layout";
-import { createBrowserRouter, type RouteObject } from "react-router-dom";
+import { Main } from '@pages/main';
+import { ChildrenHolidaysDuringHolidays } from '@pages/ChildrenHolidaysDuringHolidays';
+import { Layout } from '@shared/layout';
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
 export const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
@@ -12,14 +13,18 @@ export const routes: RouteObject[] = [
         element: <Main />,
       },
       {
-        path: "test",
-        element: "тест маршрута",
+        path: 'test',
+        element: 'тест маршрута',
+      },
+      {
+        path: '/ChildrenHolidaysDuringHolidays',
+        element: <ChildrenHolidaysDuringHolidays/>
       },
     ],
   },
   {
-    path: "/admin",
-    element: "(Админ панель)",
+    path: '/admin',
+    element: '(Админ панель)',
   },
 ];
 
