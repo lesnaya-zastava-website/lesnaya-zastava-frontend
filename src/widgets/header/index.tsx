@@ -40,13 +40,14 @@ export const Header: React.FC = () => {
             </div>
             <div className="flex items-center space-x-1">
               <span>⌖</span>
-              <span className="max-w-[240px]">Челябинская область,
-              Сосновский район, д. Ключевка</span>
+              <span className="max-w-[240px]">
+                Челябинская область, Сосновский район, д. Ключевка
+              </span>
             </div>
             <ModeToggle />
           </div>
         </div>
-        <nav className="flex justify-end pt-4 pb-4">
+        <nav className="flex top-0 justify-end pt-4 pb-4">
           <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
               <Link
@@ -60,7 +61,7 @@ export const Header: React.FC = () => {
               <Link
                 to="/holidaycamp"
                 className="transition-colors duration-20">
-                ДЕТСКИЙ ОТДЫХ
+                Детский отдых
               </Link>
             </li>
             <li className="text-gray-400">|</li>
@@ -68,16 +69,16 @@ export const Header: React.FC = () => {
               <a
                 href="#"
                 className="transition-colors duration-200">
-                НАШИ ПРОЕКТЫ
+                Отдых для организованных групп детей и молодежи
               </a>
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/projects"
                 className="transition-colors duration-200">
-                УСЛУГИ
-              </a>
+                Дополнительные проекты
+              </Link>
             </li>
             <li className="text-gray-400">|</li>
             <li>

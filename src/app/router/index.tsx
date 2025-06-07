@@ -2,6 +2,8 @@ import { HolidayCamp } from '@/pages/HolidayCamp';
 import { Info } from '@pages/about/info';
 import { About } from '@pages/about';
 import { Main } from '@pages/main';
+import { Projects } from '@pages/projects';
+import { History } from '@pages/about/history';
 import { Layout } from '@shared/layout';
 import { Announcements } from '@/pages/HolidayCamp/announcements';
 import { ForParents } from '@/pages/HolidayCamp/forParents';
@@ -9,6 +11,7 @@ import { MediaCenter } from '@/pages/HolidayCamp/mediaCenter';
 import { TeachingStaff } from '@/pages/HolidayCamp/teachingStaff';
 import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { Infrastructure } from '@pages/about/infrastructure';
 
 export const routes: RouteObject[] = [
   {
@@ -69,15 +72,27 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'about/history',
-        element: 'история',
+        element: <History />,
       },
       {
         path: 'about/infrastructure',
-        element: 'инфраструктура',
+        element: <Infrastructure />,
       },
       {
         path: 'about/safety',
         element: 'безопасность',
+      },
+      {
+        path: 'projects',
+        element: <Projects />,
+      },
+      {
+        path: 'projects/our',
+        element: 'Наши проекты',
+      },
+      {
+        path: 'projects/yours',
+        element: 'Ваши проекты',
       },
     ],
   },

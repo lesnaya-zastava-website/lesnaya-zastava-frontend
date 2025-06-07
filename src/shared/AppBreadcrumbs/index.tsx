@@ -20,12 +20,13 @@ const PATH_NAMES: Record<string, string> = {
   mediaCenter: 'Медиа-центр лагеря',
   teachingStaff: 'Педагогический состав',
   technicalBase: 'Материально-техническая база'
+  projects: 'Дополнительные проекты',
 };
 
 export const AppBreadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(Boolean);
-  console.log(pathnames)
+  console.log(pathnames);
 
   if (pathnames.length === 0) return null;
 
