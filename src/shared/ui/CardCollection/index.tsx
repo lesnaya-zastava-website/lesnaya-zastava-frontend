@@ -7,21 +7,21 @@ export const CardCollection: React.FC<{
 }> = ({ costInRub, dataEnum, dataInfo }) => {
   return (
     <>
-      <div className="rounded-lg bg-gray-50 p-6">
+      <div className="rounded-lg border p-6">
         <h3 className="mb-3 font-medium">
           Средняя стоимость одного дня пребывания
         </h3>
-        <p className="mb-2 text-2xl font-bold text-gray-800">{costInRub} ₽</p>
-        <p className="text-sm text-gray-600">
+        <p className="mb-2 text-2xl font-bold">{costInRub} ₽</p>
+        <p className="text-sm">
           Включает питание, проживание и все мероприятия
         </p>
       </div>
 
       {dataEnum.map(value => (
         <>
-          <div className="rounded-lg bg-gray-50 p-6">
+          <div className="rounded-lg border p-6">
             <h3 className="mb-3 font-medium">{value.title}</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm">
               {value.dataEnum.map(value => (
                 <li>• {value}</li>
               ))}
@@ -32,9 +32,9 @@ export const CardCollection: React.FC<{
 
       {dataInfo.map(value => (
         <>
-          <div className="rounded-lg bg-gray-50 p-6">
+          <div className="rounded-lg border p-6">
             <h3 className="mb-3 font-medium">{value.title}</h3>
-            <p className="mb-2 text-sm text-gray-600">{value.content}</p>
+            <p className="mb-2 text-sm">{value.content}</p>
           </div>
         </>
       ))}

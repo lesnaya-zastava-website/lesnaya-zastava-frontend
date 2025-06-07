@@ -161,7 +161,7 @@ export const ContainerCardsDuringHolidays: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <CardSection
           icon="[📅]"
