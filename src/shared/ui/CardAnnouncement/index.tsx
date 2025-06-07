@@ -1,9 +1,9 @@
 export const CardAnnouncement: React.FC<{
   title: string;
-  date: string;
+  content: string;
   srcImg: string;
   altImg?: string;
-}> = ({ title, date, srcImg, altImg }) => {
+}> = ({ title, content, srcImg, altImg }) => {
   return (
     <div className="overflow-hidden border rounded-lg shadow-md">
       <img
@@ -15,7 +15,7 @@ export const CardAnnouncement: React.FC<{
       />
       <div className=" p-4">
         <h3 className="font-medium">{title}</h3>
-        <p className="text-sm ">{date}</p>
+        <p className="text-sm ">{content}</p>
       </div>
     </div>
   );

@@ -10,6 +10,9 @@ import { ForParents } from '@/pages/HolidayCamp/forParents';
 import { MediaCenter } from '@/pages/HolidayCamp/mediaCenter';
 import { TeachingStaff } from '@/pages/HolidayCamp/teachingStaff';
 import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
+import { RecreationOrganizedGroups } from '@/pages/RecreationOrganizedGroups';
+import { CostServices } from '@/pages/RecreationOrganizedGroups/costServices';
+import { EntertainmentPrograms } from '@/pages/RecreationOrganizedGroups/entertainmentPrograms';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Infrastructure } from '@pages/about/infrastructure';
 
@@ -81,6 +84,18 @@ export const routes: RouteObject[] = [
       {
         path: 'about/safety',
         element: 'безопасность',
+      },
+      {
+        path: '/recreationOrganizedGroups',
+        element: <RecreationOrganizedGroups />,
+      },
+      {
+        path: 'recreationOrganizedGroups/costServices',
+        element: <CostServices />,
+      },
+      {
+        path: 'recreationOrganizedGroups/entertainmentPrograms',
+        element: <EntertainmentPrograms />,
       },
       {
         path: 'projects',

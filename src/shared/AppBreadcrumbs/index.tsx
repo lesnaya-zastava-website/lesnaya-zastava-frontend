@@ -20,6 +20,9 @@ const PATH_NAMES: Record<string, string> = {
   mediaCenter: 'Медиа-центр лагеря',
   teachingStaff: 'Педагогический состав',
   technicalBase: 'Материально-техническая база',
+  recreationOrganizedGroups: 'Отдых для организованных групп детей и молодежи',
+  costServices: 'Стоимость услуг',
+  entertainmentPrograms: 'Развлекательные программы',
   projects: 'Дополнительные проекты',
 };
 

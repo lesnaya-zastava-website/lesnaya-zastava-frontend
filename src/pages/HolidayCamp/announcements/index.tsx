@@ -5,22 +5,22 @@ export const Announcements: React.FC = () => {
   const announcement = [
     {
       title: 'Летняя смена 2025',
-      date: '10 июня - 24 июня',
+      content: '10 июня - 24 июня',
       srcImg: '/vite.svg',
     },
     {
       title: 'Творческая смена',
-      date: '1 июля - 15 июля',
+      content: '1 июля - 15 июля',
       srcImg: '/vite.svg',
     },
     {
       title: 'Летняя смена 2025',
-      date: '10 июня - 24 июня',
+      content: '10 июня - 24 июня',
       srcImg: '/vite.svg',
     },
     {
       title: 'Творческая смена',
-      date: '1 июля - 15 июля',
+      content: '1 июля - 15 июля',
       srcImg: '/vite.svg',
     },
   ];
