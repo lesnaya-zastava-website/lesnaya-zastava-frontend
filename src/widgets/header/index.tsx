@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <a
-                href="#"
+                href="/recreationOrganizedGroups"
                 className="transition-colors duration-200">
                 Отдых для организованных групп детей и молодежи
               </a>
