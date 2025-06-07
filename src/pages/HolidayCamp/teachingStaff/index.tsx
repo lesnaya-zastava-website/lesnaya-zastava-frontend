@@ -51,6 +51,7 @@ export const TeachingStaff: React.FC = () => {
           data={teachers}
           isPositionLeft={true}
           isContainer={false}
+          isLoop={false}
         />
       </div>
     </section>

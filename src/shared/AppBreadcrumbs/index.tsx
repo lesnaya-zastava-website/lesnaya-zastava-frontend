@@ -24,6 +24,7 @@ const PATH_NAMES: Record<string, string> = {
   costServices: 'Стоимость услуг',
   entertainmentPrograms: 'Развлекательные программы',
   projects: 'Дополнительные проекты',
+  contacts: 'Контакты',
 };
 
 export const AppBreadcrumbs = () => {

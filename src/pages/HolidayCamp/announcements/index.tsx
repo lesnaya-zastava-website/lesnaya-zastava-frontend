@@ -36,6 +36,7 @@ export const Announcements: React.FC = () => {
           data={announcement}
           isPositionLeft={true}
           isContainer={true}
+          isLoop={false}
         />
       </div>
     </section>

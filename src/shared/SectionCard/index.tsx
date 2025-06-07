@@ -24,7 +24,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
           className="absolute top-0 left-0 h-full w-full object-cover brightness-40 transition-opacity duration-200 ease-out"
         />
         <div className="absolute bottom-[20px] left-[0px] font-bold text-white">
-          <h2 className="sm:w-max-[200px] mx-4 text-xl leading-tight md:text-xl lg:text-2xl xl:text-4xl">
+          <h2 className="max-w-[430px] mx-4 text-xl leading-tight md:text-xl lg:text-2xl xl:text-4xl">
             {title}
           </h2>
         </div>
