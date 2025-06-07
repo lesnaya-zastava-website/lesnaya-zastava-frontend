@@ -6,6 +6,7 @@ import { Projects } from '@pages/projects';
 import { History } from '@pages/about/history';
 import { Layout } from '@shared/layout';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { Infrastructure } from '@pages/about/infrastructure';
 
 export const routes: RouteObject[] = [
   {
@@ -46,7 +47,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'about/infrastructure',
-        element: 'инфраструктура',
+        element: <Infrastructure />,
       },
       {
         path: 'about/safety',
@@ -58,11 +59,11 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'projects/our',
-        element: "Наши проекты",
+        element: 'Наши проекты',
       },
       {
         path: 'projects/yours',
-        element: "Ваши проекты",
+        element: 'Ваши проекты',
       },
     ],
   },

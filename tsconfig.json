@@ -11,6 +11,7 @@
       "@app/*": ["./src/app/*"],
       "@styles/*": ["./src/styles/*"],
       "@pages/*": ["./src/pages/*"],
+      "@features/*": ["./src/features/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@shared/*": ["./src/shared/*"],
       "@store/*": ["./src/store/*"],
