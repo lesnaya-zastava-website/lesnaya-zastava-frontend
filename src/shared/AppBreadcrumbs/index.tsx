@@ -19,7 +19,7 @@ const PATH_NAMES: Record<string, string> = {
   forParents: 'Информация для родителей',
   mediaCenter: 'Медиа-центр лагеря',
   teachingStaff: 'Педагогический состав',
-  technicalBase: 'Материально-техническая база'
+  technicalBase: 'Материально-техническая база',
   projects: 'Дополнительные проекты',
 };
 
