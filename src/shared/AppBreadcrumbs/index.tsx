@@ -21,6 +21,7 @@ const PATH_NAMES: Record<string, string> = {
   teachingStaff: 'Педагогический состав',
   technicalBase: 'Материально-техническая база',
   projects: 'Дополнительные проекты',
+  contacts: 'Контакты',
 };
 
 export const AppBreadcrumbs = () => {

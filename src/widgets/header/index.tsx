@@ -1,4 +1,5 @@
 import { ModeToggle } from '@/components/mode-toggle';
+import BurgerMenu from '@features/BurgerMenu';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ export const Header: React.FC = () => {
               />
             )}
           </div>
-          <div className="hidden items-center space-x-6 text-sm lg:flex">
+          <div className="hidden items-center space-x-6 text-sm xl:flex">
             <div className="flex items-center space-x-1">
               <span>☎</span>
               <span>тел (администраторы)</span>
@@ -46,8 +47,10 @@ export const Header: React.FC = () => {
             </div>
             <ModeToggle />
           </div>
+          <BurgerMenu />
         </div>
-        <nav className="flex top-0 justify-end pt-4 pb-4">
+
+        <nav className="top-0 hidden justify-end pt-4 pb-4 xl:flex">
           <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
               <Link
@@ -82,11 +85,11 @@ export const Header: React.FC = () => {
             </li>
             <li className="text-gray-400">|</li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/contacts"
                 className="transition-colors duration-200">
                 КОНТАКТЫ
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

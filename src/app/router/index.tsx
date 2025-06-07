@@ -5,13 +5,14 @@ import { Main } from '@pages/main';
 import { Projects } from '@pages/projects';
 import { History } from '@pages/about/history';
 import { Layout } from '@shared/layout';
-import { Announcements } from '@/pages/HolidayCamp/announcements';
-import { ForParents } from '@/pages/HolidayCamp/forParents';
-import { MediaCenter } from '@/pages/HolidayCamp/mediaCenter';
-import { TeachingStaff } from '@/pages/HolidayCamp/teachingStaff';
-import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
+import { Announcements } from '@pages/HolidayCamp/announcements';
+import { ForParents } from '@pages/HolidayCamp/forParents';
+import { MediaCenter } from '@pages/HolidayCamp/mediaCenter';
+import { TeachingStaff } from '@pages/HolidayCamp/teachingStaff';
+import { TechnicalBase } from '@pages/HolidayCamp/technicalBase';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Infrastructure } from '@pages/about/infrastructure';
+import { Contacts } from '@pages/contacts';
 
 export const routes: RouteObject[] = [
   {
@@ -93,6 +94,10 @@ export const routes: RouteObject[] = [
       {
         path: 'projects/yours',
         element: 'Ваши проекты',
+      },
+      {
+        path: 'contacts',
+        element: <Contacts />,
       },
     ],
   },

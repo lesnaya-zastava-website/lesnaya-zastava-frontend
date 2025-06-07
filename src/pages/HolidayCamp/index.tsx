@@ -47,7 +47,7 @@ export const HolidayCamp: React.FC = () => {
             title="Условия проживания и инфраструктура"
             srcImage="/pages/HolidayCamp/planCamp.png"
             altDesc="Картинка"
-            linkTo="infrastructure"
+            linkTo="/about/infrastructure"
           />
         </div>
       </div>
