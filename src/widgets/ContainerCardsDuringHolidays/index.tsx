@@ -171,6 +171,7 @@ export const ContainerCardsDuringHolidays: React.FC = () => {
           data={announcement}
           isPositionLeft={true}
           isContainer={true}
+          isLoop={false}
         />
 
         <CardSection
@@ -181,6 +182,7 @@ export const ContainerCardsDuringHolidays: React.FC = () => {
           data={teachers}
           isPositionLeft={false}
           isContainer={false}
+          isLoop={false}
         />
 
         <CardSection
