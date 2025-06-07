@@ -5,6 +5,10 @@ import { ModeToggle } from '@/components/mode-toggle';
 const NAV_LINKS = [
   { to: '/about', label: 'О центре' },
   { to: '/holidaycamp', label: 'Детский отдых' },
+  {
+    to: '/recreationOrganizedGroups',
+    label: 'Отдых для организованных групп детей и молодежи',
+  },
   { to: '/projects', label: 'Дополнительные проекты' },
   { to: '/contacts', label: 'Контакты' },
 ];
