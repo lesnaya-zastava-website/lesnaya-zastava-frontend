@@ -19,7 +19,7 @@ export const CardSection: React.FC<{
 }) => {
   return (
     <section
-      className={`flex flex-col items-center gap-8 border-b border-gray-200 py-16 ${isPositionLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+      className={`flex flex-col items-center gap-8  py-16 ${isPositionLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
       <div className="md:w-1/3">
         <div className="mb-4 flex items-center gap-2">
           <span className="font-mono text-gray-700">{icon}</span>

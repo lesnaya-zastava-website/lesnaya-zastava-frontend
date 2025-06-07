@@ -7,7 +7,7 @@ export const CardEmployee: React.FC<{
   altImg?: string;
 }> = ({ fullName, post, qualification, specialization, srcImg, altImg }) => {
   return (
-    <div className="flex flex-col gap-4 rounded-lg bg-gray-50 p-4 sm:flex-row">
+    <div className="flex flex-col gap-4 rounded-lg p-4 sm:flex-row">
       <img
         src={srcImg}
         alt={altImg ? altImg : ''}
@@ -17,9 +17,9 @@ export const CardEmployee: React.FC<{
       />
       <div>
         <h3 className="font-medium">{fullName}</h3>
-        <p className="text-sm text-gray-600">{post}</p>
-        <p className="text-sm text-gray-600">{qualification}</p>
-        <p className="text-sm text-gray-600">{specialization}</p>
+        <p className="text-sm ">{post}</p>
+        <p className="text-sm ">{qualification}</p>
+        <p className="text-sm ">{specialization}</p>
       </div>
     </div>
   );

@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <Link
-                to="/ChildrenHolidaysDuringHolidays"
+                to="/holidaycamp"
                 className="transition-colors duration-20">
                 ДЕТСКИЙ ОТДЫХ
               </Link>

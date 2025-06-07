@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export const Footer: React.FC = () => {
   return (
     <footer className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">

@@ -22,7 +22,7 @@ export const CardTechnicalBase: React.FC<{
           {firstBlock.map(value => (
             <>
               <h3 className="mb-2 font-medium">{value.title}</h3>
-              <p className="mb-4 text-sm text-gray-600">{value.content}</p>
+              <p className="mb-4 text-sm ">{value.content}</p>
             </>
           ))}
         </div>
@@ -31,7 +31,7 @@ export const CardTechnicalBase: React.FC<{
         {secondBlock.map(value => (
           <>
             <h3 className="mb-2 font-medium">{value.title}</h3>
-            <p className="mb-4 text-sm text-gray-600">{value.content}</p>
+            <p className="mb-4 text-sm ">{value.content}</p>
           </>
         ))}
       </div>
