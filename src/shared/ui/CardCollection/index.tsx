@@ -18,25 +18,21 @@ export const CardCollection: React.FC<{
       </div>
 
       {dataEnum.map(value => (
-        <>
-          <div className="rounded-lg border p-6">
-            <h3 className="mb-3 font-medium">{value.title}</h3>
-            <ul className="space-y-2 text-sm">
-              {value.dataEnum.map(value => (
-                <li>• {value}</li>
-              ))}
-            </ul>
-          </div>
-        </>
+        <div className="rounded-lg border p-6">
+          <h3 className="mb-3 font-medium">{value.title}</h3>
+          <ul className="space-y-2 text-sm">
+            {value.dataEnum.map(value => (
+              <li>• {value}</li>
+            ))}
+          </ul>
+        </div>
       ))}
 
       {dataInfo.map(value => (
-        <>
-          <div className="rounded-lg border p-6">
-            <h3 className="mb-3 font-medium">{value.title}</h3>
-            <p className="mb-2 text-sm">{value.content}</p>
-          </div>
-        </>
+        <div className="rounded-lg border p-6">
+          <h3 className="mb-3 font-medium">{value.title}</h3>
+          <p className="mb-2 text-sm">{value.content}</p>
+        </div>
       ))}
     </>
   );

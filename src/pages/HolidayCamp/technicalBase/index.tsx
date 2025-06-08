@@ -1,8 +1,7 @@
 import { CardTechnicalBase } from '@/shared/ui/CardTechnicalBase';
-import { CardSection } from '@/shared/ui/CardSection';
 
 export const TechnicalBase: React.FC = () => {
-   const material = {
+  const material = {
     data: [
       {
         title: 'Информация о вводе в эксплуатацию',
@@ -33,24 +32,27 @@ export const TechnicalBase: React.FC = () => {
         title: 'О медицинском сопровождении',
         content:
           'Лагерь оснащен современным медицинским оснащением для оказании первой помощи',
-      }
+      },
     ],
     srcImg: '/vite.svg',
   };
-  
+
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto border-b border-gray-200 pb-8">
-        <CardSection
-          icon="[🏢]"
-          title="Материально-техническая база"
-          /*@ts-ignore*/
-          Component={CardTechnicalBase}
-          data={material}
-          isPositionLeft={true}
-          isContainer={false}
-          isLoop={false}
-        />
+      <div className="container mx-auto pb-8">
+        <section className="flex flex-col items-center gap-8 py-16 md:flex-row">
+          <div className="md:w-1/3">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="font-mono text-gray-700">[🏢]</span>
+              <h2 className="text-2xl font-semibold">
+                Материально-техническая база
+              </h2>
+            </div>
+          </div>
+          <div className="md:w-2/3">
+            <CardTechnicalBase {...material} />
+          </div>
+        </section>
       </div>
     </section>
   );
