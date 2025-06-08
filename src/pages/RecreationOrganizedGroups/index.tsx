@@ -18,6 +18,7 @@ export const RecreationOrganizedGroups: React.FC = () => {
             srcImage="/pages/RecreationOrganizedGroups/services.jpg"
             altDesc="Картинка"
             linkTo="costServices"
+            
           />
           <SectionCard
             title="Развлекательные программы"

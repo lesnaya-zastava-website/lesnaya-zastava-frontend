@@ -36,6 +36,7 @@ export const EntertainmentPrograms: React.FC = () => {
           data={announcement}
           isPositionLeft={true}
           isContainer={true}
+          isLoop={true}
         />
 
         <CardSection
@@ -46,6 +47,7 @@ export const EntertainmentPrograms: React.FC = () => {
           data={announcement}
           isPositionLeft={false}
           isContainer={true}
+          isLoop={true}
         />
       </div>
     </section>
