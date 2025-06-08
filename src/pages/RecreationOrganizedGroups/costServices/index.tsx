@@ -37,6 +37,7 @@ export const CostServices: React.FC = () => {
           data={announcement}
           isPositionLeft={true}
           isContainer={true}
+          isLoop={true}
         />
       </div>
     </section>
