@@ -7,19 +7,17 @@ export const CardEmployee: React.FC<{
   altImg?: string;
 }> = ({ fullName, post, qualification, specialization, srcImg, altImg }) => {
   return (
-    <div className="flex flex-col gap-4 rounded-lg p-4 sm:flex-row">
+    <div className="flex w-full max-w-sm flex-col items-center gap-4 rounded-xl border border-muted bg-background p-6 text-center shadow-md transition hover:shadow-lg sm:max-w-[360px] md:max-w-[400px] lg:max-w-[430px]">
       <img
         src={srcImg}
-        alt={altImg ? altImg : ''}
-        width={120}
-        height={120}
-        className="h-24 w-24 rounded-full object-cover"
+        alt={altImg || fullName}
+        className="h-32 w-32 rounded-full border-2 border-primary object-cover shadow-sm"
       />
-      <div>
-        <h3 className="font-medium">{fullName}</h3>
-        <p className="text-sm ">{post}</p>
-        <p className="text-sm ">{qualification}</p>
-        <p className="text-sm ">{specialization}</p>
+      <div className="space-y-1">
+        <h2 className="text-lg font-semibold">{fullName}</h2>
+        <p className="text-sm text-muted-foreground">{post}</p>
+        <p className="text-sm text-muted-foreground">{qualification}</p>
+        <p className="text-sm text-muted-foreground">{specialization}</p>
       </div>
     </div>
   );

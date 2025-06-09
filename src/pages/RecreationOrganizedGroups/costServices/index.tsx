@@ -1,3 +1,4 @@
+import { PageHeading } from '@/shared/PageHeading';
 import { CardAnnouncement } from '@/shared/ui/CardAnnouncement';
 
 export const CostServices: React.FC = () => {
@@ -30,23 +31,17 @@ export const CostServices: React.FC = () => {
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto  pb-8">
-        <section className="flex flex-col items-center gap-8 py-16 md:flex-row">
-          <div className="md:w-1/3">
-            <div className="mb-4 flex items-center gap-2">
-              <span className="font-mono text-gray-700">[💰]</span>
-              <h2 className="text-2xl font-semibold">Стоимость услуг</h2>
-            </div>
-          </div>
-          <div className="md:w-2/3">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {announcement.map((items, index) => (
-                <CardAnnouncement
-                  key={index}
-                  {...items}
-                />
-              ))}
-            </div>
+      <div className="container mx-auto pb-8">
+        <section className="flex flex-col gap-8 py-16">
+          <PageHeading>Стоимость услуг</PageHeading>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {announcement.map((items, index) => (
+              <CardAnnouncement
+                key={index}
+                {...items}
+              />
+            ))}
           </div>
         </section>
       </div>

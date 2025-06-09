@@ -71,7 +71,6 @@ const MapInteractive: React.FC = () => {
           alt="Интерактивная карта"
           className="h-auto w-full select-none"
           draggable={false}
-          onClick={() => setActiveId(null)}
         />
         {MAP_POINTS.map(({ id, title, top, left }) => {
           const isActive = activeId === id;
@@ -82,7 +81,8 @@ const MapInteractive: React.FC = () => {
               className="absolute">
               <button
                 type="button"
-                onClick={() => handleToggle(id)}
+                onMouseOver={() => handleToggle(id)}
+                onMouseOut={() => setActiveId(null)}
                 className="relative flex items-center justify-center focus:outline-none">
                 {/* Тултип */}
                 <span

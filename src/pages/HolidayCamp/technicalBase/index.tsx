@@ -1,3 +1,4 @@
+import { PageHeading } from '@/shared/PageHeading';
 import { CardTechnicalBase } from '@/shared/ui/CardTechnicalBase';
 
 export const TechnicalBase: React.FC = () => {
@@ -34,24 +35,15 @@ export const TechnicalBase: React.FC = () => {
           'Лагерь оснащен современным медицинским оснащением для оказании первой помощи',
       },
     ],
-    srcImg: '/vite.svg',
+    srcImg: '/pages/about/history.png',
   };
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto pb-8">
-        <section className="flex flex-col items-center gap-8 py-16 md:flex-row">
-          <div className="md:w-1/3">
-            <div className="mb-4 flex items-center gap-2">
-              <span className="font-mono text-gray-700">[🏢]</span>
-              <h2 className="text-2xl font-semibold">
-                Материально-техническая база
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-2/3">
-            <CardTechnicalBase {...material} />
-          </div>
+        <section className="flex flex-col flex-wrap gap-8 py-16">
+          <PageHeading>Материально-техническая база</PageHeading>
+          <CardTechnicalBase {...material} />
         </section>
       </div>
     </section>

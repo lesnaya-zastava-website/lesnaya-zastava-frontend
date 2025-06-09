@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 import './styles/index.css';
 import { router } from '@app/router';
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '@/shared/components/theme-provider';
 
 const App: React.FC = () => {
   return (

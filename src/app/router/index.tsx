@@ -16,6 +16,8 @@ import { EntertainmentPrograms } from '@/pages/RecreationOrganizedGroups/enterta
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Infrastructure } from '@pages/about/infrastructure';
 import { Contacts } from '@pages/contacts';
+import { Our } from '@/pages/projects/our';
+import { Yours } from '@/pages/projects/yours';
 
 export const routes: RouteObject[] = [
   {
@@ -104,11 +106,11 @@ export const routes: RouteObject[] = [
       },
       {
         path: 'projects/our',
-        element: 'Наши проекты',
+        element: <Our />,
       },
       {
         path: 'projects/yours',
-        element: 'Ваши проекты',
+        element: <Yours />,
       },
       {
         path: 'contacts',

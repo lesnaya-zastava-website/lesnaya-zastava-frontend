@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ModeToggle } from '@/components/mode-toggle';
+import { ModeToggle } from '@/shared/components/mode-toggle';
+import { Mail, MapIcon, PhoneCall } from 'lucide-react';
 
 const NAV_LINKS = [
   { to: '/about', label: 'О центре' },
@@ -11,13 +12,6 @@ const NAV_LINKS = [
   },
   { to: '/projects', label: 'Дополнительные проекты' },
   { to: '/contacts', label: 'Контакты' },
-];
-
-const CONTACTS = [
-  { icon: '☎', text: 'тел (администраторы)' },
-  { icon: '@', text: 'почта' },
-  { icon: '🌐', text: 'ссылки на соц. сети' },
-  { icon: '⌖', text: 'Челябинская обл., Сосновский р-н, д. Ключевка' },
 ];
 
 const BurgerMenu: React.FC = () => {
@@ -43,29 +37,36 @@ const BurgerMenu: React.FC = () => {
     <>
       <button
         aria-label="Открыть меню"
-        onClick={toggle}
-        className="flex flex-col justify-center gap-1.5 p-2 xl:hidden">
-        <span className="block h-0.5 w-6 bg-primary transition-transform" />
-        <span className="block h-0.5 w-6 bg-primary transition-transform" />
-        <span className="block h-0.5 w-6 bg-primary transition-transform" />
+        className="flex cursor-pointer flex-col justify-center gap-1.5 xl:hidden">
+        <div
+          onClick={toggle}
+          className="z-60 flex flex-col gap-2">
+          <span
+            className="z-60 block h-0.5 w-6 origin-top-left bg-primary transition-transform duration-300 ease-in-out"
+            style={{
+              transform: open ? 'rotate(45deg) translate(5.5px, -2px)' : 'none',
+            }}
+          />
+          <span
+            className={`z-60 block h-0.5 w-6 bg-primary transition-opacity duration-300 ease-in-out ${open ? 'opacity-0' : 'opacity-100'}`}
+          />
+          <span
+            className="z-60 block h-0.5 w-6 origin-bottom-left bg-primary transition-transform duration-300 ease-in-out"
+            style={{
+              transform: open ? ' rotate(-45deg) translate(5px, 3px)' : 'none',
+            }}
+          />
+        </div>
       </button>
 
       {/* полноэкранный оверлей */}
       <div
-        className={`fixed inset-0 z-50 flex flex-col overflow-y-hidden bg-white/80 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-white/80 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={close} /* клик по фону закрывает меню */
       >
-        {/* крестик */}
-        <button
-          onClick={close}
-          aria-label="Закрыть меню"
-          className="absolute top-5 right-5 text-4xl leading-none">
-          &times;
-        </button>
-
         {/* навигация */}
         <nav
-          className="flex flex-1 flex-col items-center justify-center gap-8 text-lg font-medium uppercase"
+          className="flex flex-1 flex-col items-center justify-center gap-8 text-center text-lg font-medium uppercase"
           onClick={e => e.stopPropagation()} /* внутри – не закрываем по фону */
         >
           {NAV_LINKS.map(({ to, label }) => (
@@ -81,16 +82,49 @@ const BurgerMenu: React.FC = () => {
 
         {/* контакты + переключатель темы */}
         <div
-          className="flex flex-col items-center gap-2 pb-8 text-sm"
+          className="flex flex-col items-center gap-2 pb-8 text-center text-sm"
           onClick={e => e.stopPropagation()}>
-          {CONTACTS.map(({ icon, text }) => (
-            <div
-              key={text}
-              className="flex items-center gap-2 text-center">
-              <span>{icon}</span>
-              <span className="max-w-[260px]">{text}</span>
-            </div>
-          ))}
+          <div className="flex items-center space-x-1">
+            <span>
+              <PhoneCall
+                size="15px"
+                color="#093"
+              />
+            </span>
+            <span>+7(351)269-49-16</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span>
+              <Mail
+                size="15px"
+                color="#093"
+              />
+            </span>
+            <span>ok-zastawa@yandex.ru</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            <span>ссылки на соц. сети:</span>
+            <a
+              href="https://vk.com/leszastava"
+              target="_blank"
+              className="block">
+              <img
+                width={25}
+                alt="Лесная застава ВК"
+                src="/vk.png"></img>
+            </a>
+          </div>
+          <div className="flex items-center space-x-1">
+            <span>
+              <MapIcon
+                size="15px"
+                color="#093"
+              />
+            </span>
+            <span className="max-w-[240px]">
+              Челябинская область, Сосновский район, д. Ключевка
+            </span>
+          </div>
           <ModeToggle />
         </div>
       </div>
