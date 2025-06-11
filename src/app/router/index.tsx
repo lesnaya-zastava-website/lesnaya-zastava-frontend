@@ -13,7 +13,7 @@ import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
 import { RecreationOrganizedGroups } from '@/pages/RecreationOrganizedGroups';
 import { CostServices } from '@/pages/RecreationOrganizedGroups/costServices';
 import { EntertainmentPrograms } from '@/pages/RecreationOrganizedGroups/entertainmentPrograms';
-import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { HashRouter, createHashRouter, type RouteObject } from 'react-router-dom'; // Импортируем HashRouter
 import { Infrastructure } from '@pages/about/infrastructure';
 import { Contacts } from '@pages/contacts';
 import { Our } from '@/pages/projects/our';
@@ -33,27 +33,27 @@ export const routes: RouteObject[] = [
         element: <HolidayCamp />,
       },
       {
-        path: 'holidaycamp/announcements',
+        path: '/holidaycamp/announcements',
         element: <Announcements />,
       },
       {
-        path: 'holidaycamp/forParents',
+        path: '/holidaycamp/forParents',
         element: <ForParents />,
       },
       {
-        path: 'holidaycamp/mediaCenter',
+        path: '/holidaycamp/mediaCenter',
         element: <MediaCenter />,
       },
       {
-        path: 'holidaycamp/teachingStaff',
+        path: '/holidaycamp/teachingStaff',
         element: <TeachingStaff />,
       },
       {
-        path: 'holidaycamp/technicalBase',
+        path: '/holidaycamp/technicalBase',
         element: <TechnicalBase />,
       },
       {
-        path: 'holidaycamp/infrastructure',
+        path: '/holidaycamp/infrastructure',
         element: 'инфраструктура',
       },
       {
@@ -61,31 +61,31 @@ export const routes: RouteObject[] = [
         element: '(Админ панель)',
       },
       {
-        path: 'about',
+        path: '/about',
         element: <About />,
       },
       {
-        path: 'about/info',
+        path: '/about/info',
         element: <Info />,
       },
       {
-        path: 'about/docs',
+        path: '/about/docs',
         element: 'документы',
       },
       {
-        path: 'about/team',
+        path: '/about/team',
         element: 'команда',
       },
       {
-        path: 'about/history',
+        path: '/about/history',
         element: <History />,
       },
       {
-        path: 'about/infrastructure',
+        path: '/about/infrastructure',
         element: <Infrastructure />,
       },
       {
-        path: 'about/safety',
+        path: '/about/safety',
         element: 'безопасность',
       },
       {
@@ -93,31 +93,31 @@ export const routes: RouteObject[] = [
         element: <RecreationOrganizedGroups />,
       },
       {
-        path: 'recreationOrganizedGroups/costServices',
+        path: '/recreationOrganizedGroups/costServices',
         element: <CostServices />,
       },
       {
-        path: 'recreationOrganizedGroups/entertainmentPrograms',
+        path: '/recreationOrganizedGroups/entertainmentPrograms',
         element: <EntertainmentPrograms />,
       },
       {
-        path: 'projects',
+        path: '/projects',
         element: <Projects />,
       },
       {
-        path: 'projects/our',
+        path: '/projects/our',
         element: <Our />,
       },
       {
-        path: 'projects/yours',
+        path: '/projects/yours',
         element: <Yours />,
       },
       {
-        path: 'contacts',
+        path: '/contacts',
         element: <Contacts />,
       },
     ],
   },
 ];
 
-export const router = createBrowserRouter(routes);
+export const router = createHashRouter(routes);
