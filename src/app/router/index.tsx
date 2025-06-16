@@ -13,11 +13,12 @@ import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
 import { RecreationOrganizedGroups } from '@/pages/RecreationOrganizedGroups';
 import { CostServices } from '@/pages/RecreationOrganizedGroups/costServices';
 import { EntertainmentPrograms } from '@/pages/RecreationOrganizedGroups/entertainmentPrograms';
-import { HashRouter, createHashRouter, type RouteObject } from 'react-router-dom'; // Импортируем HashRouter
+import { createBrowserRouter, type RouteObject } from 'react-router-dom'; // Импортируем HashRouter
 import { Infrastructure } from '@pages/about/infrastructure';
 import { Contacts } from '@pages/contacts';
 import { Our } from '@/pages/projects/our';
 import { Yours } from '@/pages/projects/yours';
+import { Documents } from '@/pages/about/documents';
 
 export const routes: RouteObject[] = [
   {
@@ -70,7 +71,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: '/about/docs',
-        element: 'документы',
+        element: <Documents/>,
       },
       {
         path: '/about/team',
@@ -120,4 +121,4 @@ export const routes: RouteObject[] = [
   },
 ];
 
-export const router = createHashRouter(routes);
+export const router = createBrowserRouter(routes);

@@ -12,6 +12,7 @@ export default defineConfig({
       '@styles': path.join(__dirname, 'src/styles'),
       '@pages': path.join(__dirname, 'src/pages'),
       '@features': path.join(__dirname, 'src/features'),
+      '@entities': path.join(__dirname, 'src/entities'),
       '@widgets': path.join(__dirname, 'src/widgets'),
       '@shared': path.join(__dirname, 'src/shared'),
       '@store': path.join(__dirname, 'src/store'),

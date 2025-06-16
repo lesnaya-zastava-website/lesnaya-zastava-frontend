@@ -6,6 +6,7 @@
       "@app/*": ["./src/app/*"],
       "@styles/*": ["./src/styles/*"],
       "@features/*": ["./src/features/*"],
+      "@entities/*": ["./src/entities/*"],
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@shared/*": ["./src/shared/*"],

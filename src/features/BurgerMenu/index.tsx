@@ -82,7 +82,7 @@ const BurgerMenu: React.FC = () => {
 
         {/* контакты + переключатель темы */}
         <div
-          className="flex flex-col items-center gap-2 pb-8 text-center text-sm"
+          className="flex flex-col items-center gap-2 text-center text-sm"
           onClick={e => e.stopPropagation()}>
           <div className="flex items-center space-x-1">
             <span>
