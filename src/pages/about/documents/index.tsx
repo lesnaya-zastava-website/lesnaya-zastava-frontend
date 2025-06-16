@@ -18,7 +18,7 @@ export const Documents: React.FC = () => {
 
         {!isLoading && !isError && documents?.length === 0 && (
           <p className="mt-4">Документов пока нет.</p>
-        )}git
+        )}
 
         {documents && (
           <div className="mt-6">

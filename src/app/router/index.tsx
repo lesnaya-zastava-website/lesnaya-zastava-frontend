@@ -19,6 +19,7 @@ import { Contacts } from '@pages/contacts';
 import { Our } from '@/pages/projects/our';
 import { Yours } from '@/pages/projects/yours';
 import { Documents } from '@/pages/about/documents';
+import { Team } from '@/pages/about/team';
 
 export const routes: RouteObject[] = [
   {
@@ -54,10 +55,6 @@ export const routes: RouteObject[] = [
         element: <TechnicalBase />,
       },
       {
-        path: '/holidaycamp/infrastructure',
-        element: 'инфраструктура',
-      },
-      {
         path: '/admin',
         element: '(Админ панель)',
       },
@@ -71,11 +68,11 @@ export const routes: RouteObject[] = [
       },
       {
         path: '/about/docs',
-        element: <Documents/>,
+        element: <Documents />,
       },
       {
         path: '/about/team',
-        element: 'команда',
+        element: <Team />,
       },
       {
         path: '/about/history',
