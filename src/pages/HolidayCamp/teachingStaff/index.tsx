@@ -1,79 +1,9 @@
+import { useTeacher } from '@/entities/person/model/useTeacher';
+import { TeacherCard } from '@/entities/person/ui/TeacherCard';
 import { PageHeading } from '@/shared/PageHeading';
-import { CardEmployee } from '@/shared/ui/CardEmployee';
 
 export const TeachingStaff: React.FC = () => {
-  const teachers = [
-    {
-      fullName: 'Петрова Мария Сергеевна',
-      post: 'Воспитатель',
-      qualification: 'Первая квалификационная категория',
-      specialization: 'Специализация: творческое развитие',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Петрова Мария Сергеевна',
-      post: 'Воспитатель',
-      qualification: 'Первая квалификационная категория',
-      specialization: 'Специализация: творческое развитие',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-    {
-      fullName: 'Иванов Иван Иванович',
-      post: 'Руководитель смены',
-      qualification: 'Высшая квалификационная категория',
-      specialization: 'Специализация: организация детского досуга',
-      srcImg: '/vite.svg',
-    },
-  ];
+  const { data: teachers, isLoading, isError } = useTeacher();
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
@@ -81,14 +11,17 @@ export const TeachingStaff: React.FC = () => {
         <section className="flex flex-col flex-wrap gap-8 py-16">
           <PageHeading>Педагогический состав</PageHeading>
 
+          {isLoading && <p>Загрузка...</p>}
+
+          {isError && <p className="text-red-500">Ошибка при загрузке...</p>}
+
+          {!isLoading && !isError && teachers?.length === 0 && (
+            <p className="mt-4">Список преподавателей отсутствует.</p>
+          )}
+
           <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
-              {teachers.map((items, index) => (
-                <CardEmployee
-                  key={index}
-                  {...items}
-                />
-              ))}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {teachers?.map(teacher => <TeacherCard teacher={teacher} />)}
             </div>
           </div>
         </section>

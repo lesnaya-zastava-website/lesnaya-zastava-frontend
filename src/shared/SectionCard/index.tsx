@@ -15,6 +15,9 @@ export const SectionCard: React.FC<SectionCardProps> = ({
 }) => {
   return (
     <Link
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
       to={linkTo}
       className="relative block h-[224px] w-full p-2 sm:w-1/2 md:w-1/3 xl:w-1/2">
       <div className="relative h-full w-full overflow-hidden rounded-2xl text-white shadow-lg">
@@ -24,7 +27,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
           className="absolute top-0 left-0 h-full w-full object-cover brightness-40 transition-opacity duration-200 ease-out"
         />
         <div className="absolute bottom-[20px] left-[0px] font-bold text-white">
-          <h2 className="max-w-[430px] mx-4 text-xl leading-tight md:text-xl lg:text-2xl xl:text-4xl">
+          <h2 className="mx-4 max-w-[430px] text-xl leading-tight md:text-xl lg:text-2xl xl:text-4xl">
             {title}
           </h2>
         </div>

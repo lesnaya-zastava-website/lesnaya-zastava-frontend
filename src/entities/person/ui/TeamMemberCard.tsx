@@ -16,7 +16,7 @@ export const TeamMemberCard: React.FC<{ member: TeamMember }> = ({
     <CardContent>
       <img
         className="h-[400px] max-w-full object-cover"
-        src={`${API_BASE_URL}${member.photo.url}`}
+        src={`${API_BASE_URL}${member?.photo?.url}`}
         alt={`${member.fullName} - ${member.job}`}
       />
     </CardContent>

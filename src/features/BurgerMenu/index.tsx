@@ -73,7 +73,10 @@ const BurgerMenu: React.FC = () => {
             <Link
               key={to}
               to={to}
-              onClick={close}
+              onClick={() => {
+                close();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="transition-colors hover:text-primary">
               {label}
             </Link>

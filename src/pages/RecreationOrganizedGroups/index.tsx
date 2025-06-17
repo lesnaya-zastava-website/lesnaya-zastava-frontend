@@ -12,7 +12,7 @@ export const RecreationOrganizedGroups: React.FC = () => {
           />
         </div>
 
-        <div className="-m-2 mt-5 flex flex-wrap justify-between">
+        <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
           <SectionCard
             title="Стоимость услуг"
             srcImage="/pages/RecreationOrganizedGroups/services.jpg"

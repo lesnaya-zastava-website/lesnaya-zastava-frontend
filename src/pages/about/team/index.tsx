@@ -1,12 +1,12 @@
 import { useTeam } from '@/entities/person/model/useTeam';
-import { TeamMemberCard } from '@/entities/person/ui';
+import { TeamMemberCard } from '@/entities/person/ui/TeamMemberCard';
 
 import { PageHeading } from '@shared/PageHeading';
 
 export const Team: React.FC = () => {
   const { data: teamMembers, isLoading, isError } = useTeam();
 
-  console.log(teamMembers);
+
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">

@@ -3,14 +3,13 @@ export type TeamMember = {
   fullName: string;
   job: string;
   photo: {
-   url: string;
+    url: string;
   };
 };
 
 export type Teacher = {
   id: number;
-  name: string;
-  position: string;
+  fullName: string;
   qualification: string;
   specialization: string;
   photo: {

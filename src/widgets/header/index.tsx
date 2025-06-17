@@ -13,7 +13,9 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
             {location.pathname !== '/' ? (
-              <Link to="/">
+              <Link
+                to="/"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img
                   src="./tempLogo.png"
                   alt="logo"
@@ -79,6 +81,7 @@ export const Header: React.FC = () => {
           <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
               <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/about"
                 className="transition-colors duration-200">
                 О ЦЕНТРЕ
@@ -87,6 +90,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/holidaycamp"
                 className="transition-colors duration-20">
                 Детский отдых
@@ -95,6 +99,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/recreationOrganizedGroups"
                 className="transition-colors duration-200">
                 Отдых для организованных групп детей и молодежи
@@ -103,6 +108,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/projects"
                 className="transition-colors duration-200">
                 Дополнительные проекты
@@ -111,6 +117,7 @@ export const Header: React.FC = () => {
             <li className="text-gray-400">|</li>
             <li>
               <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/contacts"
                 className="transition-colors duration-200">
                 КОНТАКТЫ
