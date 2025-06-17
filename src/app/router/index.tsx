@@ -55,10 +55,6 @@ export const routes: RouteObject[] = [
         element: <TechnicalBase />,
       },
       {
-        path: '/admin',
-        element: '(Админ панель)',
-      },
-      {
         path: '/about',
         element: <About />,
       },
