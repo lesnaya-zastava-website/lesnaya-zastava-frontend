@@ -1,6 +1,6 @@
 export const Footer: React.FC = () => {
   return (
-    <footer className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+    <footer className="mx-auto p-5 sm:px-7 md:px-10 lg:px-30">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <div className="max-w-[285px] flex-1 space-y-4">
