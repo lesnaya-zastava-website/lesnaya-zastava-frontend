@@ -72,7 +72,7 @@ export const Contacts: React.FC = () => {
 
             <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
               <div className="p-6 pb-4">
-                <h3 className="flex items-center gap-2 text-xl font-semibold text-green-700">
+                <h3 className="flex items-center gap-2 text-xl font-semibold text-primary">
                   <Navigation className="h-6 w-6" />
                   Способы проезда
                 </h3>
@@ -81,7 +81,7 @@ export const Contacts: React.FC = () => {
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-3">
                     <Bus className="h-5 w-5 text-blue-600" />
-                    <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
+                    <span className="inline-flex items-center rounded-full bg-blue-200 px-2.5 py-0.5 text-xs font-medium text-blue-700">
                       Городским транспортом
                     </span>
                   </div>
@@ -90,11 +90,10 @@ export const Contacts: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Личный транспорт */}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-3">
-                    <Car className="h-5 w-5 text-green-600" />
-                    <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700">
+                    <Car className="h-5 w-5 text-primary" />
+                    <span className="inline-flex items-center rounded-full bg-green-200 px-2.5 py-0.5 text-xs font-medium text-primary">
                       На личном транспорте
                     </span>
                   </div>
@@ -110,7 +109,7 @@ export const Contacts: React.FC = () => {
               <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
                 <div className="p-6 pb-4">
                   <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
                       1
                     </div>
                     Первый этап маршрута
@@ -121,9 +120,9 @@ export const Contacts: React.FC = () => {
                     От г. Челябинска по Свердловскому тракту до указателя на
                     Аргаяш. За указателем, повернуть направо в сторону Аргаяша.
                   </p>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="">
                     <img
-                      className="lg:w-2/3"
+                      className="w-full"
                       src="/pages/contacts/1.png"
                       alt="Дорога в лесную заставу"
                     />
@@ -134,7 +133,7 @@ export const Contacts: React.FC = () => {
               <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
                 <div className="p-6 pb-4">
                   <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
                       2
                     </div>
                     Следующий указатель
@@ -144,7 +143,7 @@ export const Contacts: React.FC = () => {
                   <p className="">Затем необходимо проехать до указателя:</p>
                   <div className="relative overflow-hidden rounded-lg">
                     <img
-                      className="lg:w-2/3"
+                      className="w-full"
                       src="/pages/contacts/2.png"
                       alt="Дорога в лесную заставу"
                     />
@@ -155,7 +154,7 @@ export const Contacts: React.FC = () => {
               <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
                 <div className="p-6 pb-4">
                   <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
                       3
                     </div>
                     Поворот к Ключевке
@@ -168,7 +167,7 @@ export const Contacts: React.FC = () => {
                   </p>
                   <div className="relative overflow-hidden rounded-lg">
                     <img
-                      className="lg:w-2/3"
+                      className="w-full"
                       src="/pages/contacts/3.png"
                       alt="Дорога в лесную заставу"
                     />
@@ -179,7 +178,7 @@ export const Contacts: React.FC = () => {
               <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
                 <div className="p-6 pb-4">
                   <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
                       4
                     </div>
                     Финальный этап
@@ -194,7 +193,7 @@ export const Contacts: React.FC = () => {
                   </p>
                   <div className="relative overflow-hidden rounded-lg">
                     <img
-                      className="lg:w-2/3"
+                      className="w-full"
                       src="/pages/contacts/4.jpg"
                       alt="Дорога в лесную заставу"
                     />
