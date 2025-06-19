@@ -1,4 +1,5 @@
 import { PageHeading } from '@shared/PageHeading';
+import { Car, Bus, Navigation } from 'lucide-react';
 
 export const Contacts: React.FC = () => {
   return (
@@ -68,51 +69,139 @@ export const Contacts: React.FC = () => {
 
           <div className="flex flex-col gap-3">
             <PageHeading>Как проехать к "Лесной Заставе"</PageHeading>
-            <p>Проезд:</p>
-            <p>
-              <strong>Городским транспортом:</strong> от северного автовокзала
-              на автобусе № 151 или № 185
-            </p>
-            <p>
-              <strong>На личном транспорте:</strong> Для того, чтобы без труда
-              найти загородный комплекс "Лесная Застава" ориентируйтесь на
-              следующие указатели:
-            </p>
-            <p>
-              1. От г. Челябинска по Свердловскому тракту до указателя на
-              Аргаяш. За указателем, повернуть направо в сторону Аргаяша.
-            </p>
-            <img
-              className="lg:w-2/3"
-              src="/pages/contacts/1.png"
-              alt="Дорога в лесную заставу"
-            />
-            <p>2. Затем необходимо проехать до указателя:</p>
-            <img
-              className="lg:w-2/3"
-              src="/pages/contacts/2.png"
-              alt="Дорога в лесную заставу"
-            />
-            <p>
-              3. Продолжаем движение 700 м направо в сторону Аргаяша, до
-              указателя "Ключевка. Лесная Застава":
-            </p>
-            <img
-              className="lg:w-2/3"
-              src="/pages/contacts/3.png"
-              alt="Дорога в лесную заставу"
-            />
-            <p>
-              4. Перед указателем свернуть налево через д. Ключевку 2 700 м до
-              указателя "Лесная Застава". Никуда не сворачивать и ехать по
-              главной дороге, пока слева не увидите небольшой мостик и ворота с
-              надписью "Лесная Застава".
-            </p>
-            <img
-              className="lg:w-2/3"
-              src="/pages/contacts/4.jpg"
-              alt="Дорога в лесную заставу"
-            />
+
+            <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+              <div className="p-6 pb-4">
+                <h3 className="flex items-center gap-2 text-xl font-semibold text-green-700">
+                  <Navigation className="h-6 w-6" />
+                  Способы проезда
+                </h3>
+              </div>
+              <div className="space-y-6 px-6 pb-6">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Bus className="h-5 w-5 text-blue-600" />
+                    <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
+                      Городским транспортом
+                    </span>
+                  </div>
+                  <p className="ml-8">
+                    От северного автовокзала на автобусе № 151 или № 185
+                  </p>
+                </div>
+
+                {/* Личный транспорт */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Car className="h-5 w-5 text-green-600" />
+                    <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700">
+                      На личном транспорте
+                    </span>
+                  </div>
+                  <p className="ml-8">
+                    Для того, чтобы без труда найти загородный комплекс "Лесная
+                    Застава" ориентируйтесь на указатели ниже.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+                <div className="p-6 pb-4">
+                  <h3 className="flex items-center gap-3 text-lg font-semibold">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                      1
+                    </div>
+                    Первый этап маршрута
+                  </h3>
+                </div>
+                <div className="space-y-4 px-6 pb-6">
+                  <p>
+                    От г. Челябинска по Свердловскому тракту до указателя на
+                    Аргаяш. За указателем, повернуть направо в сторону Аргаяша.
+                  </p>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <img
+                      className="lg:w-2/3"
+                      src="/pages/contacts/1.png"
+                      alt="Дорога в лесную заставу"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+                <div className="p-6 pb-4">
+                  <h3 className="flex items-center gap-3 text-lg font-semibold">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                      2
+                    </div>
+                    Следующий указатель
+                  </h3>
+                </div>
+                <div className="space-y-4 px-6 pb-6">
+                  <p className="">Затем необходимо проехать до указателя:</p>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <img
+                      className="lg:w-2/3"
+                      src="/pages/contacts/2.png"
+                      alt="Дорога в лесную заставу"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+                <div className="p-6 pb-4">
+                  <h3 className="flex items-center gap-3 text-lg font-semibold">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                      3
+                    </div>
+                    Поворот к Ключевке
+                  </h3>
+                </div>
+                <div className="space-y-4 px-6 pb-6">
+                  <p className="">
+                    Продолжаем движение 700 м направо в сторону Аргаяша, до
+                    указателя "Ключевка. Лесная Застава":
+                  </p>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <img
+                      className="lg:w-2/3"
+                      src="/pages/contacts/3.png"
+                      alt="Дорога в лесную заставу"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+                <div className="p-6 pb-4">
+                  <h3 className="flex items-center gap-3 text-lg font-semibold">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                      4
+                    </div>
+                    Финальный этап
+                  </h3>
+                </div>
+                <div className="space-y-4 px-6 pb-6">
+                  <p className="">
+                    Перед указателем свернуть налево через д. Ключевку 2 700 м
+                    до указателя "Лесная Застава". Никуда не сворачивать и ехать
+                    по главной дороге, пока слева не увидите небольшой мостик и
+                    ворота с надписью "Лесная Застава".
+                  </p>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <img
+                      className="lg:w-2/3"
+                      src="/pages/contacts/4.jpg"
+                      alt="Дорога в лесную заставу"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

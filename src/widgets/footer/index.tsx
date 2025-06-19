@@ -1,6 +1,6 @@
 export const Footer: React.FC = () => {
   return (
-    <footer className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+    <footer className="mx-auto p-5 sm:px-7 md:px-10 lg:px-30">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <div className="max-w-[285px] flex-1 space-y-4">
@@ -80,18 +80,6 @@ export const Footer: React.FC = () => {
           <div className="container mx-auto border-t border-gray-200 py-5 text-center">
             <div className="flex flex-col items-center justify-between gap-2 space-y-4 md:flex-row md:space-y-0">
               <div className="text-sm">ООО "Соц-сервис" Все права защищены</div>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#"
-                  className="text-sm transition-colors">
-                  Политика конфиденциальности
-                </a>
-                <a
-                  href="#"
-                  className="text-sm transition-colors">
-                  Условия использования
-                </a>
-              </div>
             </div>
           </div>
         </div>

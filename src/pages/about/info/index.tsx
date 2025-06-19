@@ -3,7 +3,7 @@ import { PageHeading } from '@shared/PageHeading';
 export const Info: React.FC = () => {
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto border-b border-gray-200 pb-8">
+      <div className="container mx-auto pb-8">
         <PageHeading>Основные сведения</PageHeading>
 
         <dl className="grid gap-4 text-base">
