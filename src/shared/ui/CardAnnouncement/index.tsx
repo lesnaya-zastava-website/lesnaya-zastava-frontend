@@ -1,24 +1,26 @@
+import { API_BASE_URL } from '@shared/api/baseApi';
+
 interface CardAnnouncementProps {
   title: string;
   content: string;
-  srcImg: string;
-  altImg?: string;
+  photo: {
+    url: string;
+  };
 }
 
 export const CardAnnouncement: React.FC<CardAnnouncementProps> = ({
   title,
   content,
-  srcImg,
-  altImg,
+  photo,
 }) => {
   return (
     <div className="overflow-hidden rounded-lg border shadow-md">
       <img
-        src={srcImg}
-        alt={altImg || ''}
+        src={`${API_BASE_URL}${photo?.url}`}
+        alt={title ? title : 'Фото'}
         width={400}
         height={200}
-        className="h-48 w-full object-cover"
+        className="h-100 w-full object-cover"
       />
       <div className="p-4">
         <h3 className="font-medium">{title}</h3>

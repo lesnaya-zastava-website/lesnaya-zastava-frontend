@@ -1,39 +1,27 @@
 import { PageHeading } from '@/shared/PageHeading';
 import { CardAnnouncement } from '@/shared/ui/CardAnnouncement';
+import { useAnnouncement } from '@/entities/announcement/model/useAnnouncement';
 
 export const Announcements: React.FC = () => {
-  const announcement = [
-    {
-      title: 'Летняя смена 2025',
-      content: '10 июня - 24 июня',
-      srcImg: '/vite.svg',
-    },
-    {
-      title: 'Творческая смена',
-      content: '1 июля - 15 июля',
-      srcImg: '/vite.svg',
-    },
-    {
-      title: 'Летняя смена 2025',
-      content: '10 июня - 24 июня',
-      srcImg: '/vite.svg',
-    },
-    {
-      title: 'Творческая смена',
-      content: '1 июля - 15 июля',
-      srcImg: '/vite.svg',
-    },
-  ];
+  const { data: AnnouncementResponse, isLoading, isError } = useAnnouncement();
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto pb-8">
-        <section className="flex flex-col gap-8 py-16 flex-wrap">
+      <div className="container mx-auto">
+        <section className="flex flex-col flex-wrap gap-8 py-16">
           <PageHeading>Анонсы и актуальные смены</PageHeading>
+
+          {isLoading && <p>Загрузка...</p>}
+
+          {isError && <p className="text-red-500">Ошибка при загрузке...</p>}
+
+          {!isLoading && !isError && AnnouncementResponse?.length === 0 && (
+            <p className="mt-4">Список анонсов отсутствует.</p>
+          )}
 
           <div className="w-full">
             <div className="grid grid-cols-1 gap-6">
-              {announcement.map((items, index) => (
+              {AnnouncementResponse?.map((items, index) => (
                 <CardAnnouncement
                   key={index}
                   {...items}
