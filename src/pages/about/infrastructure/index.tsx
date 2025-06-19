@@ -27,14 +27,9 @@ export const Infrastructure: React.FC = () => {
           <p className="mt-4">Фотографий пока нет.</p>
         )}
 
-        {isSuccess && <GallerySlider photo={data[0].photo} />}
+        {isSuccess && <GallerySlider photos={data[0].photos} />}
 
-        {/* {isSuccess &&
-          data[0]?.photo?.map((item: any) => (
-            <div key={item.id}>
-              <img src={`http://localhost:1337${item.url}`} />
-            </div>
-          ))} */}
+      
       </div>
     </section>
   );

@@ -7,10 +7,10 @@ import { API_BASE_URL } from '@shared/api/baseApi';
 import { XIcon } from 'lucide-react';
 
 interface GallerySliderProps {
-  photo: Photo[];
+  photos: Photo[];
 }
 
-export const GallerySlider: React.FC<GallerySliderProps> = ({ photo }) => {
+export const GallerySlider: React.FC<GallerySliderProps> = ({ photos }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null,
@@ -45,7 +45,7 @@ export const GallerySlider: React.FC<GallerySliderProps> = ({ photo }) => {
               slidesPerView={1}
               navigation
               modules={[Navigation]}>
-              {photo.map(item => (
+              {photos?.map(item => (
                 <SwiperSlide key={item.name}>
                   <div className="flex items-center justify-center">
                     <img
@@ -62,7 +62,7 @@ export const GallerySlider: React.FC<GallerySliderProps> = ({ photo }) => {
       )}
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {photo.map((item, index) => {
+        {photos?.map((item, index) => {
           return (
             <div
               key={item.id}

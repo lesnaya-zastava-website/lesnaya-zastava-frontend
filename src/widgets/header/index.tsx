@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
                 to="/"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img
-                  src="./tempLogo.png"
+                  src="/tempLogo.png"
                   alt="logo"
                   className="w-50"
                 />

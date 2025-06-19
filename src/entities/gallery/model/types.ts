@@ -1,6 +1,6 @@
 export type GalleryImage = {
   id: number;
-  photo: Photo[];
+  photos: Photo[];
 };
 
 export type Photo = {
@@ -15,7 +15,7 @@ type InfrastructureItem = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  photo: Photo[];
+  photos: Photo[];
 };
 
 export type InfrastructureResponse = InfrastructureItem[];
