@@ -21,7 +21,9 @@ export const Info: React.FC = () => {
           </div>
           <div>
             <dt className="font-semibold">Юридический адрес:</dt>
-            <dd>454008, г. Челябинск, Свердловский тракт, 24 АО "ЧЦЗ"</dd>
+            <dd>
+              454008, Россия, г. Челябинск, Свердловский тракт, 24 АО "ЧЦЗ"
+            </dd>
           </div>
           <div>
             <dt className="font-semibold">Фактический адрес:</dt>
@@ -32,11 +34,11 @@ export const Info: React.FC = () => {
           </div>
           <div>
             <dt className="font-semibold">ИНН/КПП:</dt>
-            <dd>7448000013 / 744801001</dd>
+            <dd>7448000013 / 997550001</dd>
           </div>
           <div>
             <dt className="font-semibold">ОГРН:</dt>
-            <dd>1234567890123</dd>
+            <dd>-</dd>
           </div>
           <div>
             <dt className="font-semibold">Режим работы:</dt>
@@ -51,11 +53,15 @@ export const Info: React.FC = () => {
           </div>
           <div>
             <dt className="font-semibold">К/с:</dt>
-            <dd>3010181014525000659</dd>
+            <dd>30101810745250000659 </dd>
           </div>
           <div>
             <dt className="font-semibold">БИК:</dt>
             <dd>044525659</dd>
+          </div>
+          <div>
+            <dt className="font-semibold">Директор:</dt>
+            <dd>Избрехт Павел Александрович, действует на основании доверености.</dd>
           </div>
         </dl>
       </div>

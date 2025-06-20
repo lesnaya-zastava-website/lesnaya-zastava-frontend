@@ -1,7 +1,10 @@
+import { PageHeading } from '@/shared/PageHeading';
+
 export const History: React.FC = () => {
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
+        <PageHeading>История</PageHeading>
         <div className="flex flex-col gap-5">
           <p className="text-justify">
             Оздоровительный комплекс «Лесная Застава» ведет свою историю с 1959

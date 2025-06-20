@@ -83,7 +83,7 @@ export const Header: React.FC = () => {
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/about"
-                className="transition-colors duration-200 hover:text-[#093]">
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/about') ? 'text-primary underline' : 'no-underline'}`}>
                 О ЦЕНТРЕ
               </Link>
             </li>
@@ -92,7 +92,7 @@ export const Header: React.FC = () => {
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/holidaycamp"
-                className="transition-colors duration-20 hover:text-[#093]">
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/holidaycamp') ? 'text-primary underline' : 'no-underline'}`}>
                 Детский отдых
               </Link>
             </li>
@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/recreationOrganizedGroups"
-                className="transition-colors duration-200 hover:text-[#093]">
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/recreationOrganizedGroups') ? 'text-primary underline' : 'no-underline'}`}>
                 Отдых для организованных групп детей и молодежи
               </Link>
             </li>
@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/projects"
-                className="transition-colors duration-200 hover:text-[#093]">
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/projects') ? 'text-primary underline' : 'no-underline'}`}>
                 Дополнительные проекты
               </Link>
             </li>
@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/contacts"
-                className="transition-colors duration-200 hover:text-[#093]">
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/contacts') ? 'text-primary underline' : 'no-underline'}`}>
                 КОНТАКТЫ
               </Link>
             </li>

@@ -24,7 +24,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
         <img
           src={srcImage}
           alt={altDesc}
-          className="absolute top-0 left-0 h-full w-full object-cover brightness-40 transition-opacity duration-200 ease-out hover:brightness-60"
+          className="absolute top-0 left-0 h-full w-full object-cover brightness-40 transition-all duration-200 ease-out hover:brightness-60"
         />
         <div className="absolute bottom-[20px] left-[0px] font-bold text-white">
           <h2 className="mx-4 max-w-[430px] text-xl leading-tight md:text-xl lg:text-2xl xl:text-4xl">

@@ -27,7 +27,9 @@ export const Infrastructure: React.FC = () => {
           <p className="mt-4">Фотографий пока нет.</p>
         )}
 
-        {isSuccess && <GallerySlider photos={data[0].photos} />}
+        {isSuccess && data?.map((item)=>(
+          <GallerySlider photos={item.photos}/>
+        ))}
 
       
       </div>

@@ -9,7 +9,7 @@ export type Photo = {
   name:string;
 };
 
-type InfrastructureItem = {
+export type InfrastructureItem = {
   id: number;
   documentId: string;
   createdAt: string;
