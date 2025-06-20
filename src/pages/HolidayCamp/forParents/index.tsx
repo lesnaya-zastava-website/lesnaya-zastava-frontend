@@ -1,12 +1,12 @@
 import type React from 'react';
 import { PageHeading } from '@/shared/PageHeading';
+import { Link } from 'react-router-dom';
 
 export const ForParents: React.FC = () => {
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-12">
-          {/* Основной контент */}
           <div className="space-y-6 lg:col-span-3">
             <div>
               <PageHeading>Информация для родителей</PageHeading>
@@ -22,87 +22,86 @@ export const ForParents: React.FC = () => {
                   полезным и незабываемым.
                 </p>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 1-ый: Обсуждаем отдых заранее
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Ребенок должен привыкнуть к мысли, что он будет отдыхать
                     один. Для этого примерно за 2-3 месяца до предполагаемой
                     поездки начинайте с ним обсуждать отъезд в лагерь.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 2-ой: "Репетируем" поездку
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Начинайте заблаговременно подготовку к каникулам в лагере.
                     Предложите ребенку переночевать у бабушки с дедушкой или у
                     друга.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 3-ий: учитываем мнение ребенка
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Уважайте детское мнение. И, если ребенок не выражает желания
                     проводить каникулы в загородном лагере, не настаивайте.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 4-ый: проявляем такт и чуткость
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Чрезмерное убеждение в необходимости поездки со стороны
                     взрослых может вызвать у ребенка впечатление, что они хотят
                     временно от него избавиться. Старайтесь быть дипломатичнее.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 5-ый: делимся воспоминаниями
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Вспомните интересные истории из своего детства, связанные с
                     отдыхом в лагере, которые помогут увлечь ребенка.
                   </p>
                 </div>
-
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 6-ой: даем ориентир для экстренных ситуаций
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Расскажите ребенку, что в случае возникновения ситуации,
                     когда ему понадобится совет или помощь, он всегда может
                     позвонить родителям или обратиться к воспитателям.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 7-ой: держим эмоции под контролем
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Во время отъезда сдерживайте свои эмоции и не выдавайте
                     волнения. Слезы мамы или бабушки могут расстроить ребенка и
                     вызвать у него еще большую грусть из-за расставания.
                   </p>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 8-ой: как реагировать на просьбы ребёнка, забрать его
                     домой?
                   </p>
-                  <div className="space-y-2 text-green-800">
+                  <div className="space-y-2">
                     <p>
                       Надо расспросить ребенка о том, что именно не нравится в
                       лагере, вместе поискать решение этих проблем.
@@ -128,19 +127,19 @@ export const ForParents: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="rounded-r-lg border-l-4 border-green-400 bg-green-50 p-4">
-                  <p className="mb-2 font-semibold text-green-900">
+                <div className="rounded-r-lg border-l-4 border-primary p-4">
+                  <p className="mb-2 font-semibold text-primary">
                     Совет 9-ый: А если конфликт?
                   </p>
-                  <p className="text-green-800">
+                  <p className="">
                     Если ребенок жалуется, что его бьют, дразнят и обижают или
                     возник какой-то конфликт, то вам необходимо обязательно
                     связаться с администрацией лагеря и прояснить ситуацию.
                   </p>
                 </div>
 
-                <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4">
-                  <p className="font-medium text-amber-900">
+                <div className="mt-6 rounded-lg border border-amber-200 p-4">
+                  <p className="font-medium">
                     Помните, заблаговременная и правильная подготовка к первому
                     самостоятельному отдыху в детском лагере поможет привыкнуть
                     к мысли о нем как родителям, так и ребенку. Это первый шаг к
@@ -153,18 +152,18 @@ export const ForParents: React.FC = () => {
                 <div className="mt-8 space-y-4">
                   <PageHeading>Родительское посещение</PageHeading>
 
-                  <div className="rounded-lg border-l-4 border-red-400 bg-red-50 p-4">
-                    <p className="mb-2 font-bold text-red-900">
+                  <div className="rounded-lg border-l-4 border-red-400 p-4">
+                    <p className="mb-2 font-bold text-red-700">
                       ВНИМАНИЕ! На территории лагеря действует санитарный режим.
                     </p>
                   </div>
 
-                  <div className="rounded-lg bg-gray-50 p-6">
+                  <div className="rounded-lg p-6">
                     <h4 className="mb-4 text-xl font-semibold text-red-700">
                       КАТЕГОРИЧЕСКИ ЗАПРЕЩАЕТСЯ передавать детям:
                     </h4>
 
-                    <ul className="space-y-3 text-gray-700">
+                    <ul className="space-y-3">
                       <li className="flex items-start">
                         <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
                         <span>
@@ -209,9 +208,9 @@ export const ForParents: React.FC = () => {
                     </ul>
                   </div>
 
-                  <div className="rounded-lg border-l-4 border-orange-400 bg-orange-50 p-4">
-                    <p className="mb-2 font-bold text-orange-900">ВНИМАНИЕ!</p>
-                    <p className="text-orange-800">
+                  <div className="rounded-lg border-l-4 border-orange-400 p-4">
+                    <p className="mb-2 font-bold text-orange-500">ВНИМАНИЕ!</p>
+                    <p className="">
                       Администрация и педагоги ДОЛ «Лесная Застава» НЕ НЕСУТ
                       ответственности за деньги и материальные ценности,
                       привезенные детьми в лагерь.
@@ -222,32 +221,31 @@ export const ForParents: React.FC = () => {
             </div>
           </div>
 
-          {/* Навигационная панель */}
           <div className="lg:col-span-1">
-            <div className="sticky top-45">
+            <div className="sticky top-50">
               <PageHeading>Навигация</PageHeading>
               <nav>
                 <ul className="space-y-3">
                   <li>
-                    <a
-                      href="#documents"
-                      className="block rounded-md border border-transparent p-3 text-sm font-medium text-gray-700 transition-colors duration-200 hover:border-blue-200 hover:bg-white hover:text-green-600">
+                    <Link
+                      to="parent-things"
+                      className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Список необходимых вещей
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#documents"
-                      className="block rounded-md border border-transparent p-3 text-sm font-medium text-gray-700 transition-colors duration-200 hover:border-blue-200 hover:bg-white hover:text-green-600">
+                    <Link
+                      to="parent-documents"
+                      className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Список необходимых документов
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#rules"
-                      className="block rounded-md border border-transparent p-3 text-sm font-medium text-gray-700 transition-colors duration-200 hover:border-blue-200 hover:bg-white hover:text-green-600">
+                    <Link
+                      to="parent-rules"
+                      className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Правила пребывания в ДОЛ "Лесная застава"
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>

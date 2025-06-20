@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ModeToggle } from '@/shared/components/mode-toggle';
 import { Mail, MapIcon, PhoneCall } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/about', label: 'О центре' },
@@ -15,6 +16,8 @@ const NAV_LINKS = [
 ];
 
 const BurgerMenu: React.FC = () => {
+  const location = useLocation();
+
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(v => !v);
   const close = () => setOpen(false);
@@ -77,7 +80,7 @@ const BurgerMenu: React.FC = () => {
                 close();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="transition-colors hover:text-primary">
+              className={`transition-colors hover:text-primary ${location.pathname.includes(to) ? 'text-primary underline' : 'no-underline'}`}>
               {label}
             </Link>
           ))}

@@ -5,21 +5,24 @@ import { Main } from '@pages/main';
 import { Projects } from '@pages/projects';
 import { History } from '@pages/about/history';
 import { Layout } from '@shared/layout';
-import { Announcements } from '@/pages/HolidayCamp/announcements';
-import { ForParents } from '@/pages/HolidayCamp/forParents';
-import { MediaCenter } from '@/pages/HolidayCamp/mediaCenter';
-import { TeachingStaff } from '@/pages/HolidayCamp/teachingStaff';
-import { TechnicalBase } from '@/pages/HolidayCamp/technicalBase';
-import { RecreationOrganizedGroups } from '@/pages/RecreationOrganizedGroups';
-import { CostServices } from '@/pages/RecreationOrganizedGroups/costServices';
-import { EntertainmentPrograms } from '@/pages/RecreationOrganizedGroups/entertainmentPrograms';
-import { createBrowserRouter, type RouteObject } from 'react-router-dom'; // Импортируем HashRouter
+import { Announcements } from '@pages/HolidayCamp/announcements';
+import { ForParents } from '@pages/HolidayCamp/forParents';
+import { MediaCenter } from '@pages/HolidayCamp/mediaCenter';
+import { TeachingStaff } from '@pages/HolidayCamp/teachingStaff';
+import { TechnicalBase } from '@pages/HolidayCamp/technicalBase';
+import { RecreationOrganizedGroups } from '@pages/RecreationOrganizedGroups';
+import { CostServices } from '@pages/RecreationOrganizedGroups/costServices';
+import { EntertainmentPrograms } from '@pages/RecreationOrganizedGroups/entertainmentPrograms';
+import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 import { Infrastructure } from '@pages/about/infrastructure';
 import { Contacts } from '@pages/contacts';
-import { Our } from '@/pages/projects/our';
-import { Yours } from '@/pages/projects/yours';
-import { Documents } from '@/pages/about/documents';
-import { Team } from '@/pages/about/team';
+import { Our } from '@pages/projects/our';
+import { Yours } from '@pages/projects/yours';
+import { Documents } from '@pages/about/documents';
+import { Team } from '@pages/about/team';
+import { ParentRules } from '@pages/HolidayCamp/forParents/ParentRules';
+import { ParentDocuments } from '@pages/HolidayCamp/forParents/ParentDocuments';
+import { ParentThings } from '@pages/HolidayCamp/forParents/ParentThings';
 
 export const routes: RouteObject[] = [
   {
@@ -41,6 +44,18 @@ export const routes: RouteObject[] = [
       {
         path: '/holidaycamp/forParents',
         element: <ForParents />,
+      },
+      {
+        path: '/holidaycamp/forParents/parent-things',
+        element: <ParentThings />,
+      },
+      {
+        path: '/holidaycamp/forParents/parent-documents',
+        element: <ParentDocuments />,
+      },
+      {
+        path: '/holidaycamp/forParents/parent-rules',
+        element: <ParentRules />,
       },
       {
         path: '/holidaycamp/mediaCenter',
