@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
         <div className="py-8">
           <h3 className="mb-8 text-2xl font-bold">Контакты</h3>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 bg-accent- md:grid-cols-2 lg:grid-cols-3">
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <p className="mb-2 font-semibold">Телефон</p>
               <a

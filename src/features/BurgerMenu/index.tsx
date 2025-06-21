@@ -43,18 +43,18 @@ const BurgerMenu: React.FC = () => {
         className="flex cursor-pointer flex-col justify-center gap-1.5 xl:hidden">
         <div
           onClick={toggle}
-          className="z-60 flex flex-col gap-2">
+          className="z-70 flex flex-col gap-2">
           <span
-            className="z-60 block h-0.5 w-6 origin-top-left bg-primary transition-transform duration-300 ease-in-out"
+            className="z-70 block h-0.5 w-6 origin-top-left bg-primary transition-transform duration-300 ease-in-out"
             style={{
               transform: open ? 'rotate(45deg) translate(5.5px, -2px)' : 'none',
             }}
           />
           <span
-            className={`z-60 block h-0.5 w-6 bg-primary transition-opacity duration-300 ease-in-out ${open ? 'opacity-0' : 'opacity-100'}`}
+            className={`z-70 block h-0.5 w-6 bg-primary transition-opacity duration-300 ease-in-out ${open ? 'opacity-0' : 'opacity-100'}`}
           />
           <span
-            className="z-60 block h-0.5 w-6 origin-bottom-left bg-primary transition-transform duration-300 ease-in-out"
+            className="z-70 block h-0.5 w-6 origin-bottom-left bg-primary transition-transform duration-300 ease-in-out"
             style={{
               transform: open ? ' rotate(-45deg) translate(5px, 3px)' : 'none',
             }}
@@ -64,7 +64,7 @@ const BurgerMenu: React.FC = () => {
 
       {/* полноэкранный оверлей */}
       <div
-        className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-white/80 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 z-60 flex flex-col overflow-y-auto bg-white/80 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
         onClick={close} /* клик по фону закрывает меню */
       >
         {/* навигация */}

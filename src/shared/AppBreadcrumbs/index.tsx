@@ -27,6 +27,9 @@ const PATH_NAMES: Record<string, string> = {
   contacts: 'Контакты',
   our: 'Наши проекты',
   yours: 'Ваши проекты',
+  ['parent-things']: 'Список необходимых вещей',
+  ['parent-documents']: 'Список необходимых документов',
+  ['parent-rules']: `Правила пребывания в ДОЛ "Лесная застава"`,
 };
 
 export const AppBreadcrumbs = () => {

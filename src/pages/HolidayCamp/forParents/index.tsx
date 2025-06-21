@@ -228,6 +228,9 @@ export const ForParents: React.FC = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
                       to="parent-things"
                       className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Список необходимых вещей
@@ -235,6 +238,9 @@ export const ForParents: React.FC = () => {
                   </li>
                   <li>
                     <Link
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
                       to="parent-documents"
                       className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Список необходимых документов
@@ -242,6 +248,9 @@ export const ForParents: React.FC = () => {
                   </li>
                   <li>
                     <Link
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
                       to="parent-rules"
                       className="block rounded-md border border-transparent p-3 text-sm font-medium transition-colors duration-200 hover:text-primary">
                       Правила пребывания в ДОЛ "Лесная застава"
