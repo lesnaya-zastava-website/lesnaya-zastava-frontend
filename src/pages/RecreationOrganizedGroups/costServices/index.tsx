@@ -21,7 +21,7 @@ export const CostServices: React.FC = () => {
             <p className="mt-4">Цены на услуги пока что отсутствуют.</p>
           )}
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6">
             {isSuccess &&
               data?.map(item => <ServicePriceCard servicePrice={item} />)}
           </div>

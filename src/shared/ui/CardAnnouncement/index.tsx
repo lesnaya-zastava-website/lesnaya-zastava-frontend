@@ -14,13 +14,11 @@ export const CardAnnouncement: React.FC<CardAnnouncementProps> = ({
   photo,
 }) => {
   return (
-    <div className="overflow-hidden rounded-lg border shadow-md">
+    <div className="">
       <img
+        className="max-w-full h-1/2 object-contain"
         src={`${API_BASE_URL}${photo?.url}`}
         alt={title ? title : 'Фото'}
-        width={400}
-        height={200}
-        className="h-100 w-full object-cover"
       />
       <div className="p-4">
         <h3 className="font-medium">{title}</h3>

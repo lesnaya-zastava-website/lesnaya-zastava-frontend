@@ -15,7 +15,7 @@ const PATH_NAMES: Record<string, string> = {
   infrastructure: 'Инфраструктура',
   safety: 'Безопасность',
   holidaycamp: 'Детский отдых в каникулярное время',
-  announcements: 'Ближайшие смены',
+  announcements: 'Анонсы и актуальные смены',
   forParents: 'Информация для родителей',
   mediaCenter: 'Медиа-центр лагеря',
   teachingStaff: 'Педагогический состав',

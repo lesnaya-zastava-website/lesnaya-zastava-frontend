@@ -14,7 +14,7 @@ export const HolidayCamp: React.FC = () => {
 
         <div className="-m-2 mt-5 flex flex-wrap justify-between">
           <SectionCard
-            title="Ближайшие смены"
+            title="Анонсы и актуальные смены"
             srcImage="/pages/about/info.jpg"
             altDesc="Картинка"
             linkTo="announcements"
