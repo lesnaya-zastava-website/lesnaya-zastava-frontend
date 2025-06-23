@@ -30,8 +30,10 @@ export default defineConfig({
         text: 'Для администратора',
         items: [
           { text: 'Авторизация', link: '/admin/auth' },
-          { text: 'Интерфейс панели', link: '/admin/ui' },
+          { text: 'Интерфейс панели', link: '/admin/ui' }, 
           { text: 'Управление контентом', link: '/admin/management' },
+          { text: 'Управление медиабиблиотекой', link: '/admin/medialibrary' },
+
         ],
         collapsed: true,
       },
