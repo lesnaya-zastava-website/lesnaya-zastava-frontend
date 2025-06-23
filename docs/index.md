@@ -18,7 +18,7 @@ hero:
       text: Github
       link: https://github.com/lesnaya-zastava-website
   image:
-    src: /images/tempLogo.png
+    src: /.images/tempLogo.png
     alt: VitePress
 features:
   - icon: 🛠️
