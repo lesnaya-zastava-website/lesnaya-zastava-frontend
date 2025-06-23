@@ -5,6 +5,7 @@ export const fetchEntertainmentPrice = async () => {
   return res.data.data;
 };
 
-export const fetchEntertainmentOffer = async ()=>{
-  
-}
+export const fetchEntertainmentOffer = async () => {
+  const res = await api.get('/offers-of-services?populate=*');
+  return res.data.data;
+};

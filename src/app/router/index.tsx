@@ -23,12 +23,17 @@ import { Team } from '@pages/about/team';
 import { ParentRules } from '@pages/HolidayCamp/forParents/ParentRules';
 import { ParentDocuments } from '@pages/HolidayCamp/forParents/ParentDocuments';
 import { ParentThings } from '@pages/HolidayCamp/forParents/ParentThings';
+import { NotFoundPage } from '@pages/NotFoundPage';
 
 export const routes: RouteObject[] = [
   {
     path: '/',
     element: <Layout />,
     children: [
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
       {
         index: true,
         element: <Main />,
