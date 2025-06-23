@@ -5,7 +5,7 @@ export default defineConfig({
   title: 'ОК "Лесная застава"',
   description: 'Оздоровительный комплекс "Лесная застава"',
   themeConfig: {
-    logo: '/images/tempLogo.png',
+    logo: '/.images/tempLogo.png',
     siteTitle: 'ОК "Лесная застава"',
     nav: [
       { text: 'Главная', link: '/' },
@@ -31,7 +31,6 @@ export default defineConfig({
         items: [
           { text: 'Авторизация', link: '/admin/auth' },
           { text: 'Интерфейс панели', link: '/admin/ui' },
-          { text: 'Медиафайлы', link: '/admin/media' },
           { text: 'Управление контентом', link: '/admin/management' },
         ],
         collapsed: true,
@@ -54,7 +53,7 @@ export default defineConfig({
       copyright: 'ООО "Соц-сервис" Все права защищены',
     },
     docFooter: {
-      prev: 'Прошлая страница',
+      prev: 'Предыдущая страница',
       next: 'Следующая страница',
     },
 
