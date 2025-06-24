@@ -6,12 +6,12 @@ import { useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/about', label: 'О центре' },
-  { to: '/holidaycamp', label: 'Детский отдых' },
+  { to: '/projects', label: 'Проекты и услуги' },
   {
     to: '/recreationOrganizedGroups',
-    label: 'Отдых для организованных групп детей и молодежи',
+    label: 'Отдых для организованных групп детей',
   },
-  { to: '/projects', label: 'Дополнительные проекты' },
+  { to: '/holidaycamp', label: 'Детский отдых' },
   { to: '/contacts', label: 'Контакты' },
 ];
 
@@ -106,7 +106,7 @@ const BurgerMenu: React.FC = () => {
                 color="#093"
               />
             </span>
-            <span>ok-zastawa@yandex.ru</span>
+            <span>zastavchik@mail.ru</span>
           </div>
           <div className="flex items-center space-x-1">
             <span>ссылки на соц. сети:</span>
@@ -120,7 +120,10 @@ const BurgerMenu: React.FC = () => {
                 src="/vk.png"></img>
             </a>
           </div>
-          <div className="flex items-center space-x-1">
+          <a
+            href="https://yandex.ru/maps/-/CHcLVYnh"
+            target="_blank"
+            className="flex items-center space-x-1 hover:underline">
             <span>
               <MapIcon
                 size="15px"
@@ -130,7 +133,7 @@ const BurgerMenu: React.FC = () => {
             <span className="max-w-[240px]">
               Челябинская область, Сосновский район, д. Ключевка
             </span>
-          </div>
+          </a>
           <ModeToggle />
         </div>
       </div>

@@ -2,6 +2,7 @@ export type TeamMember = {
   id: number;
   fullName: string;
   job: string;
+  email:string;
   photo: {
     url: string;
   };

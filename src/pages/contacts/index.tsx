@@ -53,8 +53,8 @@ export const Contacts: React.FC = () => {
                 <dd>
                   <a
                     className="font-bold text-primary"
-                    href="mailto:ok-zastawa@yandex.ru">
-                    ok-zastawa@yandex.ru
+                    href="mailto:zastavchik@mail.ru">
+                    zastavchik@mail.ru
                   </a>
                 </dd>
               </div>

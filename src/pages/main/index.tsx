@@ -1,3 +1,6 @@
+import { Button } from '@shared/components/ui/button';
+import { Link } from 'react-router-dom';
+
 export const Main: React.FC = () => {
   return (
     <section className="mx-auto">
@@ -10,14 +13,21 @@ export const Main: React.FC = () => {
           loop
           playsInline
         />
-        <div className="relative z-10 flex h-full flex-wrap items-center justify-center bg-black/30 text-3xl text-white">
-          <div className="flex items-center gap-4 justify-center px-4 flex-wrap lg:flex-nowrap text-center">
+        <div className="relative z-10 flex h-full flex-col flex-wrap items-center justify-center gap-2 bg-black/30 text-3xl text-white">
+          <div className="flex flex-wrap items-center justify-center gap-4 px-4 text-center lg:flex-nowrap">
             <img
               src="/tempLogo.png"
               alt="Логотип Лесная застава"
             />
-            <span className="hidden lg:block">|</span><h1 className="font-bold">Добро пожаловать в Лесную заставу!</h1>
+            <span className="hidden lg:block">|</span>
+            <h1 className="font-bold">Добро пожаловать в Лесную заставу!</h1>
           </div>
+
+          <Link
+            className="block cursor-pointer"
+            to="/projects/our">
+            <Button className="cursor-pointer">Актуальные предложения</Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -21,6 +21,9 @@ export const TeamMemberCard: React.FC<{ member: TeamMember }> = ({
       />
     </CardContent>
     <CardTitle>{member.fullName}</CardTitle>
-    <CardDescription>{member.job}</CardDescription>
+    <CardDescription className="max-w-2/3 font-medium">
+      {member.job}
+    </CardDescription>
+    <CardDescription className="font-medium">{member.email}</CardDescription>
   </Card>
 );

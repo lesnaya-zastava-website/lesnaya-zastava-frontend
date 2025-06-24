@@ -7,7 +7,7 @@ export const HolidayCamp: React.FC = () => {
       <div className="container mx-auto border-t py-5">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <Banner
-            title="Детский отдых в каникулярное время"
+            title="Детский отдых"
             videoSrc="/videos/HolidayCamp.mp4"
           />
         </div>

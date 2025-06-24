@@ -9,59 +9,59 @@ export const Info: React.FC = () => {
         <dl className="grid gap-4 text-base">
           <div>
             <dt className="font-semibold">Полное наименование:</dt>
-            <dd>Оздоровительный комплекс "Лесная застава"</dd>
+            <dd>
+              Филиал акционерного общества «Челябинский цинковый завод»
+              Многофункциональный центр развития детей «Лесная застава»
+            </dd>
           </div>
           <div>
             <dt className="font-semibold">Сокращённое наименование:</dt>
-            <dd>ОК "Лесная застава"</dd>
+            <dd>Филиал АО «ЧЦЗ» МФЦРД «Лесная застава»</dd>
           </div>
           <div>
-            <dt className="font-semibold">ФИО руководителя:</dt>
-            <dd>Иванов Иван Иванович</dd>
+            <dt className="font-semibold">Директор:</dt>
+            <dd>Евстигнеева Тамара Сергеевна</dd>
           </div>
           <div>
             <dt className="font-semibold">Юридический адрес:</dt>
             <dd>
-              454008, Россия, г. Челябинск, Свердловский тракт, 24 АО "ЧЦЗ"
+              454008, Челябинская область, г. Челябинск, Свердловский тракт, 24
             </dd>
           </div>
           <div>
             <dt className="font-semibold">Фактический адрес:</dt>
             <dd>
-              456518, Россия, Челябинская область, Сосновский р-н, п.
-              Долгодеревенское, д. Ключевка ОК "Лесная застава"
+              456518, Челябинская область, м.р-н Сосновский, с.п.
+              Долгодеревенское, д. Ключевка
             </dd>
+          </div>
+          <div>
+            <dt className="font-semibold">ОГРН:</dt>
+            <dd>1027402551880</dd>
           </div>
           <div>
             <dt className="font-semibold">ИНН/КПП:</dt>
             <dd>7448000013 / 997550001</dd>
           </div>
-          <div>
-            <dt className="font-semibold">ОГРН:</dt>
-            <dd>-</dd>
-          </div>
+
           <div>
             <dt className="font-semibold">Режим работы:</dt>
-            <dd>Пн–Пт, с 9:00 до 18:00</dd>
+            <dd>Круглосуточно</dd>
           </div>
           <div>
             <dt className="font-semibold">Банковские реквизиты:</dt>
             <dd>
-              Р/с 4070281060294000232 в ПАО "МОСКОВСКИЙ КРЕДИТНЫЙ БАНК", г.
-              Москва
+              р/сч 40702810602940000232 в ПАО "МОСКОВСКИЙ КРЕДИТНЫЙ БАНК", Г.
+              МОСКВА
             </dd>
-          </div>
-          <div>
-            <dt className="font-semibold">К/с:</dt>
-            <dd>30101810745250000659 </dd>
           </div>
           <div>
             <dt className="font-semibold">БИК:</dt>
             <dd>044525659</dd>
           </div>
           <div>
-            <dt className="font-semibold">Директор:</dt>
-            <dd>Избрехт Павел Александрович, действует на основании доверености.</dd>
+            <dt className="font-semibold">к/сч:</dt>
+            <dd>30101810745250000659</dd>
           </div>
         </dl>
       </div>

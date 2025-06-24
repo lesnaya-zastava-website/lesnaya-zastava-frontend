@@ -5,45 +5,38 @@ export const Footer: React.FC = () => {
         <div className="py-8">
           <h3 className="mb-8 text-2xl font-bold">Контакты</h3>
 
-          <div className="grid grid-cols-1 gap-8 bg-accent- md:grid-cols-2 lg:grid-cols-3">
+          <div className="bg-accent- grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <p className="mb-2 font-semibold">Телефон</p>
               <a
-                href="tel:+73517990151"
+                href="tel:+89048187247"
                 className="font-medium text-primary transition-colors hover:text-green-700">
-                +8 (351) 799-01-51
+                +8 (904) 818-72-47
               </a>
             </div>
 
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <p className="mb-2 font-semibold">Дополнительный телефон</p>
               <a
-                href="tel:+73512694916"
+                href="tel:+89049378802"
                 className="font-medium text-primary transition-colors hover:text-green-700">
-                +7 (351) 269-49-16
+                +8 (904) 937-88-02
               </a>
             </div>
 
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <p className="mb-2 font-semibold">Электронная почта</p>
               <a
-                href="mailto:ok-zastawa@yandex.ru"
+                href="mailto:zastavchik@mail.ru"
                 className="font-medium break-all text-primary transition-colors hover:text-green-700">
-                ok-zastawa@yandex.ru
+                zastavchik@mail.ru
               </a>
             </div>
 
             <div className="h-full rounded-lg border p-4 shadow-sm">
-              <p className="mb-2 font-semibold">Городской офис</p>
-              <p className="text-sm leading-relaxed">
-                454008, г. Челябинск,
-                <br />
-                Свердловский тракт, 24
+              <p className="mb-2 font-semibold">
+                Адрес центра "Лесная Застава"
               </p>
-            </div>
-
-            <div className="h-full rounded-lg border p-4 shadow-sm">
-              <p className="mb-2 font-semibold">Комплекс "Лесная Застава"</p>
               <p className="text-sm leading-relaxed">
                 456518, Россия, Челябинская область, Сосновский р-н, п.
                 Долгодеревенское, д. Ключевка ОК "Лесная застава"
@@ -56,7 +49,7 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto">
         <div className="container mx-auto border-t py-5 text-center">
           <div className="text-center text-sm">
-            АО "ЧЦЗ". Все права защищены
+           ООО «Соц-сервис». Все права защищены. (юр. лицо АО "ЧЦЗ") 
           </div>
         </div>
       </div>

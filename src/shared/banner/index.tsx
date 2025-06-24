@@ -5,7 +5,7 @@ interface BannerProps {
 
 export const Banner: React.FC<BannerProps> = ({ title, videoSrc }) => {
   return (
-    <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative h-[200px] w-full overflow-hidden rounded-2xl shadow-lg sm:h-[400px]">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src={videoSrc}

@@ -49,8 +49,17 @@ export const Header: React.FC = () => {
               </span>
               <span>ok-zastawa@yandex.ru</span>
             </div>
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center gap-1 space-x-1">
               <span>ссылки на соц. сети:</span>
+              <a
+                href="https://vk.com/lesnaya_zastava74"
+                target="_blank"
+                className="block">
+                <img
+                  width={25}
+                  alt="Лесная застава ВК"
+                  src="/vk.png"></img>
+              </a>
               <a
                 href="https://vk.com/leszastava"
                 target="_blank"
@@ -60,8 +69,20 @@ export const Header: React.FC = () => {
                   alt="Лесная застава ВК"
                   src="/vk.png"></img>
               </a>
+              <a
+                href="https://t.me/lesnayzastava"
+                target="_blank"
+                className="block">
+                <img
+                  width={25}
+                  alt="Лесная застава ВК"
+                  src="/telegram.png"></img>
+              </a>
             </div>
-            <div className="flex items-center space-x-1">
+            <a
+              href="https://yandex.ru/maps/-/CHcLVYnh"
+              target="_blank"
+              className="flex items-center space-x-1 hover:underline">
               <span>
                 <MapIcon
                   size="15px"
@@ -71,7 +92,7 @@ export const Header: React.FC = () => {
               <span className="max-w-[240px]">
                 Челябинская область, Сосновский район, д. Ключевка
               </span>
-            </div>
+            </a>
             <ModeToggle />
           </div>
           <BurgerMenu />
@@ -91,9 +112,9 @@ export const Header: React.FC = () => {
             <li>
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                to="/holidaycamp"
-                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/holidaycamp') ? 'text-primary underline' : 'no-underline'}`}>
-                Детский отдых
+                to="/projects"
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/projects') ? 'text-primary underline' : 'no-underline'}`}>
+                Проекты и услуги
               </Link>
             </li>
             <li className="text-gray-400">|</li>
@@ -102,16 +123,17 @@ export const Header: React.FC = () => {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 to="/recreationOrganizedGroups"
                 className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/recreationOrganizedGroups') ? 'text-primary underline' : 'no-underline'}`}>
-                Отдых для организованных групп детей и молодежи
+                Отдых для организованных групп детей
               </Link>
             </li>
+
             <li className="text-gray-400">|</li>
             <li>
               <Link
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                to="/projects"
-                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/projects') ? 'text-primary underline' : 'no-underline'}`}>
-                Дополнительные проекты
+                to="/holidaycamp"
+                className={`transition-colors duration-200 hover:underline ${location.pathname.includes('/holidaycamp') ? 'text-primary underline' : 'no-underline'}`}>
+                Детский отдых
               </Link>
             </li>
             <li className="text-gray-400">|</li>

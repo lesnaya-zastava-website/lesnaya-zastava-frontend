@@ -6,7 +6,7 @@ export const Projects: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t py-5">
         <Banner
-          title="Дополнительные проекты"
+          title="Проекты и услуги"
           videoSrc="/videos/projects.mp4"
         />
         <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
