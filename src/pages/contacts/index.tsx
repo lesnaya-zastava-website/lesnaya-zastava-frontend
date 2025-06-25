@@ -9,45 +9,30 @@ export const Contacts: React.FC = () => {
         <div className="flex w-full flex-col gap-8">
           <div className="flex flex-wrap gap-5 lg:flex-nowrap">
             <dl className="flex-1/2 gap-4 text-base">
-              <div className="flex flex-col gap-2">
-                <dt className="text-2xl font-semibold">Городской офис:</dt>
-                <dd>454008, г. Челябинск, Свердловский тракт, 24 </dd>
-                <dt className="font-semibold">Телефон/факс:</dt>
-                <dd>
-                  <a
-                    className="font-bold text-primary"
-                    href="tel:+73517990151">
-                    +7 (351) 799-01-51
-                  </a>{' '}
-                  (По вопросам продажи путевок в детский оздоровительный лагерь)
-                </dd>
-              </div>
-            </dl>
-            <iframe
-              className="flex-1/2"
-              src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa22858a8513a337f1ca3ef5f2cd83ec3462d78f65700cbe92b03acf2cdfe102c&amp;source=constructor"
-              width="100%"
-              height="300"
-            />
-          </div>
-          <div className="flex flex-wrap gap-5 lg:flex-nowrap">
-            <dl className="flex-1/2 gap-4 text-base">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 max-w-[440px]">
                 <dt className="text-2xl font-semibold">
-                  Загородный комплекс "Лесная Застава":
+                  Филиал АО «ЧЦЗ» МФЦРД "Лесная Застава":
                 </dt>
                 <dd>
                   456518, Россия, Челябинская область, Сосновский р-н, п.
-                  Долгодеревенское, д. Ключевка ОК "Лесная застава"
+                  Долгодеревенское, д. Ключевка "Лесная застава"
                 </dd>
-                <dt className="font-semibold">Телефоны:</dt>
+                <dt className="font-semibold">Телефон:</dt>
                 <dd>
                   <a
                     className="font-bold text-primary"
                     href="tel:+73512694916">
                     +7 (351) 269-49-16
                   </a>{' '}
-                  круглосуточно
+                </dd>
+                <dd>Добавочный 0 – Администратор (круглосуточно)</dd>
+                <dd>
+                  Добавочный 1 – Детский оздоровительный лагерь (в летний период
+                  с 8:00 до 20:00, в остальное время с 9:00 до 17:00)
+                </dd>
+                <dd>
+                  Добавочный 2 – По вопросам организации корпоративных заездов
+                  (с 9:00 до 17:00)
                 </dd>
                 <dt className="font-semibold">E-mail:</dt>
                 <dd>
@@ -70,7 +55,7 @@ export const Contacts: React.FC = () => {
           <div className="flex flex-col gap-3">
             <PageHeading>Как проехать к "Лесной Заставе"</PageHeading>
 
-            <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
+            <div className="rounded-lg border p-4 shadow-sm">
               <div className="p-6 pb-4">
                 <h3 className="flex items-center gap-2 text-xl font-semibold text-primary">
                   <Navigation className="h-6 w-6" />

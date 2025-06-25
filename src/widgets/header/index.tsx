@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 mx-auto bg-primary-foreground px-4 py-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto py-2">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
             {location.pathname !== '/' ? (
@@ -17,14 +17,14 @@ export const Header: React.FC = () => {
                 to="/"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img
-                  src="/tempLogo.png"
+                  src="/logo2.png"
                   alt="logo"
                   className="w-50"
                 />
               </Link>
             ) : (
               <img
-                src="./tempLogo.png"
+                src="./logo2.png"
                 alt="logo"
                 className="w-50"
               />
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
                   color="#093"
                 />
               </span>
-              <span>ok-zastawa@yandex.ru</span>
+              <span>zastavchik@mail.ru</span>
             </div>
             <div className="flex items-center gap-1 space-x-1">
               <span>ссылки на соц. сети:</span>
@@ -84,12 +84,9 @@ export const Header: React.FC = () => {
               target="_blank"
               className="flex items-center space-x-1 hover:underline">
               <span>
-                <MapIcon
-                  size="15px"
-                  color="#093"
-                />
+                <MapIcon size="15px" />
               </span>
-              <span className="max-w-[240px]">
+              <span className="max-w-[180px]">
                 Челябинская область, Сосновский район, д. Ключевка
               </span>
             </a>
@@ -98,7 +95,7 @@ export const Header: React.FC = () => {
           <BurgerMenu />
         </div>
 
-        <nav className="top-0 hidden justify-end pt-4 pb-4 xl:flex">
+        <nav className="top-0 hidden justify-end py-2 xl:flex">
           <ul className="flex flex-wrap items-center space-x-3 text-sm font-medium tracking-wide uppercase">
             <li>
               <Link

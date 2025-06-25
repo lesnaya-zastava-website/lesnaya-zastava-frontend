@@ -108,8 +108,17 @@ const BurgerMenu: React.FC = () => {
             </span>
             <span>zastavchik@mail.ru</span>
           </div>
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center gap-1 space-x-1">
             <span>ссылки на соц. сети:</span>
+            <a
+              href="https://vk.com/lesnaya_zastava74"
+              target="_blank"
+              className="block">
+              <img
+                width={25}
+                alt="Лесная застава ВК"
+                src="/vk.png"></img>
+            </a>
             <a
               href="https://vk.com/leszastava"
               target="_blank"
@@ -118,6 +127,15 @@ const BurgerMenu: React.FC = () => {
                 width={25}
                 alt="Лесная застава ВК"
                 src="/vk.png"></img>
+            </a>
+            <a
+              href="https://t.me/lesnayzastava"
+              target="_blank"
+              className="block">
+              <img
+                width={25}
+                alt="Лесная застава ВК"
+                src="/telegram.png"></img>
             </a>
           </div>
           <a

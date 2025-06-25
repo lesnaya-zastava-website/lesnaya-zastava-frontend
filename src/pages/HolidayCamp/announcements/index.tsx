@@ -1,7 +1,7 @@
 import { PageHeading } from '@/shared/PageHeading';
 import { CardAnnouncement } from '@/shared/ui/CardAnnouncement';
 import { useAnnouncement } from '@/entities/announcement/model/useAnnouncement';
-import { GallerySlider } from '@/features/GallerySlider';
+
 
 export const Announcements: React.FC = () => {
   const {
@@ -27,7 +27,7 @@ export const Announcements: React.FC = () => {
 
           <div className="w-full">
             <div className="grid grid-cols-2 gap-6">
-              {AnnouncementResponse?.map((items, index) => (
+              {isSuccess && AnnouncementResponse?.map((items, index) => (
                 <CardAnnouncement
                   key={index}
                   {...items}
