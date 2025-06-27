@@ -282,7 +282,7 @@ const MapInteractive: React.FC = () => {
   };
 
   return (
-    <div className="mb-5 w-full overflow-auto rounded-2xl bg-green-500 p-4">
+    <div className="mb-5 w-full overflow-auto rounded-2xl bg-white p-4">
       <div
         ref={wrapperRef}
         className="relative max-w-none min-w-[800px]">
