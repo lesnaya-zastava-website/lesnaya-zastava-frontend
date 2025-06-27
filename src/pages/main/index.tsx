@@ -22,7 +22,7 @@ export const Main: React.FC = () => {
             />
             <span className="hidden lg:block">|</span>
             <h1 className="text-3xl font-bold">
-              Добро пожаловать в Лесную заставу!
+              Добро пожаловать!
             </h1>
           </div>
 
