@@ -69,7 +69,7 @@ const MapInteractive: React.FC = () => {
         <img
           src={mapImage}
           alt="Интерактивная карта"
-          className="h-auto w-full select-none"
+          className="h-auto w-full select-none bg-white"
           draggable={false}
         />
         {MAP_POINTS.map(({ id, title, top, left }) => {

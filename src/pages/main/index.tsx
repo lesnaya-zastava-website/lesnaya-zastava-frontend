@@ -20,7 +20,7 @@ export const Main: React.FC = () => {
               alt="Логотип Лесная застава"
             />
             <span className="hidden lg:block">|</span>
-            <h1 className="font-bold">Добро пожаловать в Лесную заставу!</h1>
+            <h1 className="font-bold">Добро пожаловать!</h1>
           </div>
 
           <Link
