@@ -61,6 +61,7 @@ const MapInteractive: React.FC = () => {
     setActiveId(prev => (prev === id ? null : id));
   };
 
+  
   return (
     <div className="mb-5 w-full overflow-auto">
       <div
