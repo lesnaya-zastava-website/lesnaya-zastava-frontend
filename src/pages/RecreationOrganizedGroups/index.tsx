@@ -15,13 +15,13 @@ export const RecreationOrganizedGroups: React.FC = () => {
         <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
           <SectionCard
             title="Стоимость услуг"
-            srcImage="/pages/RecreationOrganizedGroups/services.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="costServices"
           />
           <SectionCard
             title="Развлекательные программы"
-            srcImage="/pages/RecreationOrganizedGroups/entertainments.avif"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="entertainmentPrograms"
           />

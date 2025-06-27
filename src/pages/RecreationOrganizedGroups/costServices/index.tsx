@@ -1,6 +1,6 @@
-import { useServicePrices } from '@/entities/service/model/useServicePrices';
-import { ServicePriceCard } from '@/entities/service/ui/ServicePriceCard';
-import { PageHeading } from '@/shared/PageHeading';
+import { useServicePrices } from '@entities/service/model/useServicePrices';
+import { ServicePriceCard } from '@entities/service/ui/ServicePriceCard';
+import { PageHeading } from '@shared/PageHeading';
 
 export const CostServices: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useServicePrices();

@@ -26,7 +26,7 @@ export const Announcements: React.FC = () => {
           )}
 
           <div className="w-full">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               {isSuccess && AnnouncementResponse?.map((items, index) => (
                 <CardAnnouncement
                   key={index}

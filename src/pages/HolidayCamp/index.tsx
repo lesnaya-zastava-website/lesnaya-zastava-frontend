@@ -15,37 +15,37 @@ export const HolidayCamp: React.FC = () => {
         <div className="-m-2 mt-5 flex flex-wrap justify-between">
           <SectionCard
             title="Анонсы и актуальные смены"
-            srcImage="/pages/about/info.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="announcements"
           />
           <SectionCard
             title="Педагогический состав"
-            srcImage="/pages/about/team.png"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="teachingStaff"
           />
           <SectionCard
             title="Материально - техническая база"
-            srcImage="/pages/about/docs.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="technicalBase"
           />
           <SectionCard
             title="Информация для родителей"
-            srcImage="/pages/HolidayCamp/important.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="forParents"
           />
           <SectionCard
             title="Медиа-центр лагеря"
-            srcImage="/pages/HolidayCamp/media.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="mediaCenter"
           />
           <SectionCard
             title="Условия проживания и инфраструктура"
-            srcImage="/pages/HolidayCamp/planCamp.png"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="/about/infrastructure"
           />

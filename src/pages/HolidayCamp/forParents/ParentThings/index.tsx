@@ -19,7 +19,7 @@ export const ParentThings: React.FC = () => {
               хранения.
             </p>
 
-            <div className="mb-6 rounded-lg border-l-4 border-primary bg-muted p-4">
+            <div className="mb-6 rounded-lg border-l-4 border-primary bg-primary/10 p-4">
               <p className="font-medium text-foreground">
                 Вещи должны быть упакованы в удобный для транспортировки чемодан
                 или сумку. Багаж маленьких детей должен быть промаркирован.

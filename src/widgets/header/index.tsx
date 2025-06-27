@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
               <span>
                 <PhoneCall
                   size="15px"
-                  color="#093"
+                  color="#00ce6e"
                 />
               </span>
               <span>+7(351)269-49-16</span>
@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
               <span>
                 <Mail
                   size="15px"
-                  color="#093"
+                  color="#00ce6e"
                 />
               </span>
               <span>zastavchik@mail.ru</span>
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
               target="_blank"
               className="flex items-center space-x-1 hover:underline">
               <span>
-                <MapIcon size="15px" />
+                <MapIcon size="15px" color='#00ce6e'/>
               </span>
               <span className="max-w-[180px]">
                 Челябинская область, Сосновский район, д. Ключевка

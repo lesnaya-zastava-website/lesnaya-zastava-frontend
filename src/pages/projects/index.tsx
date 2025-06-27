@@ -12,13 +12,13 @@ export const Projects: React.FC = () => {
         <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
           <SectionCard
             title="Наши проекты"
-            srcImage="/pages/about/info.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="our"
           />
           <SectionCard
             title="Ваши проекты"
-            srcImage="/pages/about/docs.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="yours"
           />

@@ -16,7 +16,7 @@ export const CardAnnouncement: React.FC<CardAnnouncementProps> = ({
   return (
     <div className="">
       <img
-        className="max-w-full h-1/2 object-contain"
+        className="max-w-full"
         src={`${API_BASE_URL}${photo?.url}`}
         alt={title ? title : 'Фото'}
       />

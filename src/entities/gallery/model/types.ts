@@ -18,4 +18,14 @@ export type InfrastructureItem = {
   photos: Photo[];
 };
 
+export interface SafetyImage {
+  id: number;
+  photo:{
+    id:number;
+    name:string;
+    url:string;
+  }
+}
+
+
 export type InfrastructureResponse = InfrastructureItem[];

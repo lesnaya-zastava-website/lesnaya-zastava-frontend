@@ -152,20 +152,20 @@ export const ForParents: React.FC = () => {
                 <div className="mt-8 space-y-4">
                   <PageHeading>Родительское посещение</PageHeading>
 
-                  <div className="rounded-lg border-l-4 border-red-400 p-4">
-                    <p className="mb-2 font-bold text-red-700">
+                  <div className="rounded-lg border-l-4 border-red-400 bg-destructive/10 p-4">
+                    <p className="mb-2 font-bold text-destructive">
                       ВНИМАНИЕ! На территории лагеря действует санитарный режим.
                     </p>
                   </div>
 
                   <div className="rounded-lg p-6">
-                    <h4 className="mb-4 text-xl font-semibold text-red-700">
+                    <h4 className="mb-4 text-xl font-semibold text-destructive">
                       КАТЕГОРИЧЕСКИ ЗАПРЕЩАЕТСЯ передавать детям:
                     </h4>
 
                     <ul className="space-y-3">
                       <li className="flex items-start">
-                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
+                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-destructive"></span>
                         <span>
                           скоропортящиеся продукты и напитки, вяленую рыбу,
                           колбасу, кондитерские изделия с кремовой начинкой,
@@ -174,7 +174,7 @@ export const ForParents: React.FC = () => {
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
+                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-destructive"></span>
                         <span>
                           лекарственные препараты для самостоятельного
                           применения (в случае необходимости регулярного
@@ -183,14 +183,14 @@ export const ForParents: React.FC = () => {
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
+                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-destructive"></span>
                         <span>
                           крупные электрические приборы (чайники, кипятильники,
                           утюги, а так же удлинители);
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
+                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-destructive"></span>
                         <span>
                           острые предметы и перочинные ножи, взрывоопасные и
                           пожароопасные вещества (петарды, бенгальские огни и
@@ -198,7 +198,7 @@ export const ForParents: React.FC = () => {
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-red-500"></span>
+                        <span className="mt-2 mr-3 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-destructive"></span>
                         <span>
                           крупные суммы денег и дорогие вещи (украшения из
                           драгоценных металлов, дорогие мобильные телефоны,

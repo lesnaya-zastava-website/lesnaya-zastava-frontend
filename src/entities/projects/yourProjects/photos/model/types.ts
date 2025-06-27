@@ -1,0 +1,8 @@
+export interface yourProjectsPhoto {
+  id: number;
+  photo: {
+    id:number;
+    url: string;
+    name:string;
+  };
+}

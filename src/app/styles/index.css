@@ -61,21 +61,21 @@
 :root {
   --base-font-size: 30px;
   --font-sans: 'Stapel Condensed', sans-serif;
-  --background: oklch(63.79% 0.032 165.91);
+  --background: oklch(52.867% 0.03405 166.523);
   --foreground: oklch(100% 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card: oklch(49.649% 0.02997 168.36);
+  --card-foreground: oklch(100% 0.00011 271.152);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(74.631% 0.19277 152.866);
   --primary-foreground: oklch(45.26% 0.032 178.36);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted: oklch(48.13% 0.03193 166.737);
+  --muted-foreground: oklch(87.767% 0.00217 14.667);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(43.134% 0.17333 27.648);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(63.79% 0.032 165.91);
   --input: oklch(0.922 0 0);

@@ -26,6 +26,8 @@ const PATH_NAMES: Record<string, string> = {
   projects: 'Проекты и услуги',
   contacts: 'Контакты',
   our: 'Наши проекты',
+  maevka: `Семейный фестиваль "Маёвка"`,
+  ['pro-youth']: `Взрослая смена "Pro_Юность"`,
   yours: 'Ваши проекты',
   ['parent-things']: 'Список необходимых вещей',
   ['parent-documents']: 'Список необходимых документов',
@@ -58,7 +60,7 @@ export const AppBreadcrumbs = () => {
               <BreadcrumbSeparator className="mx-2 list-none" />
               <BreadcrumbItem>
                 {index === pathnames.length - 1 ? (
-                  <span className="text-muted-foreground">{label}</span>
+                  <span className="text-primary">{label}</span>
                 ) : (
                   <BreadcrumbLink asChild>
                     <Link to={to}>{label}</Link>

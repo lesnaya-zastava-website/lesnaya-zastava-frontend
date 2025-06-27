@@ -8,44 +8,44 @@ export const About: React.FC = () => {
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <Banner
             title="О центре"
-            videoSrc="/videos/about.mp4"
+            videoSrc="/videos/Main.mp4"
           />
         </div>
 
         <div className="-m-2 mt-5 flex flex-wrap justify-between md:justify-start">
           <SectionCard
             title="Основные сведения"
-            srcImage="/pages/about/info.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="info"
           />
           <SectionCard
             title="Документы"
-            srcImage="/pages/about/docs.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="docs"
           />
           <SectionCard
             title="Наша команда"
-            srcImage="/pages/about/team.png"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="team"
           />
           <SectionCard
             title="История"
-            srcImage="/pages/about/history.png"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="history"
           />
           <SectionCard
             title="Инфраструктура"
-            srcImage="/pages/about/infrastructure.png"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="infrastructure"
           />
           <SectionCard
             title="Безопасность"
-            srcImage="/pages/about/safety.jpg"
+            srcImage="/bgCard.png"
             altDesc="Картинка"
             linkTo="safety"
           />

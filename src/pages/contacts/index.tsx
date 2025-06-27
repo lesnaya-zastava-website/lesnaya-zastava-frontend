@@ -1,7 +1,11 @@
+import { RoutesCard } from '@/entities/route/ui/RoutesCard';
+import { useRoute } from '@entities/route/model/useRoute';
 import { PageHeading } from '@shared/PageHeading';
 import { Car, Bus, Navigation } from 'lucide-react';
 
 export const Contacts: React.FC = () => {
+  const { data, isError, isLoading, isSuccess } = useRoute();
+
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t py-5">
@@ -9,7 +13,7 @@ export const Contacts: React.FC = () => {
         <div className="flex w-full flex-col gap-8">
           <div className="flex flex-wrap gap-5 lg:flex-nowrap">
             <dl className="flex-1/2 gap-4 text-base">
-              <div className="flex flex-col gap-2 max-w-[440px]">
+              <div className="flex max-w-[440px] flex-col gap-2">
                 <dt className="text-2xl font-semibold">
                   Филиал АО «ЧЦЗ» МФЦРД "Лесная Застава":
                 </dt>
@@ -91,100 +95,19 @@ export const Contacts: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
-                <div className="p-6 pb-4">
-                  <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
-                      1
-                    </div>
-                    Первый этап маршрута
-                  </h3>
-                </div>
-                <div className="space-y-4 px-6 pb-6">
-                  <p>
-                    От г. Челябинска по Свердловскому тракту до указателя на
-                    Аргаяш. За указателем, повернуть направо в сторону Аргаяша.
-                  </p>
-                  <div className="">
-                    <img
-                      className="w-full"
-                      src="/pages/contacts/1.png"
-                      alt="Дорога в лесную заставу"
-                    />
-                  </div>
-                </div>
-              </div>
+              {isLoading && <p>Загрузка...</p>}
 
-              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
-                <div className="p-6 pb-4">
-                  <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
-                      2
-                    </div>
-                    Следующий указатель
-                  </h3>
-                </div>
-                <div className="space-y-4 px-6 pb-6">
-                  <p className="">Затем необходимо проехать до указателя:</p>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      className="w-full"
-                      src="/pages/contacts/2.png"
-                      alt="Дорога в лесную заставу"
-                    />
-                  </div>
-                </div>
-              </div>
+              {isError && (
+                <p className="text-red-500">
+                  Ошибка при загрузке цен на услуги.
+                </p>
+              )}
 
-              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
-                <div className="p-6 pb-4">
-                  <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
-                      3
-                    </div>
-                    Поворот к Ключевке
-                  </h3>
-                </div>
-                <div className="space-y-4 px-6 pb-6">
-                  <p className="">
-                    Продолжаем движение 700 м направо в сторону Аргаяша, до
-                    указателя "Ключевка. Лесная Застава":
-                  </p>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      className="w-full"
-                      src="/pages/contacts/3.png"
-                      alt="Дорога в лесную заставу"
-                    />
-                  </div>
-                </div>
-              </div>
+              {!isLoading && !isError && data?.length === 0 && (
+                <p className="mt-4">Цены на услуги пока что отсутствуют.</p>
+              )}
 
-              <div className="rounded-lg border-1 shadow-lg backdrop-blur-sm">
-                <div className="p-6 pb-4">
-                  <h3 className="flex items-center gap-3 text-lg font-semibold">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-white">
-                      4
-                    </div>
-                    Финальный этап
-                  </h3>
-                </div>
-                <div className="space-y-4 px-6 pb-6">
-                  <p className="">
-                    Перед указателем свернуть налево через д. Ключевку 2 700 м
-                    до указателя "Лесная Застава". Никуда не сворачивать и ехать
-                    по главной дороге, пока слева не увидите небольшой мостик и
-                    ворота с надписью "Лесная Застава".
-                  </p>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <img
-                      className="w-full"
-                      src="/pages/contacts/4.jpg"
-                      alt="Дорога в лесную заставу"
-                    />
-                  </div>
-                </div>
-              </div>
+              {isSuccess && data?.map((item,index)=>(<RoutesCard contactRoutes={item} index={index + 1}/>))}
             </div>
           </div>
         </div>

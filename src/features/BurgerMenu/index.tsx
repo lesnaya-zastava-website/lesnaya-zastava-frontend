@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ModeToggle } from '@/shared/components/mode-toggle';
+import { ModeToggle } from '@shared/components/mode-toggle';
 import { Mail, MapIcon, PhoneCall } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
@@ -62,16 +62,12 @@ const BurgerMenu: React.FC = () => {
         </div>
       </button>
 
-      {/* полноэкранный оверлей */}
       <div
-        className={`fixed inset-0 z-60 flex flex-col overflow-y-auto bg-white/80 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
-        onClick={close} /* клик по фону закрывает меню */
-      >
-        {/* навигация */}
+        className={`fixed inset-0 z-60 flex flex-col overflow-y-auto bg-background/80 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-background/60 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        onClick={close}>
         <nav
           className="flex flex-1 flex-col items-center justify-center gap-8 text-center text-lg font-medium uppercase"
-          onClick={e => e.stopPropagation()} /* внутри – не закрываем по фону */
-        >
+          onClick={e => e.stopPropagation()}>
           {NAV_LINKS.map(({ to, label }) => (
             <Link
               key={to}
@@ -86,7 +82,6 @@ const BurgerMenu: React.FC = () => {
           ))}
         </nav>
 
-        {/* контакты + переключатель темы */}
         <div
           className="flex flex-col items-center gap-2 text-center text-sm"
           onClick={e => e.stopPropagation()}>
@@ -94,7 +89,7 @@ const BurgerMenu: React.FC = () => {
             <span>
               <PhoneCall
                 size="15px"
-                color="#093"
+                color="#00ce6e"
               />
             </span>
             <span>+7(351)269-49-16</span>
@@ -103,7 +98,7 @@ const BurgerMenu: React.FC = () => {
             <span>
               <Mail
                 size="15px"
-                color="#093"
+                color="#00ce6e"
               />
             </span>
             <span>zastavchik@mail.ru</span>
@@ -145,7 +140,7 @@ const BurgerMenu: React.FC = () => {
             <span>
               <MapIcon
                 size="15px"
-                color="#093"
+                color="#00ce6e"
               />
             </span>
             <span className="max-w-[240px]">

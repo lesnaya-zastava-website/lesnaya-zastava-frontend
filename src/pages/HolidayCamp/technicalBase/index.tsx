@@ -1,49 +1,50 @@
+import { useTechnicalBasePhoto } from '@/entities/technicalBase/photo/model/useTechnicalBasePhoto';
+import { useTechnicalBaseText } from '@/entities/technicalBase/text/model/useTechnicalBaseText';
+import { TechnicalBaseTextParagraph } from '@/entities/technicalBase/text/ui/TechnicalBaseTextParagraph';
+import { GallerySlider } from '@/features/GallerySlider';
 import { PageHeading } from '@/shared/PageHeading';
-import { CardTechnicalBase } from '@/shared/ui/CardTechnicalBase';
 
 export const TechnicalBase: React.FC = () => {
-  const material = {
-    data: [
-      {
-        title: 'Информация о вводе в эксплуатацию',
-        content:
-          'Наш лагерь был введен в эксплуатацию в 2010 году и полностью реновирован в 2023 году. Все помещения соответствуют современным требованиям безопасности и комфорта.',
-      },
-      {
-        title: 'Сведения об условиях питания детей',
-        content:
-          'Питание организовано 5 раз в день в современной столовой на 200 посадочных мест. Меню разработано с учетом возрастных особенностей детей и согласовано с Роспотребнадзором.',
-      },
-      {
-        title: 'О наличии оборудованных учебных кабинетах',
-        content:
-          'В лагере имеются 10 полностью оборудованных учебных кабинетов для проведения мастер-классов и занятий. Каждый кабинет оснащен современным оборудованием и материалами.',
-      },
-      {
-        title: 'Объекты для проведения практических занятий',
-        content:
-          'На территории лагеря расположены специализированные площадки для проведения практических занятий: творческая мастерская, научная лаборатория, спортивные площадки.',
-      },
-      {
-        title: 'Библиотек и объектах спорта. о бассейне',
-        content:
-          'На территории лагеря расположены специализированные площадки для проведения спортивных мероприятий.',
-      },
-      {
-        title: 'О медицинском сопровождении',
-        content:
-          'Лагерь оснащен современным медицинским оснащением для оказании первой помощи',
-      },
-    ],
-    srcImg: '/pages/about/history.png',
-  };
+  const { data, isSuccess, isLoading, isError } = useTechnicalBaseText();
 
+  const {
+    data: dataPhotos,
+    isSuccess: isSuccessPhotos,
+    isLoading: isLoadingPhotos,
+    isError: isErrorPhotos,
+  } = useTechnicalBasePhoto();
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto pb-8">
-        <section className="flex flex-col flex-wrap gap-8 py-16">
+        <section className="flex flex-col flex-wrap">
           <PageHeading>Материально-техническая база</PageHeading>
-          <CardTechnicalBase {...material} />
+          <div className="mb-4 flex flex-col gap-3">
+            {isLoading && <p>Загрузка...</p>}
+
+            {isError && <p className="text-red-500">Ошибка при загрузке.</p>}
+
+            {!isLoading && !isError && data?.length === 0 && (
+              <p className="mt-4">Описание отсутствует.</p>
+            )}
+            {isSuccess &&
+              data?.map(item => <TechnicalBaseTextParagraph textItem={item} />)}
+          </div>
+          {isLoadingPhotos && <p>Загрузка...</p>}
+
+          {isErrorPhotos && (
+            <p className="text-red-500">Ошибка при загрузке галереи</p>
+          )}
+
+          {!isLoadingPhotos && !isErrorPhotos && dataPhotos?.length === 0 && (
+            <p className="mt-4">Фотографий пока нет.</p>
+          )}
+
+          {isSuccessPhotos && (
+            <GallerySlider
+              items={dataPhotos?.flatMap(item => item.photo)}
+              getPhoto={photo => photo}
+            />
+          )}
         </section>
       </div>
     </section>

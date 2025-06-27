@@ -24,6 +24,9 @@ import { ParentRules } from '@pages/HolidayCamp/forParents/ParentRules';
 import { ParentDocuments } from '@pages/HolidayCamp/forParents/ParentDocuments';
 import { ParentThings } from '@pages/HolidayCamp/forParents/ParentThings';
 import { NotFoundPage } from '@pages/NotFoundPage';
+import { Maevka } from '@/pages/projects/our/maevka';
+import { ProYouth } from '@/pages/projects/our/proYouth';
+import { Safety } from '@/pages/about/safety';
 
 export const routes: RouteObject[] = [
   {
@@ -100,7 +103,7 @@ export const routes: RouteObject[] = [
       },
       {
         path: '/about/safety',
-        element: 'безопасность',
+        element: <Safety />,
       },
       {
         path: '/recreationOrganizedGroups',
@@ -121,6 +124,14 @@ export const routes: RouteObject[] = [
       {
         path: '/projects/our',
         element: <Our />,
+      },
+      {
+        path: '/projects/our/maevka',
+        element: <Maevka />,
+      },
+      {
+        path: '/projects/our/pro-youth',
+        element: <ProYouth />,
       },
       {
         path: '/projects/yours',
