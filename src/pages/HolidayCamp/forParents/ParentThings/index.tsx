@@ -1,5 +1,5 @@
 import type React from 'react';
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const ParentThings: React.FC = () => {
   return (

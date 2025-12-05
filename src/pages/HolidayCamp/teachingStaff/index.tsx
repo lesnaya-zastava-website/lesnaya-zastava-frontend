@@ -1,6 +1,6 @@
 import { useTeacher } from '@/entities/person/model/useTeacher';
 import { TeacherCard } from '@/entities/person/ui/TeacherCard';
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const TeachingStaff: React.FC = () => {
   const { data: teachers, isLoading, isError } = useTeacher();
@@ -21,7 +21,12 @@ export const TeachingStaff: React.FC = () => {
 
           <div className="w-full">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {teachers?.map(teacher => <TeacherCard teacher={teacher} />)}
+              {teachers?.map(teacher => (
+                <TeacherCard
+                  key={teacher.id}
+                  teacher={teacher}
+                />
+              ))}
             </div>
           </div>
         </section>

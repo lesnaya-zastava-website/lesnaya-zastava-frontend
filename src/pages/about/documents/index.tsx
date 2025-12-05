@@ -1,4 +1,4 @@
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { useDocuments } from '@/entities/document/model/useDocuments';
 import { DocumentCard } from '@/entities/document/ui';
 

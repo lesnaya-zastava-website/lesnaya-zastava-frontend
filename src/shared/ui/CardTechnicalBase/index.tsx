@@ -15,11 +15,11 @@ export const CardTechnicalBase: React.FC<{
         />
       </div>
       <div>
-        {data.map(value => (
-          <>
+        {data.map((value, index) => (
+          <div key={index}>
             <h3 className="mb-2 font-medium">{value.title}</h3>
             <p className="mb-4 text-sm">{value.content}</p>
-          </>
+          </div>
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { CardAnnouncement } from '@/shared/ui/CardAnnouncement';
 import { useAnnouncement } from '@/entities/announcement/model/useAnnouncement';
 

@@ -4,7 +4,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
-} from '@/shared/components/ui/breadcrumb';
+} from '@/shared/ui/components/ui/breadcrumb';
 
 const PATH_NAMES: Record<string, string> = {
   about: 'О центре',

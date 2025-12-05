@@ -5,7 +5,7 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-} from '@/shared/components/ui/card';
+} from '@/shared/ui/components/ui/card';
 
 export const TeacherCard: React.FC<{ teacher: Teacher }> = ({ teacher }) => {
   return (

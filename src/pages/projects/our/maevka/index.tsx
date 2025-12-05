@@ -1,6 +1,6 @@
 import { useMaevkaPosts } from '@/entities/projects/ourProjects/maevka/model/useMaevkaPosts';
 import { MaevkaPostCard } from '@/entities/projects/ourProjects/maevka/ui/MaevkaPostCard';
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Maevka: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useMaevkaPosts();
@@ -26,7 +26,12 @@ export const Maevka: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-6">
           {isSuccess &&
-            data?.map(item => <MaevkaPostCard maevkaPosts={item} />)}
+            data?.map(item => (
+              <MaevkaPostCard
+                key={item.id}
+                maevkaPosts={item}
+              />
+            ))}
         </div>
       </div>
     </section>

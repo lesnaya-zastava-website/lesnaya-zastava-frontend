@@ -1,7 +1,7 @@
 import { useTeam } from '@/entities/person/model/useTeam';
 import { TeamMemberCard } from '@/entities/person/ui/TeamMemberCard';
 
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Team: React.FC = () => {
   const { data: teamMembers, isLoading, isError } = useTeam();

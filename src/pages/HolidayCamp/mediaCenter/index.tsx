@@ -1,4 +1,4 @@
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { useEffect, useState, useRef } from 'react';
 
 declare global {

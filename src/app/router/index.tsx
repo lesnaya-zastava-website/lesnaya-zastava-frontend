@@ -4,7 +4,7 @@ import { About } from '@pages/about';
 import { Main } from '@pages/main';
 import { Projects } from '@pages/projects';
 import { History } from '@pages/about/history';
-import { Layout } from '@shared/layout';
+import { Layout } from '@/shared/ui/layout';
 import { Announcements } from '@pages/HolidayCamp/announcements';
 import { ForParents } from '@pages/HolidayCamp/forParents';
 import { MediaCenter } from '@pages/HolidayCamp/mediaCenter';

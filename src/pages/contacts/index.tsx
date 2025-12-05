@@ -1,6 +1,6 @@
 import { RoutesCard } from '@/entities/route/ui/RoutesCard';
 import { useRoute } from '@entities/route/model/useRoute';
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { Car, Bus, Navigation } from 'lucide-react';
 
 export const Contacts: React.FC = () => {

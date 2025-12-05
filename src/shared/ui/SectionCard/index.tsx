@@ -20,7 +20,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
       }}
       to={linkTo}
       className="relative block h-[224px] w-full p-2 transition hover:brightness-125 sm:w-1/2 md:w-1/3 xl:w-1/2">
-      <div className="relative h-full w-full overflow-hidden rounded-2xl text-white shadow-lg">
+      <div className="relative bg-[#435c56] h-full w-full overflow-hidden rounded-2xl text-white shadow-lg">
         <img
           src={srcImage}
           alt={altDesc}

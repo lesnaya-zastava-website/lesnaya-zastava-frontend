@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import type { HistoryGallery } from './types';
-import { fetchHistoryPhotos } from '@/shared/api/historyApi';
+import { apiClient } from '@/shared/api/apiClient';
 
 export const useHistoryPhotos = () => {
   return useQuery({
     queryKey: ['history-photo'],
     queryFn: async (): Promise<HistoryGallery[]> => {
-      const data = await fetchHistoryPhotos();
+      const data = await apiClient.getHistoryPhotos();
       return data;
     },
   });

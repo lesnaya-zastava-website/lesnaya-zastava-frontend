@@ -1,6 +1,6 @@
 import { useInfrastructureGallery } from '@/entities/gallery/model/useInfrastructureGallery';
 import { GallerySlider } from '@/features/GallerySlider';
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import MapInteractive from '@features/MapInteractive/ui';
 
 export const Infrastructure: React.FC = () => {

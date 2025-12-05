@@ -2,7 +2,7 @@ import { useTechnicalBasePhoto } from '@/entities/technicalBase/photo/model/useT
 import { useTechnicalBaseText } from '@/entities/technicalBase/text/model/useTechnicalBaseText';
 import { TechnicalBaseTextParagraph } from '@/entities/technicalBase/text/ui/TechnicalBaseTextParagraph';
 import { GallerySlider } from '@/features/GallerySlider';
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const TechnicalBase: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useTechnicalBaseText();
@@ -27,7 +27,12 @@ export const TechnicalBase: React.FC = () => {
               <p className="mt-4">Описание отсутствует.</p>
             )}
             {isSuccess &&
-              data?.map(item => <TechnicalBaseTextParagraph textItem={item} />)}
+              data?.map(item => (
+                <TechnicalBaseTextParagraph
+                  key={item.id}
+                  textItem={item}
+                />
+              ))}
           </div>
           {isLoadingPhotos && <p>Загрузка...</p>}
 

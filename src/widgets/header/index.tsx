@@ -1,4 +1,4 @@
-import { ModeToggle } from '@/shared/components/mode-toggle';
+import { ModeToggle } from '@/shared/ui/components/mode-toggle';
 import BurgerMenu from '@features/BurgerMenu';
 import { Mail, MapIcon, PhoneCall } from 'lucide-react';
 import { Link } from 'react-router-dom';

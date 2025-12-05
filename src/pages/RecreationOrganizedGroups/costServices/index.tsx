@@ -1,6 +1,6 @@
 import { useServicePrices } from '@entities/service/model/useServicePrices';
 import { ServicePriceCard } from '@entities/service/ui/ServicePriceCard';
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const CostServices: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useServicePrices();
@@ -23,7 +23,12 @@ export const CostServices: React.FC = () => {
 
           <div className="grid grid-cols-1 gap-6">
             {isSuccess &&
-              data?.map(item => <ServicePriceCard servicePrice={item} />)}
+              data?.map(item => (
+                <ServicePriceCard
+                  key={item.id}
+                  servicePrice={item}
+                />
+              ))}
           </div>
         </section>
       </div>

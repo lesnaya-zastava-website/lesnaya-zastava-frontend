@@ -1,4 +1,4 @@
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Info: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchSafetyDocuments } from '@shared/api/documentsApi';
+import { apiClient } from '@/shared/api/apiClient';
 
 export interface DocumentFile {
   id: number;
@@ -18,7 +18,7 @@ export const useSafetyDocuments = () => {
   return useQuery({
     queryKey: ['safety-documents'],
     queryFn: async (): Promise<Document[]> => {
-      const data = await fetchSafetyDocuments();
+      const data = await apiClient.getSafetyDocuments();
       return data.map((doc: any) => ({
         id: doc.id,
         name: doc.name,

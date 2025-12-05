@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchServicePrices } from '@shared/api/servicePriceApi';
 import type { ServicePrice } from './types';
-
-
+import { apiClient } from '@/shared/api/apiClient';
 
 export const useServicePrices = () => {
   return useQuery({
     queryKey: ['service-prices'],
     queryFn: async (): Promise<ServicePrice[]> => {
-      const data = await fetchServicePrices();
+      const data = await apiClient.getServicePrices();
       return data;
     },
   });

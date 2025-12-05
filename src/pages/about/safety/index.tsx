@@ -1,11 +1,19 @@
 import { useSafetyDocuments } from '@/entities/document/model/useSafetyDocuments';
 import { DocumentCard } from '@/entities/document/ui';
 import { useSafetyGallery } from '@/entities/gallery/model/useSafetyGallery';
+import { useSafetyText } from '@/entities/safety/text/model/useSafetyText';
 import { GallerySlider } from '@/features/GallerySlider';
-import { PageHeading } from '@/shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Safety: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useSafetyDocuments();
+
+  const {
+    data: dataText,
+    isLoading: isLoadingText,
+    isError: isErrorText,
+    isSuccess: isSuccessText,
+  } = useSafetyText();
 
   const {
     data: dataGallery,
@@ -39,7 +47,26 @@ export const Safety: React.FC = () => {
           </div>
         )}
 
-        <PageHeading>Профилкатические мероприятия</PageHeading>
+        <div className="mb-4 flex flex-col gap-3">
+          {isLoadingText && <p>Загрузка...</p>}
+
+          {isErrorText && (
+            <p className="text-red-500">Ошибка при загрузке текста</p>
+          )}
+
+          {!isLoadingText && !isErrorText && dataText?.length === 0 && (
+            <p className="mt-4">Текст отсутствует.</p>
+          )}
+
+          {isSuccessText &&
+            dataText?.map(item => (
+              <div
+                key={item.id}
+                className="styled-html-content"
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
+              />
+            ))}
+        </div>
 
         {isLoadingGallery && <p>Загрузка...</p>}
 

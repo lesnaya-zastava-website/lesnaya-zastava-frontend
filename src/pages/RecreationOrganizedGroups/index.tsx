@@ -1,5 +1,5 @@
-import { SectionCard } from '@shared/SectionCard';
-import { Banner } from '@shared/banner';
+import { SectionCard } from '@/shared/ui/SectionCard';
+import { Banner } from '@/shared/ui/banner';
 
 export const RecreationOrganizedGroups: React.FC = () => {
   return (

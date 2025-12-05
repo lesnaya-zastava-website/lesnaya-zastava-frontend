@@ -1,8 +1,8 @@
 import { useOurProjects } from '@/entities/projects/ourProjects/model/useOurProjects';
 import { API_BASE_URL } from '@/shared/api/baseApi';
-import { Button } from '@/shared/components/ui/button';
-import { Card, CardContent, CardTitle } from '@/shared/components/ui/card';
-import { PageHeading } from '@/shared/PageHeading';
+import { Button } from '@/shared/ui/components/ui/button';
+import { Card, CardContent, CardTitle } from '@/shared/ui/components/ui/card';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { Link } from 'react-router-dom';
 
 export const Our: React.FC = () => {
@@ -22,7 +22,7 @@ export const Our: React.FC = () => {
           )}
           {isSuccess &&
             data.map(item => (
-              <Card>
+              <Card key={item.id}>
                 <CardContent className="flex flex-col gap-4 text-center">
                   <img
                     className="max-w-full"

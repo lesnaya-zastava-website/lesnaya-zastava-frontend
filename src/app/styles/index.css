@@ -220,3 +220,104 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Стилизация HTML контента из CKEditor */
+.styled-html-content {
+  @apply flex flex-col gap-3;
+}
+
+.styled-html-content h1 {
+  @apply scroll-m-20 pb-5 text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl;
+}
+
+.styled-html-content h2 {
+  @apply scroll-m-20 pb-4 text-xl font-bold tracking-tight text-balance sm:text-2xl lg:text-3xl;
+}
+
+.styled-html-content h3 {
+  @apply scroll-m-20 pb-3 text-lg font-bold tracking-tight text-balance sm:text-xl lg:text-2xl;
+}
+
+.styled-html-content h4 {
+  @apply scroll-m-20 pb-2 text-base font-bold tracking-tight text-balance sm:text-lg lg:text-xl;
+}
+
+.styled-html-content h5 {
+  @apply scroll-m-20 pb-2 text-sm font-bold tracking-tight text-balance sm:text-base lg:text-lg;
+}
+
+.styled-html-content h6 {
+  @apply scroll-m-20 pb-2 text-xs font-bold tracking-tight text-balance sm:text-sm lg:text-base;
+}
+
+.styled-html-content p {
+  @apply text-justify leading-7 mb-3;
+}
+
+.styled-html-content a {
+  @apply text-primary underline-offset-4 hover:underline font-medium;
+}
+
+.styled-html-content a[target="_blank"] {
+  @apply text-primary underline-offset-4 hover:underline font-medium;
+}
+
+.styled-html-content ul,
+.styled-html-content ol {
+  @apply my-4 ml-6 list-disc;
+}
+
+.styled-html-content ol {
+  @apply list-decimal;
+}
+
+.styled-html-content li {
+  @apply mb-2 leading-7;
+}
+
+.styled-html-content strong,
+.styled-html-content b {
+  @apply font-bold;
+}
+
+.styled-html-content em,
+.styled-html-content i {
+  @apply italic;
+}
+
+.styled-html-content blockquote {
+  @apply border-l-4 border-primary pl-4 my-4 italic text-muted-foreground;
+}
+
+.styled-html-content code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.styled-html-content pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto my-4;
+}
+
+.styled-html-content pre code {
+  @apply bg-transparent p-0;
+}
+
+.styled-html-content hr {
+  @apply my-6 border-t border-border;
+}
+
+.styled-html-content img {
+  @apply rounded-lg my-4 max-w-full h-auto;
+}
+
+.styled-html-content table {
+  @apply w-full border-collapse my-4;
+}
+
+.styled-html-content th,
+.styled-html-content td {
+  @apply border border-border px-4 py-2;
+}
+
+.styled-html-content th {
+  @apply bg-muted font-bold;
+}

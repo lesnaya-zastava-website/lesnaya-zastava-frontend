@@ -11,23 +11,23 @@ export const CardMediaCenter: React.FC<{
           Интеграция новостей из группы ВК Детского лагеря
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {dataMedia.map(value => (
-            <>
-              <div className="overflow-hidden rounded-lg border ">
-                <img
-                  src={value.srcImg}
-                  alt={value.altImg}
-                  width={400}
-                  height={200}
-                  className="h-48 w-full object-cover"
-                />
-                <div className="p-4">
-                  <p className="text-xs ">{value.date}</p>
-                  <h4 className="mb-2 font-medium">{value.title}</h4>
-                  <p className="text-sm ">{value.message}</p>
-                </div>
+          {dataMedia.map((value, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-lg border ">
+              <img
+                src={value.srcImg}
+                alt={value.altImg}
+                width={400}
+                height={200}
+                className="h-48 w-full object-cover"
+              />
+              <div className="p-4">
+                <p className="text-xs ">{value.date}</p>
+                <h4 className="mb-2 font-medium">{value.title}</h4>
+                <p className="text-sm ">{value.message}</p>
               </div>
-            </>
+            </div>
           ))}
         </div>
 

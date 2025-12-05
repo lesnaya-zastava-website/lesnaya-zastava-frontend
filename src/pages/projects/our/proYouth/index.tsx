@@ -1,6 +1,6 @@
 import { useProYouthPosts } from '@/entities/projects/ourProjects/proYouth/model/useProYouthPosts';
 import { ProYouthPostCard } from '@/entities/projects/ourProjects/proYouth/ui/ProYouthPostCard';
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const ProYouth: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useProYouthPosts();
@@ -28,7 +28,12 @@ export const ProYouth: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-6">
           {isSuccess &&
-            data?.map(item => <ProYouthPostCard proYouthPosts={item} />)}
+            data?.map(item => (
+              <ProYouthPostCard
+                key={item.id}
+                proYouthPosts={item}
+              />
+            ))}
         </div>
       </div>
     </section>

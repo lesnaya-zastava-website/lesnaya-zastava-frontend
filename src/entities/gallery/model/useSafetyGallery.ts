@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import type {SafetyImage } from './types';
-import { fetchSafetyGallery } from '@shared/api/galleryApi';
+import { apiClient } from '@/shared/api/apiClient';
 
 export const useSafetyGallery = () => {
   return useQuery({
     queryKey: ['safety-gallery'],
     queryFn: async (): Promise<SafetyImage[]> => {
-      const data = await fetchSafetyGallery();
+      const data = await apiClient.getSafetyGallery();
       return data;
     },
   });

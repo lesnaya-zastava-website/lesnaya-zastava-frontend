@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchDocuments } from '@shared/api/documentsApi';
+import { apiClient } from '@/shared/api/apiClient';
 
 export interface DocumentFile {
   id: number;
@@ -18,7 +18,7 @@ export const useDocuments = () => {
   return useQuery({
     queryKey: ['documents'],
     queryFn: async (): Promise<Document[]> => {
-      const data = await fetchDocuments();
+      const data = await apiClient.getDocuments();
       return data.map((doc: any) => ({
         id: doc.id,
         name: doc.name,

@@ -17,19 +17,23 @@ export const CardCollection: React.FC<{
         </p>
       </div>
 
-      {dataEnum.map(value => (
-        <div className="rounded-lg border p-6">
+      {dataEnum.map((value, index) => (
+        <div
+          key={index}
+          className="rounded-lg border p-6">
           <h3 className="mb-3 font-medium">{value.title}</h3>
           <ul className="space-y-2 text-sm">
-            {value.dataEnum.map(value => (
-              <li>• {value}</li>
+            {value.dataEnum.map((item, itemIndex) => (
+              <li key={itemIndex}>• {item}</li>
             ))}
           </ul>
         </div>
       ))}
 
-      {dataInfo.map(value => (
-        <div className="rounded-lg border p-6">
+      {dataInfo.map((value, index) => (
+        <div
+          key={index}
+          className="rounded-lg border p-6">
           <h3 className="mb-3 font-medium">{value.title}</h3>
           <p className="mb-2 text-sm">{value.content}</p>
         </div>

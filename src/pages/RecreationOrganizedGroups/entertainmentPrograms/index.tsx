@@ -1,7 +1,7 @@
 import { useEntertainmentOffer } from '@entities/entertainmentPrograms/offer/model/useEntertainmentOffer';
 import { useEntertainmentPrice } from '@entities/entertainmentPrograms/price/model/useEntertainmentPrice';
 import { EntertainmentPriceCard } from '@entities/entertainmentPrograms/price/ui/EntertainmentPriceCard';
-import { PageHeading } from '@shared/PageHeading';
+import { PageHeading } from '@/shared/ui/PageHeading';
 import { EntertainmentOfferCard } from '@entities/entertainmentPrograms/offer/ui/EntertainmentOfferCard';
 
 export const EntertainmentPrograms: React.FC = () => {
@@ -42,7 +42,10 @@ export const EntertainmentPrograms: React.FC = () => {
           <div className="flex flex-col gap-6">
             {isSuccessPrices &&
               entertainmentPrices?.map(item => (
-                <EntertainmentPriceCard entertainmentPrice={item} />
+                <EntertainmentPriceCard
+                  key={item.id}
+                  entertainmentPrice={item}
+                />
               ))}
           </div>
         </section>
@@ -65,7 +68,10 @@ export const EntertainmentPrograms: React.FC = () => {
           <div className="flex flex-col gap-6">
             {isSuccessOffers &&
               entertainmentOffers?.map(item => (
-                <EntertainmentOfferCard entertainmentOffer={item} />
+                <EntertainmentOfferCard
+                  key={item.id}
+                  entertainmentOffer={item}
+                />
               ))}
           </div>
         </section>
