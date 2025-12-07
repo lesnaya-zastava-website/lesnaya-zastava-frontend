@@ -286,7 +286,7 @@ html {
 }
 
 .styled-html-content blockquote {
-  @apply border-l-4 border-primary pl-4 my-4 italic text-muted-foreground;
+  @apply border-l-4 border-primary pl-4 my-4 italic;
 }
 
 .styled-html-content code {
@@ -309,13 +309,63 @@ html {
   @apply rounded-lg my-4 max-w-full h-auto;
 }
 
+/* Обертка для таблиц из CKEditor */
+.styled-html-content figure.table {
+  @apply my-4;
+  /* Плавный скролл */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  /* Горизонтальный скролл на мобильных */
+  overflow-x: auto;
+  /* Выравнивание внутри контейнера */
+  width: 100%;
+}
+
+.styled-html-content figure.table table {
+  @apply w-full border-collapse;
+  /* Предотвращаем сжатие таблицы */
+  min-width: 100%;
+  table-layout: auto;
+}
+
+/* Обычные таблицы (без обертки figure) */
 .styled-html-content table {
   @apply w-full border-collapse my-4;
+  /* Предотвращаем сжатие таблицы */
+  min-width: 100%;
+  table-layout: auto;
+}
+
+/* Обертка для обычных таблиц на мобильных */
+@media (max-width: 639px) {
+  .styled-html-content table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    width: 100%;
+  }
 }
 
 .styled-html-content th,
 .styled-html-content td {
   @apply border border-border px-4 py-2;
+}
+
+/* На мобильных устройствах предотвращаем перенос текста в ячейках */
+@media (max-width: 639px) {
+  .styled-html-content th,
+  .styled-html-content td {
+    white-space: nowrap;
+  }
+}
+
+/* На больших экранах разрешаем перенос */
+@media (min-width: 640px) {
+  .styled-html-content th,
+  .styled-html-content td {
+    white-space: normal;
+  }
 }
 
 .styled-html-content th {

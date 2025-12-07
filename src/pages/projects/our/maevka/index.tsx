@@ -1,38 +1,68 @@
 import { useMaevkaPosts } from '@/entities/projects/ourProjects/maevka/model/useMaevkaPosts';
-import { MaevkaPostCard } from '@/entities/projects/ourProjects/maevka/ui/MaevkaPostCard';
-import { PageHeading } from '@/shared/ui/PageHeading';
+import { useMaevkaText } from '@/entities/projects/ourProjects/maevka/text/model/useMaevkaText';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const Maevka: React.FC = () => {
-  const { data, isError, isLoading, isSuccess } = useMaevkaPosts();
+  const {
+    data: dataText,
+    isLoading: isLoadingText,
+    isError: isErrorText,
+    isSuccess: isSuccessText,
+  } = useMaevkaText();
+
+  const {
+    data: dataPhotos,
+    isLoading: isLoadingPhotos,
+    isError: isErrorPhotos,
+    isSuccess: isSuccessPhotos,
+  } = useMaevkaPosts();
+
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
-        <PageHeading>Семейный фестиваль "Маёвка"</PageHeading>
+        <div className="mb-4 flex flex-col gap-3">
+          {isLoadingText && <p>Загрузка...</p>}
 
-        <p className="pb-4">
-          Семейный фестиваль "Маёвка" — Это прекрасная возможность провести
-          время с семьей и друзьями, отдохнуть душой и телом на свежем воздухе и
-          узнать, где и как будет отдыхать Ваш ребенок летом.
-        </p>
-        {isLoading && <p>Загрузка...</p>}
+          {isErrorText && (
+            <p className="text-red-500">Ошибка при загрузке текста</p>
+          )}
 
-        {isError && <p className="text-red-500">Ошибка при загрузке.</p>}
+          {!isLoadingText && !isErrorText && dataText?.length === 0 && (
+            <p className="mt-4">Текст отсутствует.</p>
+          )}
 
-        {!isLoading && !isError && data?.length === 0 && (
-          <p className="mt-4">
-            Новости, анонсы об этом проекте пока что отсутствуют.
-          </p>
-        )}
-
-        <div className="grid grid-cols-1 gap-6">
-          {isSuccess &&
-            data?.map(item => (
-              <MaevkaPostCard
+          {isSuccessText &&
+            dataText?.map(item => (
+              <div
                 key={item.id}
-                maevkaPosts={item}
+                className="styled-html-content"
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>
+
+        {isLoadingPhotos && <p>Загрузка...</p>}
+
+        {isErrorPhotos && (
+          <p className="text-red-500">Ошибка при загрузке фотографий</p>
+        )}
+
+        {!isLoadingPhotos && !isErrorPhotos && dataPhotos?.length === 0 && (
+          <p className="mt-4">Фотографий пока нет.</p>
+        )}
+
+        {isSuccessPhotos && (
+          <PhotoGallery
+            photos={
+              dataPhotos?.flatMap(item =>
+                item.photo.map(p => ({
+                  url: p.url,
+                  name: p.name,
+                }))
+              ) || []
+            }
+          />
+        )}
       </div>
     </section>
   );

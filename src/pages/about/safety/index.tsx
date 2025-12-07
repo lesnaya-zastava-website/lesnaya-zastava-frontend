@@ -2,7 +2,7 @@ import { useSafetyDocuments } from '@/entities/document/model/useSafetyDocuments
 import { DocumentCard } from '@/entities/document/ui';
 import { useSafetyGallery } from '@/entities/gallery/model/useSafetyGallery';
 import { useSafetyText } from '@/entities/safety/text/model/useSafetyText';
-import { GallerySlider } from '@/features/GallerySlider';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Safety: React.FC = () => {
@@ -79,9 +79,15 @@ export const Safety: React.FC = () => {
         )}
 
         {isSuccessGallery && (
-          <GallerySlider
-            items={dataGallery?.flatMap(item => item.photo)}
-            getPhoto={photo => photo}
+          <PhotoGallery
+            photos={
+              dataGallery?.flatMap(item =>
+                item.photo.map(p => ({
+                  url: p.url,
+                  name: p.name,
+                }))
+              ) || []
+            }
           />
         )}
       </div>

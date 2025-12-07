@@ -20,11 +20,11 @@ export type InfrastructureItem = {
 
 export interface SafetyImage {
   id: number;
-  photo:{
-    id:number;
-    name:string;
-    url:string;
-  }
+  photo: Array<{
+    id: number;
+    name: string;
+    url: string;
+  }>;
 }
 
 

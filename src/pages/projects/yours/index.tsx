@@ -1,6 +1,6 @@
 import { useYourProjectsPhoto } from '@/entities/projects/yourProjects/photos/model/useYourProjectsPhoto';
 import { useYourProjectsText } from '@/entities/projects/yourProjects/text/model/useYourProjectsText';
-import { GallerySlider } from '@/features/GallerySlider';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
 
 export const Yours: React.FC = () => {
@@ -52,9 +52,15 @@ export const Yours: React.FC = () => {
           )}
 
           {isSuccessPhotos && (
-            <GallerySlider
-              items={dataPhotos?.flatMap(item => item.photo)}
-              getPhoto={photo => photo}
+            <PhotoGallery
+              photos={
+                dataPhotos?.flatMap(item =>
+                  item.photo.map(p => ({
+                    url: p.url,
+                    name: p.name,
+                  }))
+                ) || []
+              }
             />
           )}
         </div>

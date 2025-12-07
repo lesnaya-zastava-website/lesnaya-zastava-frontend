@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { MouseEvent as ReactMouseEvent } from 'react';
+import { Maximize, Minimize, ZoomIn, ZoomOut } from 'lucide-react';
 import mapImage from '@features/MapInteractive/assets/map.png';
 
 export type MapPoint = {
@@ -260,8 +261,86 @@ export const MAP_POINTS: MapPoint[] = [
 
 const MapInteractive: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [isMouseDragging, setIsMouseDragging] = useState(false);
+  const [mouseDragStart, setMouseDragStart] = useState({ x: 0, y: 0 });
+  const [lastTouchDistance, setLastTouchDistance] = useState<number | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const fullscreenRef = useRef<HTMLDivElement>(null);
 
+  // Функция для ограничения позиции карты в пределах контейнера
+  const constrainPosition = useCallback((
+    x: number,
+    y: number,
+    currentScale: number,
+    container: HTMLElement | null,
+  ) => {
+    if (!container || !wrapperRef.current) {
+      return { x, y };
+    }
+
+    const img = wrapperRef.current.querySelector('img');
+    if (!img) {
+      return { x, y };
+    }
+
+    const containerRect = container.getBoundingClientRect();
+    const containerWidth = containerRect.width;
+    const containerHeight = containerRect.height;
+
+    // Получаем реальные размеры изображения
+    const imgWidth = img.naturalWidth || img.clientWidth;
+    const imgHeight = img.naturalHeight || img.clientHeight;
+
+    // Вычисляем размеры с учетом масштаба
+    const scaledWidth = imgWidth * currentScale;
+    const scaledHeight = imgHeight * currentScale;
+
+    // Вычисляем максимальные смещения (чтобы карта не выходила за границы)
+    const maxX = Math.max(0, (scaledWidth - containerWidth) / 2);
+    const maxY = Math.max(0, (scaledHeight - containerHeight) / 2);
+
+    // Ограничиваем позицию
+    const constrainedX = Math.max(-maxX, Math.min(maxX, x));
+    const constrainedY = Math.max(-maxY, Math.min(maxY, y));
+
+    return { x: constrainedX, y: constrainedY };
+  }, []);
+
+  // Полноэкранный режим
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullscreen = async () => {
+    if (!fullscreenRef.current) return;
+
+    try {
+      if (!document.fullscreenElement) {
+        await fullscreenRef.current.requestFullscreen();
+        setIsFullscreen(true);
+      } else {
+        await document.exitFullscreen();
+        setIsFullscreen(false);
+      }
+    } catch (error) {
+      console.error('Ошибка при переключении полноэкранного режима:', error);
+    }
+  };
+
+  // Обработка клика вне области
   useEffect(() => {
     const handleClickOutside = (evt: MouseEvent | ReactMouseEvent) => {
       if (
@@ -277,21 +356,279 @@ const MapInteractive: React.FC = () => {
     };
   }, []);
 
+  // Pinch-to-zoom и drag для мобильных
+  useEffect(() => {
+    const container = mapContainerRef.current;
+    if (!container) return;
+
+    const getDistance = (touches: TouchList) => {
+      const touch1 = touches[0];
+      const touch2 = touches[1];
+      const dx = touch2.clientX - touch1.clientX;
+      const dy = touch2.clientY - touch1.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        // Pinch-to-zoom
+        e.preventDefault();
+        const distance = getDistance(e.touches);
+        setLastTouchDistance(distance);
+      } else if (e.touches.length === 1) {
+        // Drag
+        const touch = e.touches[0];
+        setIsDragging(true);
+        setDragStart({
+          x: touch.clientX - position.x,
+          y: touch.clientY - position.y,
+        });
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 2 && lastTouchDistance !== null) {
+        // Pinch-to-zoom
+        e.preventDefault();
+        const distance = getDistance(e.touches);
+        const scaleChange = distance / lastTouchDistance;
+        const newScale = Math.max(0.5, Math.min(3, scale * scaleChange));
+        setScale(newScale);
+        // При изменении масштаба пересчитываем позицию с ограничениями
+        const constrained = constrainPosition(position.x, position.y, newScale, container);
+        setPosition(constrained);
+        setLastTouchDistance(distance);
+      } else if (e.touches.length === 1 && isDragging) {
+        // Drag
+        e.preventDefault();
+        const touch = e.touches[0];
+        const newX = touch.clientX - dragStart.x;
+        const newY = touch.clientY - dragStart.y;
+        
+        // Ограничиваем перемещение
+        const constrainedPosition = constrainPosition(newX, newY, scale, container);
+        setPosition(constrainedPosition);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+      setLastTouchDistance(null);
+    };
+
+    container.addEventListener('touchstart', handleTouchStart, { passive: false });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [scale, position, isDragging, dragStart, lastTouchDistance]);
+
+  // Сброс масштаба при выходе из полноэкранного режима и автоматическое масштабирование при входе
+  useEffect(() => {
+    if (!isFullscreen) {
+      setScale(1);
+      setPosition({ x: 0, y: 0 });
+    } else {
+      // При входе в полноэкранный режим автоматически подгоняем масштаб
+      const container = mapContainerRef.current;
+      const img = wrapperRef.current?.querySelector('img');
+      if (container && img) {
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+        const imgWidth = img.naturalWidth || img.clientWidth;
+        const imgHeight = img.naturalHeight || img.clientHeight;
+        
+        const scaleX = containerWidth / imgWidth;
+        const scaleY = containerHeight / imgHeight;
+        const autoScale = Math.min(scaleX, scaleY, 1); // Не увеличиваем, только уменьшаем если нужно
+        
+        if (autoScale < 1) {
+          setScale(autoScale);
+        }
+        setPosition({ x: 0, y: 0 });
+      }
+    }
+  }, [isFullscreen]);
+
+  const handleZoomIn = () => {
+    setScale(prev => {
+      const newScale = Math.min(3, prev + 0.2);
+      // При изменении масштаба пересчитываем позицию с ограничениями
+      const container = mapContainerRef.current;
+      const constrained = constrainPosition(position.x, position.y, newScale, container);
+      setPosition(constrained);
+      return newScale;
+    });
+  };
+
+  const handleZoomOut = () => {
+    setScale(prev => {
+      const newScale = Math.max(0.5, prev - 0.2);
+      // При изменении масштаба пересчитываем позицию с ограничениями
+      const container = mapContainerRef.current;
+      const constrained = constrainPosition(position.x, position.y, newScale, container);
+      setPosition(constrained);
+      return newScale;
+    });
+  };
+
+  // Обработка колесика мыши для зума на ПК
+  useEffect(() => {
+    const container = mapContainerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Проверяем, что зажат Ctrl (или Cmd на Mac) для зума колесиком
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        setScale(prev => {
+          const newScale = Math.max(0.5, Math.min(3, prev + delta));
+          // При изменении масштаба пересчитываем позицию с ограничениями
+          const constrained = constrainPosition(position.x, position.y, newScale, container);
+          setPosition(constrained);
+          return newScale;
+        });
+      }
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
+  // Обработка перетаскивания мышью на ПК
+  useEffect(() => {
+    const container = mapContainerRef.current;
+    if (!container) return;
+
+    const handleMouseDown = (e: MouseEvent) => {
+      // Проверяем, что нажата левая кнопка мыши и не на кнопке управления
+      if (e.button === 0 && !(e.target as HTMLElement).closest('button')) {
+        e.preventDefault();
+        setIsMouseDragging(true);
+        setMouseDragStart({
+          x: e.clientX - position.x,
+          y: e.clientY - position.y,
+        });
+        container.style.cursor = 'grabbing';
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isMouseDragging) {
+        e.preventDefault();
+        const newX = e.clientX - mouseDragStart.x;
+        const newY = e.clientY - mouseDragStart.y;
+        
+        // Ограничиваем перемещение
+        const constrainedPosition = constrainPosition(newX, newY, scale, container);
+        setPosition(constrainedPosition);
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (isMouseDragging) {
+        setIsMouseDragging(false);
+        container.style.cursor = '';
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (isMouseDragging) {
+        setIsMouseDragging(false);
+        container.style.cursor = '';
+      }
+    };
+
+    container.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      container.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [isMouseDragging, mouseDragStart, position]);
+
   const handleToggle = (id: string) => {
     setActiveId(prev => (prev === id ? null : id));
   };
 
   return (
-    <div className="mb-5 w-full overflow-auto rounded-2xl bg-white p-4">
+    <div
+      ref={fullscreenRef}
+      className={`mb-5 w-full rounded-2xl bg-white p-4 ${isFullscreen ? 'fixed inset-0 z-[9999] m-0 rounded-none' : 'relative overflow-hidden'}`}>
+      {/* Кнопки управления */}
+      <div className="absolute right-4 top-4 z-40 flex gap-2">
+        <button
+          type="button"
+          onClick={handleZoomIn}
+          className="rounded-full bg-primary p-2 shadow-lg transition hover:bg-primary/90"
+          aria-label="Увеличить">
+          <ZoomIn className="h-5 w-5 text-primary-foreground" />
+        </button>
+        <button
+          type="button"
+          onClick={handleZoomOut}
+          className="rounded-full bg-primary p-2 shadow-lg transition hover:bg-primary/90"
+          aria-label="Уменьшить">
+          <ZoomOut className="h-5 w-5 text-primary-foreground" />
+        </button>
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          className="rounded-full bg-primary p-2 shadow-lg transition hover:bg-primary/90"
+          aria-label={isFullscreen ? 'Выйти из полноэкранного режима' : 'Полноэкранный режим'}>
+          {isFullscreen ? (
+            <Minimize className="h-5 w-5 text-primary-foreground" />
+          ) : (
+            <Maximize className="h-5 w-5 text-primary-foreground" />
+          )}
+        </button>
+      </div>
+
       <div
-        ref={wrapperRef}
-        className="relative max-w-none min-w-[800px]">
-        <img
-          src={mapImage}
-          alt="Интерактивная карта"
-          className="w-full select-none"
-          draggable={false}
-        />
+        ref={mapContainerRef}
+        className={`relative ${isFullscreen ? 'h-full w-full overflow-hidden' : 'overflow-auto'} ${isMouseDragging ? 'cursor-grabbing' : 'cursor-grab'}`}>
+        <div
+          ref={wrapperRef}
+          className="relative"
+          style={{
+            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+            transformOrigin: 'center center',
+            transition: isDragging || isMouseDragging || lastTouchDistance !== null ? 'none' : 'transform 0.1s ease-out',
+            touchAction: 'none',
+            ...(isFullscreen && {
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
+            }),
+          }}>
+          <img
+            src={mapImage}
+            alt="Интерактивная карта"
+            className={`select-none ${isFullscreen ? 'max-h-[100vh] max-w-[100vw] object-contain' : 'w-full'}`}
+            draggable={false}
+            style={{
+              ...(isFullscreen && {
+                maxHeight: '100vh',
+                maxWidth: '100vw',
+                height: 'auto',
+                width: 'auto',
+              }),
+            }}
+          />
         {[...MAP_POINTS]
           .sort((a, b) => (a.id === activeId ? 1 : b.id === activeId ? -1 : 0))
           .map(({ id, label, title, top, left, imageUrl }) => {
@@ -353,7 +690,15 @@ const MapInteractive: React.FC = () => {
               </div>
             );
           })}
+        </div>
       </div>
+
+      {/* Подсказка для мобильных */}
+      {!isFullscreen && (
+        <p className="mt-2 text-center text-xs text-gray-500 md:hidden">
+          Используйте жесты для увеличения и перемещения карты
+        </p>
+      )}
     </div>
   );
 };

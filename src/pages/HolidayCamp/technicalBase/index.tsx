@@ -1,8 +1,6 @@
 import { useTechnicalBasePhoto } from '@/entities/technicalBase/photo/model/useTechnicalBasePhoto';
 import { useTechnicalBaseText } from '@/entities/technicalBase/text/model/useTechnicalBaseText';
-import { TechnicalBaseTextParagraph } from '@/entities/technicalBase/text/ui/TechnicalBaseTextParagraph';
-import { GallerySlider } from '@/features/GallerySlider';
-import { PageHeading } from '@/shared/ui/PageHeading';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const TechnicalBase: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useTechnicalBaseText();
@@ -15,9 +13,8 @@ export const TechnicalBase: React.FC = () => {
   } = useTechnicalBasePhoto();
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto pb-8">
+      <div className="container mx-auto border-t border-gray-200 py-5">
         <section className="flex flex-col flex-wrap">
-          <PageHeading>Материально-техническая база</PageHeading>
           <div className="mb-4 flex flex-col gap-3">
             {isLoading && <p>Загрузка...</p>}
 
@@ -26,11 +23,13 @@ export const TechnicalBase: React.FC = () => {
             {!isLoading && !isError && data?.length === 0 && (
               <p className="mt-4">Описание отсутствует.</p>
             )}
+
             {isSuccess &&
               data?.map(item => (
-                <TechnicalBaseTextParagraph
+                <div
                   key={item.id}
-                  textItem={item}
+                  className="styled-html-content"
+                  dangerouslySetInnerHTML={{ __html: item.textHtml }}
                 />
               ))}
           </div>
@@ -45,9 +44,15 @@ export const TechnicalBase: React.FC = () => {
           )}
 
           {isSuccessPhotos && (
-            <GallerySlider
-              items={dataPhotos?.flatMap(item => item.photo)}
-              getPhoto={photo => photo}
+            <PhotoGallery
+              photos={
+                dataPhotos?.flatMap(item =>
+                  item.photo.map(p => ({
+                    url: p.url,
+                    name: p.name,
+                  }))
+                ) || []
+              }
             />
           )}
         </section>

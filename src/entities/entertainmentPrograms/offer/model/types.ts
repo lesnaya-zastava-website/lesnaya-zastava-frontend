@@ -1,8 +1,8 @@
 export interface EntertainmentOffer {
   id: number;
-  photo: {
+  photo: Array<{
     id: number;
     url: string;
     name: string;
-  };
+  }>;
 }

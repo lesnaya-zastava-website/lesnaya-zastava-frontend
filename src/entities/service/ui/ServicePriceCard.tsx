@@ -1,8 +1,15 @@
 import type { ServicePrice } from '../model/types';
-import { API_BASE_URL } from '@/shared/api/baseApi';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const ServicePriceCard: React.FC<{ servicePrice: ServicePrice }> = ({
   servicePrice,
 }) => {
-  return <img className='w-full' src={`${API_BASE_URL}${servicePrice.photo.url}`} />;
+  // Используем только основные фото (url в корне), игнорируя formats
+  const mainPhotos = servicePrice.photo
+    ?.map(p => ({
+      url: p.url,
+      name: p.name,
+    })) || [];
+
+  return <PhotoGallery photos={mainPhotos} />;
 };

@@ -1,14 +1,17 @@
-import { API_BASE_URL } from '@shared/api/baseApi';
 import type { EntertainmentPrice } from '../model/types';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const EntertainmentPriceCard: React.FC<{
   entertainmentPrice: EntertainmentPrice;
 }> = ({ entertainmentPrice }) => {
   return (
-    <img
-      className="max-w-full"
-      src={`${API_BASE_URL}${entertainmentPrice.photo.url}`}
-      alt={entertainmentPrice.photo.name}
+    <PhotoGallery
+      photos={[
+        {
+          url: entertainmentPrice.photo.url,
+          name: entertainmentPrice.photo.name,
+        },
+      ]}
     />
   );
 };

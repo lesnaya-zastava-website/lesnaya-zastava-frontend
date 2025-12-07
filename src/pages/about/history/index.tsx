@@ -1,6 +1,6 @@
 import { useHistoryPhotos } from '@/entities/history/model/useHistoryPhotos';
 import { useHistoryText } from '@/entities/history/text/model/useHistoryText';
-import { GallerySlider } from '@/features/GallerySlider';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const History: React.FC = () => {
   const {
@@ -52,9 +52,11 @@ export const History: React.FC = () => {
         )}
 
         {isSuccessPhotos && (
-          <GallerySlider
-            items={dataPhotos?.flatMap(item => item.photo)}
-            getPhoto={photo => photo}
+          <PhotoGallery
+            photos={dataPhotos?.flatMap(item => item.photo).map(photo => ({
+              url: photo.url,
+              name: photo.name,
+            })) || []}
           />
         )}
       </div>

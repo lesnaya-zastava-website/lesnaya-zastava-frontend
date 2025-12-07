@@ -51,13 +51,14 @@ export const MediaCenter: React.FC = () => {
   }, [isScriptReady]);
 
   return (
-    <section className="mx-auto px-4 py-4 sm:px-6 md:px-10 lg:px-20">
-       <PageHeading>Медиа-центр лагеря</PageHeading>
-      <div className="container mx-auto flex justify-center py-2">
-       
-        <div
-          style={{ maxWidth: '100%' }}
-          id="vk_groups"></div>
+    <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
+      <div className="container mx-auto border-t border-gray-200 py-5">
+        <PageHeading>Медиа-центр лагеря</PageHeading>
+        <div className="flex justify-center py-2">
+          <div
+            style={{ maxWidth: '100%' }}
+            id="vk_groups"></div>
+        </div>
       </div>
     </section>
   );

@@ -30,7 +30,9 @@ export const Our: React.FC = () => {
                     src={`${API_BASE_URL}${item?.photo?.url}`}
                   />
                   <CardTitle>{item.title}</CardTitle>
-                  <Link to={item.slug}>
+                  <Link
+                    to={item.slug}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <Button>Подробнее</Button>
                   </Link>
                 </CardContent>

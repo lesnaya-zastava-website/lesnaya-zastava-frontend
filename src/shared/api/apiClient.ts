@@ -63,8 +63,16 @@ export const apiClient = {
     const res = await api.get('/vzroslaya-smena-pro-yunost-posts?populate=*');
     return res.data.data;
   },
+  getProYouthText: async () => {
+    const res = await api.get('/vzroslaya-smena-pro-yunost-teksts?populate=*');
+    return res.data.data;
+  },
   getMaevkaPosts: async () => {
     const res = await api.get('/maevka?populate=*');
+    return res.data.data;
+  },
+  getMaevkaText: async () => {
+    const res = await api.get('/semejnyj-festival-mayovka-teksts?populate=*');
     return res.data.data;
   },
   getOurProjects: async () => {
@@ -111,6 +119,24 @@ export const apiClient = {
   },
   getYourProjectsPhoto: async () => {
     const res = await api.get('/your-project-photos?populate=*');
+    return res.data.data;
+  },
+
+  // For Parents
+  getForParentsText: async () => {
+    const res = await api.get('/informacziya-dlya-roditelejs?populate=*');
+    return res.data.data;
+  },
+  getParentThingsText: async () => {
+    const res = await api.get('/spisok-neobhodimyh-veshhejs?populate=*');
+    return res.data.data;
+  },
+  getParentDocumentsText: async () => {
+    const res = await api.get('/spisok-neobhodimyh-dokumentovs?populate=*');
+    return res.data.data;
+  },
+  getParentRulesText: async () => {
+    const res = await api.get('/pravila-prebyvaniya-v-dol-lesnaya-zastavas?populate=*');
     return res.data.data;
   },
 };

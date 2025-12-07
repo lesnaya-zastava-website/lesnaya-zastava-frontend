@@ -1,8 +1,7 @@
 import { useEntertainmentOffer } from '@entities/entertainmentPrograms/offer/model/useEntertainmentOffer';
 import { useEntertainmentPrice } from '@entities/entertainmentPrograms/price/model/useEntertainmentPrice';
-import { EntertainmentPriceCard } from '@entities/entertainmentPrograms/price/ui/EntertainmentPriceCard';
 import { PageHeading } from '@/shared/ui/PageHeading';
-import { EntertainmentOfferCard } from '@entities/entertainmentPrograms/offer/ui/EntertainmentOfferCard';
+import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 
 export const EntertainmentPrograms: React.FC = () => {
   const {
@@ -21,7 +20,7 @@ export const EntertainmentPrograms: React.FC = () => {
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto pb-8">
+      <div className="container mx-auto border-t border-gray-200 py-5">
         <section className="flex flex-col gap-8 py-16">
           <PageHeading>
             Прайс развлекательных программ и дополнительных услуг
@@ -39,15 +38,18 @@ export const EntertainmentPrograms: React.FC = () => {
               <p className="mt-4">Цены на услуги пока что отсутствуют.</p>
             )}
 
-          <div className="flex flex-col gap-6">
-            {isSuccessPrices &&
-              entertainmentPrices?.map(item => (
-                <EntertainmentPriceCard
-                  key={item.id}
-                  entertainmentPrice={item}
-                />
-              ))}
-          </div>
+          <PhotoGallery
+            photos={
+              isSuccessPrices
+                ? entertainmentPrices?.flatMap(item =>
+                    item.photo.map(p => ({
+                      url: p.url,
+                      name: p.name,
+                    }))
+                  ) || []
+                : []
+            }
+          />
         </section>
 
         <section className="flex flex-col gap-8 py-16">
@@ -65,15 +67,18 @@ export const EntertainmentPrograms: React.FC = () => {
               <p className="mt-4">Цены на услуги пока что отсутствуют.</p>
             )}
 
-          <div className="flex flex-col gap-6">
-            {isSuccessOffers &&
-              entertainmentOffers?.map(item => (
-                <EntertainmentOfferCard
-                  key={item.id}
-                  entertainmentOffer={item}
-                />
-              ))}
-          </div>
+          <PhotoGallery
+            photos={
+              isSuccessOffers
+                ? entertainmentOffers?.flatMap(item =>
+                    item.photo.map(p => ({
+                      url: p.url,
+                      name: p.name,
+                    }))
+                  ) || []
+                : []
+            }
+          />
         </section>
       </div>
     </section>

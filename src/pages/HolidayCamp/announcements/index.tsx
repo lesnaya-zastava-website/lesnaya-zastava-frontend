@@ -13,7 +13,7 @@ export const Announcements: React.FC = () => {
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-      <div className="container mx-auto">
+      <div className="container mx-auto border-t border-gray-200 py-5">
         <section className="flex flex-col flex-wrap gap-8 py-16">
           <PageHeading>Анонсы и актуальные смены</PageHeading>
 
@@ -26,11 +26,13 @@ export const Announcements: React.FC = () => {
           )}
 
           <div className="w-full">
-            <div className="grid grid-cols-1 gap-6">
-              {isSuccess && AnnouncementResponse?.map((items, index) => (
+            <div className="flex flex-col gap-6">
+              {isSuccess && AnnouncementResponse?.map((item) => (
                 <CardAnnouncement
-                  key={index}
-                  {...items}
+                  key={item.id}
+                  title={item.title}
+                  content={item.content}
+                  photo={item.photo}
                 />
               ))}
             </div>
