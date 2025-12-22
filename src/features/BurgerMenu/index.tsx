@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ModeToggle } from '@/shared/ui/components/mode-toggle';
-import { Mail, MapIcon, PhoneCall } from 'lucide-react';
+import { Switch } from '@/shared/ui/switch/switch';
+import { useTheme } from '@/shared/ui/components/theme-provider';
+import { Mail, MapIcon, Moon, PhoneCall, Sun } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
@@ -17,10 +18,41 @@ const NAV_LINKS = [
 
 const BurgerMenu: React.FC = () => {
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   const [open, setOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  
   const toggle = () => setOpen(v => !v);
   const close = () => setOpen(false);
+
+  // Определяем, включена ли темная тема (учитывая system)
+  useEffect(() => {
+    const updateIsDark = () => {
+      if (theme === 'dark') {
+        setIsDark(true);
+      } else if (theme === 'light') {
+        setIsDark(false);
+      } else {
+        // theme === 'system'
+        setIsDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+    };
+
+    updateIsDark();
+
+    // Отслеживаем изменения системной темы, если выбрана 'system'
+    if (theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = () => updateIsDark();
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [theme]);
+
+  const handleThemeToggle = (checked: boolean) => {
+    setTheme(checked ? 'dark' : 'light');
+  };
 
   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
@@ -147,7 +179,14 @@ const BurgerMenu: React.FC = () => {
               Челябинская область, Сосновский район, д. Ключевка
             </span>
           </a>
-          <ModeToggle />
+          <div className="flex items-center gap-2">
+            <Sun className="h-4 w-4" />
+            <Switch
+              checked={isDark}
+              onCheckedChange={handleThemeToggle}
+            />
+            <Moon className="h-4 w-4" />
+          </div>
         </div>
       </div>
     </>

@@ -58,6 +58,12 @@ export const apiClient = {
     return res.data.data;
   },
 
+  // Basic Info
+  getBasicInfoText: async () => {
+    const res = await api.get('/osnovnye-svedeniyas?populate=*');
+    return res.data.data;
+  },
+
   // Our Projects
   getProYouthPosts: async () => {
     const res = await api.get('/vzroslaya-smena-pro-yunost-posts?populate=*');
@@ -93,6 +99,12 @@ export const apiClient = {
   // Route
   getRoute: async () => {
     const res = await api.get('/contacts-photos?populate=*');
+    return res.data.data;
+  },
+
+  // Contacts
+  getContactsText: async () => {
+    const res = await api.get('/kontakties?populate=*');
     return res.data.data;
   },
 

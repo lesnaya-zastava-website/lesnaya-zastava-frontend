@@ -27,6 +27,12 @@ export const Footer: React.FC = () => {
                 456518, Россия, Челябинская область, Сосновский р-н, п.
                 Долгодеревенское, д. Ключевка, "Лесная застава"
               </a>
+              <a
+                href="https://yandex.ru/maps/-/CLw7IF-f"
+                target="_blank"
+                className="flex items-center space-x-1 hover:underline">
+                Солнечная поляна д.8
+              </a>
             </div>
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <a

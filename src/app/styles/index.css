@@ -60,7 +60,7 @@
 
 :root {
   --base-font-size: 30px;
-  --font-sans: 'Stapel Condensed', sans-serif;
+  --font-sans: 'Arial', sans-serif;
   --background: oklch(52.867% 0.03405 166.523);
   --foreground: oklch(100% 0 0);
   --card: oklch(49.649% 0.02997 168.36);
@@ -214,10 +214,17 @@ html {
   } */
   * {
     font-size: 18px;
+    font-stretch: normal;
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Arial', sans-serif;
+    font-stretch: normal;
+    line-height: 1.5;
+  }
+  p, span, a, div, li, td, th {
+    line-height: 1.5;
   }
 }
 
@@ -227,27 +234,39 @@ html {
 }
 
 .styled-html-content h1 {
-  @apply scroll-m-20 pb-5 text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl;
+  @apply scroll-m-20 pb-5 text-2xl font-bold text-balance sm:text-3xl lg:text-4xl;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content h2 {
-  @apply scroll-m-20 pb-4 text-xl font-bold tracking-tight text-balance sm:text-2xl lg:text-3xl;
+  @apply scroll-m-20 pb-4 text-xl font-bold text-balance sm:text-2xl lg:text-3xl;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content h3 {
-  @apply scroll-m-20 pb-3 text-lg font-bold tracking-tight text-balance sm:text-xl lg:text-2xl;
+  @apply scroll-m-20 pb-3 text-lg font-bold text-balance sm:text-xl lg:text-2xl;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content h4 {
-  @apply scroll-m-20 pb-2 text-base font-bold tracking-tight text-balance sm:text-lg lg:text-xl;
+  @apply scroll-m-20 pb-2 text-base font-bold text-balance sm:text-lg lg:text-xl;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content h5 {
-  @apply scroll-m-20 pb-2 text-sm font-bold tracking-tight text-balance sm:text-base lg:text-lg;
+  @apply scroll-m-20 pb-2 text-sm font-bold text-balance sm:text-base lg:text-lg;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content h6 {
-  @apply scroll-m-20 pb-2 text-xs font-bold tracking-tight text-balance sm:text-sm lg:text-base;
+  @apply scroll-m-20 pb-2 text-xs font-bold text-balance sm:text-sm lg:text-base;
+  font-stretch: normal;
+  letter-spacing: normal;
 }
 
 .styled-html-content p {

@@ -1,29 +1,35 @@
 @font-face {
-  font-family: 'Stapel Condensed';
-  src: url('/fonts/stapel-condensed/stapel-condensed-bold.otf')
-    format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Stapel Condensed';
-  src: url('/fonts/stapel-condensed/stapel-condensed-light.otf')
-    format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Stapel Condensed';
-  src: url('/fonts/stapel-condensed/stapel-condensed-medium.otf')
-    format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Stapel Condensed';
-  src: url('/fonts/stapel-condensed/stapel-condensed.otf') format('truetype');
+  font-family: 'Arial';
+  src: url('/fonts/arial/ARIAL.TTF') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('/fonts/arial/ARIALI.TTF') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('/fonts/arial/ARIALBD.TTF') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('/fonts/arial/ARIALBI.TTF') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+  font-display: swap;
 }
