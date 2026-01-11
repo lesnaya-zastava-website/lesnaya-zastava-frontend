@@ -1,6 +1,7 @@
 import { useTeacher } from '@/entities/person/model/useTeacher';
 import { TeacherCard } from '@/entities/person/ui/TeacherCard';
 import { PageHeading } from '@/shared/ui/PageHeading';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const TeachingStaff: React.FC = () => {
   const { data: teachers, isLoading, isError } = useTeacher();
@@ -11,7 +12,7 @@ export const TeachingStaff: React.FC = () => {
         <section className="flex flex-col flex-wrap gap-8 py-16">
           <PageHeading>Педагогический состав</PageHeading>
 
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
 
           {isError && <p className="text-red-500">Ошибка при загрузке...</p>}
 

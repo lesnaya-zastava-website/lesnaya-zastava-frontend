@@ -27,6 +27,8 @@ import { NotFoundPage } from '@pages/NotFoundPage';
 import { Maevka } from '@/pages/projects/our/maevka';
 import { ProYouth } from '@/pages/projects/our/proYouth';
 import { Safety } from '@/pages/about/safety';
+import { Booking } from '@/pages/projects/booking';
+import { BookingForm } from '@/pages/projects/booking/form';
 
 export const routes: RouteObject[] = [
   {
@@ -136,6 +138,14 @@ export const routes: RouteObject[] = [
       {
         path: '/projects/yours',
         element: <Yours />,
+      },
+      {
+        path: '/projects/booking',
+        element: <Booking />,
+      },
+      {
+        path: '/projects/booking/:formId',
+        element: <BookingForm />,
       },
       {
         path: '/contacts',

@@ -1,6 +1,7 @@
 import { API_BASE_URL } from '@/shared/api/baseApi';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { ZoomIn, ZoomOut } from 'lucide-react';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 interface Photo {
   url: string;
@@ -46,10 +47,11 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
             <PhotoView
               key={index}
               src={`${API_BASE_URL}${photo.url}`}>
-              <img
+              <ImageWithLoader
                 src={`${API_BASE_URL}${photo.url}`}
                 alt={photo.name || `Фото ${index + 1}`}
                 className="h-full w-full cursor-pointer rounded-lg object-cover transition hover:opacity-90"
+                spinnerSize="sm"
               />
             </PhotoView>
           ))}

@@ -2,6 +2,7 @@ import { useEntertainmentOffer } from '@entities/entertainmentPrograms/offer/mod
 import { useEntertainmentPrice } from '@entities/entertainmentPrograms/price/model/useEntertainmentPrice';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const EntertainmentPrograms: React.FC = () => {
   const {
@@ -26,7 +27,7 @@ export const EntertainmentPrograms: React.FC = () => {
             Прайс развлекательных программ и дополнительных услуг
           </PageHeading>
 
-          {isLoadingPrices && <p>Загрузка...</p>}
+          {isLoadingPrices && <Loader />}
 
           {isErrorPrices && (
             <p className="text-red-500">Ошибка при загрузке цен на услуги.</p>
@@ -55,7 +56,7 @@ export const EntertainmentPrograms: React.FC = () => {
         <section className="flex flex-col gap-8 py-16">
           <PageHeading>Актуальные предложения</PageHeading>
 
-          {isLoadingOffers && <p>Загрузка...</p>}
+          {isLoadingOffers && <Loader />}
 
           {isErrorOffers && (
             <p className="text-red-500">Ошибка при загрузке цен на услуги.</p>

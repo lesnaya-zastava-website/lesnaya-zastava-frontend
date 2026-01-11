@@ -2,6 +2,7 @@ import { useInfrastructureGallery } from '@/entities/gallery/model/useInfrastruc
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import MapInteractive from '@features/MapInteractive/ui';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const Infrastructure: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useInfrastructureGallery();
@@ -13,7 +14,7 @@ export const Infrastructure: React.FC = () => {
         <MapInteractive />
         <PageHeading>Фото территории</PageHeading>
 
-        {isLoading && <p>Загрузка...</p>}
+        {isLoading && <Loader />}
 
         {isError && (
           <p className="text-red-500">

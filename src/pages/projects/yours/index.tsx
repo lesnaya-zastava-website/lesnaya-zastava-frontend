@@ -2,6 +2,8 @@ import { useYourProjectsPhoto } from '@/entities/projects/yourProjects/photos/mo
 import { useYourProjectsText } from '@/entities/projects/yourProjects/text/model/useYourProjectsText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const Yours: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useYourProjectsText();
@@ -18,7 +20,7 @@ export const Yours: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
 
         <div className="mb-4 flex flex-col gap-3">
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
           {isError && <p className="text-red-500">Ошибка при загрузке.</p>}
 
           {!isLoading && !isError && data?.length === 0 && (
@@ -30,7 +32,7 @@ export const Yours: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: item.textHtml }}
+                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
               />
             ))}
         </div>
@@ -43,7 +45,7 @@ export const Yours: React.FC = () => {
             радостью делимся отчетами и фотографиями.
           </p>
 
-          {isLoadingPhotos && <p>Загрузка...</p>}
+          {isLoadingPhotos && <Loader />}
           {isErrorPhotos && (
             <p className="text-red-500">Ошибка при загрузке галереи</p>
           )}

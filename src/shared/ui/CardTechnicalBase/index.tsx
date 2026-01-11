@@ -1,4 +1,5 @@
 import type { dataTechnicalBase } from './model';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const CardTechnicalBase: React.FC<{
   data: dataTechnicalBase[];
@@ -8,7 +9,7 @@ export const CardTechnicalBase: React.FC<{
   return (
     <div className="flex flex-col gap-6 text-justify">
       <div className="flex flex-col gap-6">
-        <img
+        <ImageWithLoader
           src={srcImg}
           alt={altImg || ''}
           className="h-auto w-full rounded-lg object-cover lg:mx-auto lg:w-2/3"

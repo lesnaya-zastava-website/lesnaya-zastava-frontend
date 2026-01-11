@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardTitle,
 } from '@/shared/ui/components/ui/card';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const TeamMemberCard: React.FC<{ member: TeamMember }> = ({
   member,
@@ -14,7 +15,7 @@ export const TeamMemberCard: React.FC<{ member: TeamMember }> = ({
     key={member.id}
     className="items-center text-center">
     <CardContent>
-      <img
+      <ImageWithLoader
         className="h-[400px] max-w-full object-cover"
         src={`${API_BASE_URL}${member?.photo?.url}`}
         alt={`${member.fullName} - ${member.job}`}

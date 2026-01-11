@@ -1,6 +1,8 @@
 import { useTechnicalBasePhoto } from '@/entities/technicalBase/photo/model/useTechnicalBasePhoto';
 import { useTechnicalBaseText } from '@/entities/technicalBase/text/model/useTechnicalBaseText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const TechnicalBase: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useTechnicalBaseText();
@@ -16,7 +18,7 @@ export const TechnicalBase: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
         <section className="flex flex-col flex-wrap">
           <div className="mb-4 flex flex-col gap-3">
-            {isLoading && <p>Загрузка...</p>}
+            {isLoading && <Loader />}
 
             {isError && <p className="text-red-500">Ошибка при загрузке.</p>}
 
@@ -29,11 +31,11 @@ export const TechnicalBase: React.FC = () => {
                 <div
                   key={item.id}
                   className="styled-html-content"
-                  dangerouslySetInnerHTML={{ __html: item.textHtml }}
+                  dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
                 />
               ))}
           </div>
-          {isLoadingPhotos && <p>Загрузка...</p>}
+          {isLoadingPhotos && <Loader />}
 
           {isErrorPhotos && (
             <p className="text-red-500">Ошибка при загрузке галереи</p>

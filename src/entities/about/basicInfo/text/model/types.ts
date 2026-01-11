@@ -7,3 +7,6 @@ export type BasicInfoResponse = BasicInfoText[];
 
 
 
+
+
+

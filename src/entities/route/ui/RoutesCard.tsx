@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '@/shared/api/baseApi';
 import type { Routes } from '../model/types';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const RoutesCard: React.FC<{
   contactRoutes: Routes;
@@ -18,7 +19,7 @@ export const RoutesCard: React.FC<{
       <div className="space-y-4 px-6 pb-6">
         <p>{contactRoutes.description}</p>
         <div className="">
-          <img
+          <ImageWithLoader
             className="w-full"
             src={`${API_BASE_URL}${contactRoutes.photo.url}`}
             alt="Дорога в лесную заставу"

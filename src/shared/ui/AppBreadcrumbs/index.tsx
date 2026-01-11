@@ -5,6 +5,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
 } from '@/shared/ui/components/ui/breadcrumb';
+import { useForms } from '@/entities/forms/model/useForms';
 
 const PATH_NAMES: Record<string, string> = {
   about: 'О центре',
@@ -32,13 +33,19 @@ const PATH_NAMES: Record<string, string> = {
   ['parent-things']: 'Список необходимых вещей',
   ['parent-documents']: 'Список необходимых документов',
   ['parent-rules']: `Правила пребывания в ДОЛ "Лесная застава"`,
+  booking: 'Бронирование путёвок',
 };
 
 export const AppBreadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(Boolean);
+  const { data: forms } = useForms();
 
   if (pathnames.length === 0) return null;
+
+  // Проверяем, является ли последний сегмент documentId формы (путь /projects/booking/:formId)
+  const isFormPage = pathnames.length >= 3 && 
+                     pathnames[pathnames.length - 2] === 'booking';
 
   return (
     <div className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
@@ -51,7 +58,15 @@ export const AppBreadcrumbs = () => {
 
         {pathnames.map((segment, index) => {
           const to = '/' + pathnames.slice(0, index + 1).join('/');
-          const label = PATH_NAMES[segment] || segment;
+          let label = PATH_NAMES[segment] || segment;
+
+          // Если это documentId формы, заменяем на название формы
+          if (isFormPage && index === pathnames.length - 1) {
+            const form = forms?.find((f) => f.documentId === segment);
+            if (form) {
+              label = form.title;
+            }
+          }
 
           return (
             <span

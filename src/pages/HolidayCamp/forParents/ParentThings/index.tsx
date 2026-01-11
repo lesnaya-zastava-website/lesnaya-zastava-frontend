@@ -1,5 +1,7 @@
 import type React from 'react';
 import { useParentThingsText } from '@/entities/forParents/parentThings/text/model/useParentThingsText';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const ParentThings: React.FC = () => {
   const {
@@ -13,7 +15,7 @@ export const ParentThings: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <div className="mb-4 flex flex-col gap-3">
-          {isLoadingText && <p>Загрузка...</p>}
+          {isLoadingText && <Loader />}
 
           {isErrorText && (
             <p className="text-red-500">Ошибка при загрузке текста</p>
@@ -28,7 +30,7 @@ export const ParentThings: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: item.textHtml }}
+                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
               />
             ))}
         </div>

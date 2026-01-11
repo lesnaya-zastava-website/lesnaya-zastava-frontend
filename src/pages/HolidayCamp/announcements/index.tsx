@@ -1,6 +1,7 @@
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { CardAnnouncement } from '@/shared/ui/CardAnnouncement';
 import { useAnnouncement } from '@/entities/announcement/model/useAnnouncement';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 
 export const Announcements: React.FC = () => {
@@ -17,7 +18,7 @@ export const Announcements: React.FC = () => {
         <section className="flex flex-col flex-wrap gap-8 py-16">
           <PageHeading>Анонсы и актуальные смены</PageHeading>
 
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
 
           {isError && <p className="text-red-500">Ошибка при загрузке...</p>}
 

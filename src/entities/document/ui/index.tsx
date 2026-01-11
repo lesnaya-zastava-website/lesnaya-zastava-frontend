@@ -15,7 +15,7 @@ export const DocumentCard: React.FC<Props> = ({ document }) => {
           href={`${API_BASE_URL}${file.url}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:underline">
+          className="text-primary hover:underline break-words">
           {file.name}
         </a>
       ))}

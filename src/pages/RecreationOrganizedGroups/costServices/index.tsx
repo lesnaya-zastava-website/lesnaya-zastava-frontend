@@ -1,6 +1,7 @@
 import { useServicePrices } from '@entities/service/model/useServicePrices';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const CostServices: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useServicePrices();
@@ -11,7 +12,7 @@ export const CostServices: React.FC = () => {
         <section className="flex flex-col gap-8 py-16">
           <PageHeading>Стоимость услуг</PageHeading>
 
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
 
           {isError && (
             <p className="text-red-500">Ошибка при загрузке цен на услуги.</p>

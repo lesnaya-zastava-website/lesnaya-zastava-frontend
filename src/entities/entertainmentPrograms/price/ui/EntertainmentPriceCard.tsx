@@ -6,12 +6,10 @@ export const EntertainmentPriceCard: React.FC<{
 }> = ({ entertainmentPrice }) => {
   return (
     <PhotoGallery
-      photos={[
-        {
-          url: entertainmentPrice.photo.url,
-          name: entertainmentPrice.photo.name,
-        },
-      ]}
+      photos={entertainmentPrice.photo.map(p => ({
+        url: p.url,
+        name: p.name,
+      }))}
     />
   );
 };

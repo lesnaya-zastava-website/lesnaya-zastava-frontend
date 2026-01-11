@@ -4,6 +4,8 @@ import { Button } from '@/shared/ui/components/ui/button';
 import { Card, CardContent, CardTitle } from '@/shared/ui/components/ui/card';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { Link } from 'react-router-dom';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const Our: React.FC = () => {
   const { data, isError, isLoading, isSuccess } = useOurProjects();
@@ -13,7 +15,7 @@ export const Our: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>Наши проекты</PageHeading>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {isLoading && <p>Загрузка...</p>}
+          {isLoading && <Loader />}
 
           {isError && <p className="text-red-500">Ошибка при загрузке.</p>}
 
@@ -24,7 +26,7 @@ export const Our: React.FC = () => {
             data.map(item => (
               <Card key={item.id}>
                 <CardContent className="flex flex-col gap-4 text-center">
-                  <img
+                  <ImageWithLoader
                     className="max-w-full"
                     alt={item.title}
                     src={`${API_BASE_URL}${item?.photo?.url}`}

@@ -151,5 +151,23 @@ export const apiClient = {
     const res = await api.get('/pravila-prebyvaniya-v-dol-lesnaya-zastavas?populate=*');
     return res.data.data;
   },
+
+  // API Forms
+  getForms: async () => {
+    const res = await api.get('/api-forms/forms');
+    return res.data.data;
+  },
+  getFormConfig: async (formId: string) => {
+    const res = await api.get(`/api-forms/form/${formId}`);
+    return res.data;
+  },
+  submitForm: async (formId: string, submission: Record<string, any>, referer?: string) => {
+    const res = await api.post('/api-forms/submission/post', {
+      form: formId,
+      submission,
+      referer,
+    });
+    return res.data;
+  },
 };
 

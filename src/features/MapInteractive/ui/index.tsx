@@ -1,263 +1,20 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import type { MouseEvent as ReactMouseEvent } from 'react';
 import { Maximize, Minimize, ZoomIn, ZoomOut } from 'lucide-react';
-import mapImage from '@features/MapInteractive/assets/map.png';
+import { useQuery } from '@tanstack/react-query';
+import mapImage from '@features/MapInteractive/assets/map.svg';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
+import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/components/ui/carousel';
+import { API_BASE_URL } from '@/shared/api/baseApi';
 
 export type MapPoint = {
   id: string;
   title: string;
   label: string;
-  imageUrl: string;
+  images: string[];
   top: string;
   left: string;
 };
 
-export const MAP_POINTS: MapPoint[] = [
-  {
-    id: '4',
-    label: '3',
-    title: '3 корпус',
-    imageUrl: '',
-    top: '24%',
-    left: '35%',
-  },
-  {
-    id: '5',
-    label: '4',
-    title: '4 корпус',
-    imageUrl: '',
-    top: '24%',
-    left: '42%',
-  },
-  {
-    id: '6',
-    label: '5',
-    title: '5 корпус',
-    imageUrl: '',
-    top: '24%',
-    left: '50%',
-  },
-
-  {
-    id: '8',
-    label: 'М1',
-    title: 'Мангальная зона 1',
-    imageUrl: '',
-    top: '37%',
-    left: '29%',
-  },
-
-  {
-    id: '11',
-    label: 'П',
-    title: 'Прокат спортивного инвентаря',
-    imageUrl: '',
-    top: '42%',
-    left: '45%',
-  },
-
-  {
-    id: '15',
-    label: 'Р2',
-    title: 'Гостевая парковка',
-    imageUrl: '',
-    top: '65%',
-    left: '50%',
-  },
-
-  {
-    id: '17',
-    label: 'М2',
-    title: 'Мангальная зона 2',
-    imageUrl: '',
-    top: '81%',
-    left: '15%',
-  },
-  {
-    id: '16',
-    label: 'М3',
-    title: 'Мангальная зона 3',
-    imageUrl: '',
-    top: '77%',
-    left: '10%',
-  },
-  {
-    id: '20',
-    label: 'В',
-    title: 'Волейбольная площадка',
-    imageUrl: '',
-    top: '67%',
-    left: '33%',
-  },
-
-  {
-    id: '24',
-    label: 'БП',
-    title: 'Баскетбольная площадка',
-    imageUrl: '/pages/about/infrastructure/map/Баскетбольная площадка.jpg',
-    top: '65%',
-    left: '70%',
-  },
-  {
-    id: '25',
-    label: 'Ф',
-    title: 'Футбольное поле',
-    imageUrl: '/pages/about/infrastructure/map/футбольное поле.jpg',
-    top: '60%',
-    left: '80%',
-  },
-  {
-    id: '26',
-    label: 'Т',
-    title: 'Теннисный корт',
-    imageUrl: '/pages/about/infrastructure/map/Теннисный корт.jpg',
-    top: '50%',
-    left: '90%',
-  },
-
-  {
-    id: '28',
-    label: 'К',
-    title: 'Костровое место',
-    imageUrl: '',
-    top: '93%',
-    left: '38%',
-  },
-
-  {
-    id: '21',
-    label: 'КПП',
-    title: 'Контрольно-пропускной пункт',
-    imageUrl: '',
-    top: '75%',
-    left: '43%',
-  },
-
-  {
-    id: '13',
-    label: '7',
-    title: '7 корпус',
-    imageUrl: '/pages/about/infrastructure/map/7 корпус.jpg',
-    top: '50%',
-    left: '10%',
-  },
-
-  {
-    id: '31',
-    label: 'У',
-    title: 'Учебный корпус',
-    imageUrl: '/pages/about/infrastructure/map/Учебный корпус.jpg',
-    top: '50%',
-    left: '25%',
-  },
-
-  {
-    id: '27',
-    label: 'W',
-    title: 'WORKOUT-площадка',
-    imageUrl: '/pages/about/infrastructure/map/воркаут зона.jpg',
-    top: '93%',
-    left: '12%',
-  },
-  {
-    id: '12',
-    label: 'Л',
-    title: 'Летний театр',
-    imageUrl: '/pages/about/infrastructure/map/Летний театр.jpg',
-    top: '40%',
-    left: '80%',
-  },
-  {
-    id: '10',
-    label: 'А',
-    title: 'Администрация / Конференц-зал',
-    imageUrl: '/pages/about/infrastructure/map/административный.jpg',
-    top: '40%',
-    left: '42%',
-  },
-
-  {
-    id: '18',
-    label: 'Х',
-    title: 'Хоккейная коробка',
-    imageUrl: '/pages/about/infrastructure/map/хоккейная коробка (2).jpg',
-    top: '65%',
-    left: '26%',
-  },
-  {
-    id: '19',
-    label: 'Б',
-    title: 'Крытый бассейн',
-    imageUrl: '/pages/about/infrastructure/map/Бассейн.jpg',
-    top: '60%',
-    left: '30%',
-  },
-  {
-    id: '30',
-    label: 'ДП',
-    title: 'Детская площадка',
-    imageUrl:
-      '/pages/about/infrastructure/map/Детская площадка на набережной.jpg',
-    top: '93%',
-    left: '32%',
-  },
-  {
-    id: '9',
-    label: '6',
-    title: '6 корпус',
-    imageUrl: '/pages/about/infrastructure/map/6 корпус.jpg',
-    top: '44%',
-    left: '66%',
-  },
-  {
-    id: '7',
-    label: '+',
-    title: 'Медицинский центр',
-    imageUrl: '/pages/about/infrastructure/map/Медицинский центр.jpg',
-    top: '30%',
-    left: '10%',
-  },
-  {
-    id: '2',
-    label: '1',
-    title: '1 корпус',
-    imageUrl: '/pages/about/infrastructure/map/1 корпус.jpg',
-    top: '24%',
-    left: '20%',
-  },
-  {
-    id: '3',
-    label: '2',
-    title: '2 корпус',
-    imageUrl: '/pages/about/infrastructure/map/2 корпус.jpg',
-    top: '24%',
-    left: '28%',
-  },
-  {
-    id: '1',
-    label: 'С',
-    title: 'Спортивный комплекс',
-    imageUrl: '/pages/about/infrastructure/map/Спортивный комплекс.jpg',
-    top: '10%',
-    left: '10%',
-  },
-  {
-    id: '23',
-    label: 'ЦВ',
-    title: 'Центральные ворота',
-    imageUrl: '/pages/about/infrastructure/map/Ворота.jpg',
-    top: '83%',
-    left: '55.5%',
-  },
-  {
-    id: '29',
-    label: 'Р1',
-    title: 'Гостевая парковка',
-    imageUrl: '/pages/about/infrastructure/map/парковка на набережной.jpg',
-    top: '95%',
-    left: '47%',
-  },
-];
 
 const MapInteractive: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -272,6 +29,28 @@ const MapInteractive: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const fullscreenRef = useRef<HTMLDivElement>(null);
+
+  // Запрос точек карты из Strapi
+  const { data: mapPointsData, isLoading, error } = useQuery({
+    queryKey: ['map-points'],
+    queryFn: async () => {
+      const response = await fetch(`${API_BASE_URL}/api/karta-infrastrukturies?populate=*&pagination[limit]=total`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch map points');
+      }
+      return response.json();
+    },
+  });
+
+  // Адаптация данных из Strapi формата
+  const mapPoints: MapPoint[] = mapPointsData?.data?.map((point: any) => ({
+    id: point.id.toString(),
+    title: point.title,
+    label: point.label,
+    images: point.images?.map((img: any) => `${API_BASE_URL}${img.url}`) || [],
+    top: point.top,
+    left: point.left,
+  })) || [];
 
   // Функция для ограничения позиции карты в пределах контейнера
   const constrainPosition = useCallback((
@@ -340,21 +119,6 @@ const MapInteractive: React.FC = () => {
     }
   };
 
-  // Обработка клика вне области
-  useEffect(() => {
-    const handleClickOutside = (evt: MouseEvent | ReactMouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(evt.target as Node)
-      ) {
-        setActiveId(null);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
 
   // Pinch-to-zoom и drag для мобильных
   useEffect(() => {
@@ -444,11 +208,12 @@ const MapInteractive: React.FC = () => {
         
         const scaleX = containerWidth / imgWidth;
         const scaleY = containerHeight / imgHeight;
-        const autoScale = Math.min(scaleX, scaleY, 1); // Не увеличиваем, только уменьшаем если нужно
-        
-        if (autoScale < 1) {
-          setScale(autoScale);
-        }
+
+        // Для мобильных устройств используем больший масштаб для лучшей видимости
+        const isMobile = window.innerWidth < 768;
+        const autoScale = isMobile ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY);
+
+        setScale(Math.max(autoScale, 0.8)); // Минимальный масштаб 0.8
         setPosition({ x: 0, y: 0 });
       }
     }
@@ -564,6 +329,34 @@ const MapInteractive: React.FC = () => {
     setActiveId(prev => (prev === id ? null : id));
   };
 
+  // Показываем лоадер во время загрузки
+  if (isLoading) {
+    return (
+      <div className="mb-5 w-full rounded-2xl bg-white p-4">
+        <div className="flex h-64 items-center justify-center">
+          <div className="text-center">
+            <div className="mb-2 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto"></div>
+            <p className="text-gray-600">Загрузка карты...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Показываем ошибку если запрос не удался
+  if (error) {
+    return (
+      <div className="mb-5 w-full rounded-2xl bg-white p-4">
+        <div className="flex h-64 items-center justify-center">
+          <div className="text-center text-red-600">
+            <p className="mb-2">Ошибка загрузки карты</p>
+            <p className="text-sm text-gray-600">Попробуйте обновить страницу</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={fullscreenRef}
@@ -604,22 +397,25 @@ const MapInteractive: React.FC = () => {
           ref={wrapperRef}
           className="relative"
           style={{
-            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+            transform: `translate3d(${position.x}px, ${position.y}px, 0) scale(${scale})`,
             transformOrigin: 'center center',
-            transition: isDragging || isMouseDragging || lastTouchDistance !== null ? 'none' : 'transform 0.1s ease-out',
+            transition: isDragging || isMouseDragging || lastTouchDistance !== null ? 'none' : 'transform 0.08s ease-out',
             touchAction: 'none',
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
             ...(isFullscreen && {
               position: 'absolute',
               top: '50%',
               left: '50%',
-              transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
+              transform: `translate3d(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px), 0) scale(${scale})`,
             }),
           }}>
-          <img
+          <ImageWithLoader
             src={mapImage}
             alt="Интерактивная карта"
             className={`select-none ${isFullscreen ? 'max-h-[100vh] max-w-[100vw] object-contain' : 'w-full'}`}
             draggable={false}
+            showSpinner={false}
             style={{
               ...(isFullscreen && {
                 maxHeight: '100vh',
@@ -629,9 +425,7 @@ const MapInteractive: React.FC = () => {
               }),
             }}
           />
-        {[...MAP_POINTS]
-          .sort((a, b) => (a.id === activeId ? 1 : b.id === activeId ? -1 : 0))
-          .map(({ id, label, title, top, left, imageUrl }) => {
+        {mapPoints.map(({ id, label, title, top, left, images }) => {
             const isActive = activeId === id;
 
             const topNum = parseFloat(top);
@@ -648,18 +442,22 @@ const MapInteractive: React.FC = () => {
             // Вертикальное позиционирование
             const verticalPositionClass =
               topNum > 80
-                ? 'bottom-full mb-3' // точка слишком снизу — показываем tooltip сверху
-                : 'top-full mt-3'; // иначе — показываем снизу
+                ? 'bottom-full mb-3 sm:mb-4 md:mb-3' // точка слишком снизу — показываем tooltip сверху
+                : 'top-full mt-3 sm:mt-4 md:mt-3'; // иначе — показываем снизу
 
             return (
               <div
                 key={id}
-                style={{ top, left, transform: 'translate(-50%, -50%)' }}
-                className="absolute z-20">
+                style={{
+                  top,
+                  left,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: isActive ? 9999 : 20
+                }}
+                className="absolute">
                 <button
                   type="button"
-                  onMouseEnter={() => handleToggle(id)}
-                  onMouseLeave={() => setActiveId(null)}
+                  onClick={() => handleToggle(id)}
                   className="relative flex flex-col items-center justify-center focus:outline-none">
                   <div
                     className={`absolute ${verticalPositionClass} flex transform flex-col items-center transition-all duration-200 ${horizontalAlignClass} ${
@@ -667,21 +465,46 @@ const MapInteractive: React.FC = () => {
                         ? 'pointer-events-auto z-[9999] scale-100 opacity-100'
                         : 'pointer-events-none scale-95 opacity-0'
                     }`}>
-                    {imageUrl !== '' && (
-                      <img
-                        src={imageUrl}
-                        alt={title}
-                        className="mb-2 w-[240px] max-w-xs rounded-xl border border-gray-300 shadow-xl"
-                      />
+                    {images && images.length > 0 && (
+                      <div className="mb-2 w-[120px] sm:w-[160px] md:w-[200px] max-w-xs">
+                        {images.length === 1 ? (
+                          <ImageWithLoader
+                            src={images[0]}
+                            alt={title}
+                            className="w-full rounded-xl border border-gray-300 shadow-xl object-cover"
+                          />
+                        ) : (
+                          <Carousel>
+                            <CarouselContent>
+                              {images.map((imageUrl, index) => (
+                                <CarouselItem key={index}>
+                                  <ImageWithLoader
+                                    src={imageUrl}
+                                    alt={`${title} - изображение ${index + 1}`}
+                                    className="w-full rounded-xl border border-gray-300 shadow-xl object-cover"
+                                  />
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                          </Carousel>
+                        )}
+                        {images.length > 1 && (
+                          <div className="mt-1 bg-white/90 backdrop-blur-sm rounded px-2 py-1 border border-gray-200 shadow-sm">
+                            <p className="text-center text-xs text-gray-700 font-medium">
+                              Перетащите для просмотра изображений
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     )}
-                    <span className="rounded bg-white px-2 py-1 text-xs font-medium text-gray-800 shadow-md">
+                    <span className="rounded bg-white px-2 py-1 text-[10px] sm:text-xs font-medium text-gray-800 shadow-md">
                       {title}
                     </span>
                   </div>
 
                   {/* Метка */}
                   <span
-                    className={`flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white shadow-md transition-all ${
+                    className={`flex min-h-3 min-w-3 sm:min-h-4 sm:min-w-4 md:min-h-5 md:min-w-5 lg:min-h-6 lg:min-w-6 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:h-5 lg:h-6 lg:w-6 aspect-square items-center justify-center rounded-full bg-blue-600 text-[8px] sm:text-[10px] md:text-xs font-bold text-white shadow-md transition-all p-[10px] ${
                       isActive ? 'ring-2 ring-blue-400 ring-offset-2' : ''
                     }`}>
                     {label}

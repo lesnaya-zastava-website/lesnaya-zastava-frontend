@@ -1,6 +1,8 @@
 import { useHistoryPhotos } from '@/entities/history/model/useHistoryPhotos';
 import { useHistoryText } from '@/entities/history/text/model/useHistoryText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { CkeditorHtml } from '@/shared/ui/CkeditorHtml';
 
 export const History: React.FC = () => {
   const {
@@ -21,7 +23,7 @@ export const History: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <div className="mb-4 flex flex-col gap-3">
-          {isLoadingText && <p>Загрузка...</p>}
+          {isLoadingText && <Loader />}
 
           {isErrorText && (
             <p className="text-red-500">Ошибка при загрузке текста</p>
@@ -33,15 +35,15 @@ export const History: React.FC = () => {
 
           {isSuccessText &&
             dataText?.map(item => (
-              <div
+              <CkeditorHtml
                 key={item.id}
+                html={item.textHtml}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>
 
-        {isLoadingPhotos && <p>Загрузка...</p>}
+        {isLoadingPhotos && <Loader />}
 
         {isErrorPhotos && (
           <p className="text-red-500">Ошибка при загрузке галереи</p>

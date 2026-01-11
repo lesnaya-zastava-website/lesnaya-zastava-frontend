@@ -1,6 +1,8 @@
 import { useMaevkaPosts } from '@/entities/projects/ourProjects/maevka/model/useMaevkaPosts';
 import { useMaevkaText } from '@/entities/projects/ourProjects/maevka/text/model/useMaevkaText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const Maevka: React.FC = () => {
   const {
@@ -21,7 +23,7 @@ export const Maevka: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <div className="mb-4 flex flex-col gap-3">
-          {isLoadingText && <p>Загрузка...</p>}
+          {isLoadingText && <Loader />}
 
           {isErrorText && (
             <p className="text-red-500">Ошибка при загрузке текста</p>
@@ -36,12 +38,12 @@ export const Maevka: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: item.textHtml }}
+                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
               />
             ))}
         </div>
 
-        {isLoadingPhotos && <p>Загрузка...</p>}
+        {isLoadingPhotos && <Loader />}
 
         {isErrorPhotos && (
           <p className="text-red-500">Ошибка при загрузке фотографий</p>

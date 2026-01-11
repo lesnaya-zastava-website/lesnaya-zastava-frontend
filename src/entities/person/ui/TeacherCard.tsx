@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardTitle,
 } from '@/shared/ui/components/ui/card';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const TeacherCard: React.FC<{ teacher: Teacher }> = ({ teacher }) => {
   return (
@@ -13,7 +14,7 @@ export const TeacherCard: React.FC<{ teacher: Teacher }> = ({ teacher }) => {
       key={teacher.id}
       className="items-center text-center">
       <CardContent>
-        <img
+        <ImageWithLoader
           className="h-[400px] max-w-full object-cover"
           src={`${API_BASE_URL}${teacher?.photo?.url}`}
           alt={`${teacher.fullName} - ${teacher.specialization}`}

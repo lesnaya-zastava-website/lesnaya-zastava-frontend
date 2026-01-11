@@ -4,6 +4,8 @@ import { useSafetyGallery } from '@/entities/gallery/model/useSafetyGallery';
 import { useSafetyText } from '@/entities/safety/text/model/useSafetyText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
+import { Loader } from '@/shared/ui/components/ui/loader';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const Safety: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useSafetyDocuments();
@@ -26,7 +28,7 @@ export const Safety: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>Актуальные документы о безопасности</PageHeading>
-        {isLoading && <p>Загрузка...</p>}
+        {isLoading && <Loader />}
 
         {isError && (
           <p className="text-red-500">Ошибка при загрузке документов</p>
@@ -48,7 +50,7 @@ export const Safety: React.FC = () => {
         )}
 
         <div className="mb-4 flex flex-col gap-3">
-          {isLoadingText && <p>Загрузка...</p>}
+          {isLoadingText && <Loader />}
 
           {isErrorText && (
             <p className="text-red-500">Ошибка при загрузке текста</p>
@@ -63,12 +65,12 @@ export const Safety: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: item.textHtml }}
+                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
               />
             ))}
         </div>
 
-        {isLoadingGallery && <p>Загрузка...</p>}
+        {isLoadingGallery && <Loader />}
 
         {isErrorGallery && (
           <p className="text-red-500">Ошибка при загрузке галереи</p>

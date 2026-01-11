@@ -1,5 +1,6 @@
 import type { dataMediaType } from './model';
 import { Link } from 'react-router-dom';
+import { ImageWithLoader } from '@/shared/ui/components/ui/image-with-loader';
 
 export const CardMediaCenter: React.FC<{
   dataMedia: dataMediaType[];
@@ -15,7 +16,7 @@ export const CardMediaCenter: React.FC<{
             <div
               key={index}
               className="overflow-hidden rounded-lg border ">
-              <img
+              <ImageWithLoader
                 src={value.srcImg}
                 alt={value.altImg}
                 width={400}

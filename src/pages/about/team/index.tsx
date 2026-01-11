@@ -2,6 +2,7 @@ import { useTeam } from '@/entities/person/model/useTeam';
 import { TeamMemberCard } from '@/entities/person/ui/TeamMemberCard';
 
 import { PageHeading } from '@/shared/ui/PageHeading';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const Team: React.FC = () => {
   const { data: teamMembers, isLoading, isError } = useTeam();
@@ -10,7 +11,7 @@ export const Team: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>Наша команда</PageHeading>
-        {isLoading && <p>Загрузка...</p>}
+        {isLoading && <Loader />}
 
         {isError && <p className="text-red-500">Ошибка при загрузке...</p>}
 

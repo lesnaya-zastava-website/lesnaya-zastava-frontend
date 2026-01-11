@@ -1,6 +1,7 @@
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { useDocuments } from '@/entities/document/model/useDocuments';
 import { DocumentCard } from '@/entities/document/ui';
+import { Loader } from '@/shared/ui/components/ui/loader';
 
 export const Documents: React.FC = () => {
   const { data: documents, isLoading, isError } = useDocuments();
@@ -10,7 +11,7 @@ export const Documents: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>Документы</PageHeading>
 
-        {isLoading && <p>Загрузка...</p>}
+        {isLoading && <Loader />}
 
         {isError && (
           <p className="text-red-500">Ошибка при загрузке документов</p>

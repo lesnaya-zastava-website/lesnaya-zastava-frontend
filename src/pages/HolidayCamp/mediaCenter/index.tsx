@@ -8,11 +8,11 @@ declare global {
 }
 
 export const MediaCenter: React.FC = () => {
-  const scriptLoaded = useRef(false); // Флаг загрузки скрипта
-  const [isScriptReady, setIsScriptReady] = useState(false); // Стейт готовности скрипта
+  const scriptLoaded = useRef(false);
+  const [isScriptReady, setIsScriptReady] = useState(false);
 
   useEffect(() => {
-    if (scriptLoaded.current) return; // Если скрипт уже загружен, ничего не делаем
+    if (scriptLoaded.current) return;
 
     const script = document.createElement('script');
     script.src = 'https://vk.com/js/api/openapi.js?168';
@@ -25,7 +25,9 @@ export const MediaCenter: React.FC = () => {
     };
 
     return () => {
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
