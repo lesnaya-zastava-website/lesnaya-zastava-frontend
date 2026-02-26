@@ -2,7 +2,6 @@ import { useMaevkaPosts } from '@/entities/projects/ourProjects/maevka/model/use
 import { useMaevkaText } from '@/entities/projects/ourProjects/maevka/text/model/useMaevkaText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const Maevka: React.FC = () => {
   const {
@@ -38,7 +37,7 @@ export const Maevka: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

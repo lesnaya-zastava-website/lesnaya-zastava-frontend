@@ -24,14 +24,16 @@ export const Our: React.FC = () => {
           )}
           {isSuccess &&
             data.map(item => (
-              <Card key={item.id}>
-                <CardContent className="flex flex-col gap-4 text-center">
-                  <ImageWithLoader
-                    className="max-w-full"
-                    alt={item.title}
-                    src={`${API_BASE_URL}${item?.photo?.url}`}
-                  />
-                  <CardTitle>{item.title}</CardTitle>
+              <Card key={item.id} className="flex flex-col">
+                <CardContent className="flex flex-1 flex-col items-center gap-4 text-center">
+                  <div className="w-full overflow-hidden rounded-md">
+                    <ImageWithLoader
+                      className="h-auto w-full object-contain"
+                      alt={item.title}
+                      src={`${API_BASE_URL}${item?.photo?.url}`}
+                    />
+                  </div>
+                  <CardTitle className="flex-1">{item.title}</CardTitle>
                   <Link
                     to={item.slug}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>

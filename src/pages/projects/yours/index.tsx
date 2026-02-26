@@ -3,7 +3,6 @@ import { useYourProjectsText } from '@/entities/projects/yourProjects/text/model
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const Yours: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useYourProjectsText();
@@ -32,7 +31,7 @@ export const Yours: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

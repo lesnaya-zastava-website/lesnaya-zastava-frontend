@@ -2,7 +2,6 @@ import { useTechnicalBasePhoto } from '@/entities/technicalBase/photo/model/useT
 import { useTechnicalBaseText } from '@/entities/technicalBase/text/model/useTechnicalBaseText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const TechnicalBase: React.FC = () => {
   const { data, isSuccess, isLoading, isError } = useTechnicalBaseText();
@@ -31,7 +30,7 @@ export const TechnicalBase: React.FC = () => {
                 <div
                   key={item.id}
                   className="styled-html-content"
-                  dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                  dangerouslySetInnerHTML={{ __html: item.textHtml }}
                 />
               ))}
           </div>

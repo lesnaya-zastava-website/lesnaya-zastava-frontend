@@ -133,7 +133,7 @@ const BurgerMenu: React.FC = () => {
                 color="#00ce6e"
               />
             </span>
-            <span>zastavchik@mail.ru</span>
+            <span>lesnayazastava@bk.ru</span>
           </div>
           <div className="flex items-center gap-1 space-x-1">
             <span>ссылки на соц. сети:</span>
@@ -156,13 +156,13 @@ const BurgerMenu: React.FC = () => {
                 src="/vk.png"></img>
             </a>
             <a
-              href="https://t.me/lesnayzastava"
+              href="https://max.ru/join/bsb3iWwuMsjaA8gHhfGqf9cIMQt2SGhEWYoMBe_2QjM"
               target="_blank"
               className="block">
               <img
                 width={25}
-                alt="Лесная застава ВК"
-                src="/telegram.png"></img>
+                alt="Лесная застава MAX"
+                src="/max.png"></img>
             </a>
           </div>
           <a
@@ -176,7 +176,7 @@ const BurgerMenu: React.FC = () => {
               />
             </span>
             <span className="max-w-[240px]">
-              Челябинская область, Сосновский район, д. Ключевка
+              Челябинская область, Сосновский район, д. Ключевка, "Лесная застава"
             </span>
           </a>
           <div className="flex items-center gap-2">

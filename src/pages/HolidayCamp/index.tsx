@@ -49,6 +49,12 @@ export const HolidayCamp: React.FC = () => {
             altDesc="Картинка"
             linkTo="/about/infrastructure"
           />
+          <SectionCard
+            title="Бронирование путёвок"
+            srcImage="/bgCard.png"
+            altDesc="Картинка"
+            linkTo="/projects/booking"
+          />
         </div>
       </div>
     </section>

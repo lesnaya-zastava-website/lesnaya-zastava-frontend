@@ -44,9 +44,9 @@ export const Header: React.FC = () => {
             <div className="flex items-center gap-1.5">
               <Mail size="15px" color="#00ce6e" />
               <a
-                href="mailto:zastavchik@mail.ru"
+                href="mailto:lesnayazastava@bk.ru"
                 className="whitespace-nowrap hover:text-primary transition-colors">
-                zastavchik@mail.ru
+                lesnayazastava@bk.ru
               </a>
             </div>
             
@@ -77,15 +77,15 @@ export const Header: React.FC = () => {
                 />
               </a>
               <a
-                href="https://t.me/lesnayzastava"
+                href="https://max.ru/join/bsb3iWwuMsjaA8gHhfGqf9cIMQt2SGhEWYoMBe_2QjM"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block transition-opacity hover:opacity-80">
                 <img
                   width={25}
                   height={25}
-                  alt="Лесная застава Telegram"
-                  src="/telegram.png"
+                  alt="Лесная застава MAX"
+                  src="/max.png"
                 />
               </a>
             </div>
@@ -97,7 +97,7 @@ export const Header: React.FC = () => {
               className="flex items-center gap-1.5 hover:text-primary transition-colors">
               <MapIcon size="15px" color="#00ce6e" />
               <span className="max-w-[180px] text-xs leading-tight">
-                Челябинская область, Сосновский район, д. Ключевка
+                Челябинская область, Сосновский район, д. Ключевка, "Лесная застава"
               </span>
             </a>
             

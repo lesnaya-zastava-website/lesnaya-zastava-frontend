@@ -2,7 +2,6 @@ import { useProYouthPosts } from '@/entities/projects/ourProjects/proYouth/model
 import { useProYouthText } from '@/entities/projects/ourProjects/proYouth/text/model/useProYouthText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const ProYouth: React.FC = () => {
   const {
@@ -38,7 +37,7 @@ export const ProYouth: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

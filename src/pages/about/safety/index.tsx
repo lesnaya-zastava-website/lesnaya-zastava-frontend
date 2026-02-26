@@ -5,7 +5,6 @@ import { useSafetyText } from '@/entities/safety/text/model/useSafetyText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const Safety: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useSafetyDocuments();
@@ -65,7 +64,7 @@ export const Safety: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

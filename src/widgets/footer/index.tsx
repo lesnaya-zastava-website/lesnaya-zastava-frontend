@@ -31,14 +31,14 @@ export const Footer: React.FC = () => {
                 href="https://yandex.ru/maps/-/CLw7IF-f"
                 target="_blank"
                 className="flex items-center space-x-1 hover:underline">
-                Солнечная поляна д.8
+                Челябинская обл., Сосновский р-н, с.п. Рощинское, территория ЗК «Лесная застава», ул. Солнечная поляна, д.8
               </a>
             </div>
             <div className="h-full rounded-lg border p-4 shadow-sm">
               <a
-                href="mailto:zastavchik@mail.ru"
+                href="mailto:lesnayazastava@bk.ru"
                 className="font-medium break-all text-primary transition-colors hover:underline">
-                zastavchik@mail.ru
+                lesnayazastava@bk.ru
               </a>
             </div>
           </div>

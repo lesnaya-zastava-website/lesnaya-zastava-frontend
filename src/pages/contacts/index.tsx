@@ -1,6 +1,5 @@
 import { useContactsText } from '@/entities/contacts/text/model/useContactsText';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const Contacts: React.FC = () => {
   const {
@@ -29,7 +28,7 @@ export const Contacts: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

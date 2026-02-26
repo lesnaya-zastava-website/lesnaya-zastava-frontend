@@ -1,6 +1,5 @@
 import { useBasicInfoText } from '@/entities/about/basicInfo/text/model/useBasicInfoText';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const Info: React.FC = () => {
   const {
@@ -29,7 +28,7 @@ export const Info: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

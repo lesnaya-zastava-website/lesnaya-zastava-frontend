@@ -2,7 +2,7 @@ import { useHistoryPhotos } from '@/entities/history/model/useHistoryPhotos';
 import { useHistoryText } from '@/entities/history/text/model/useHistoryText';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { CkeditorHtml } from '@/shared/ui/CkeditorHtml';
+import { processCkeditorHtml } from '@/lib/utils';
 
 export const History: React.FC = () => {
   const {
@@ -35,10 +35,10 @@ export const History: React.FC = () => {
 
           {isSuccessText &&
             dataText?.map(item => (
-              <CkeditorHtml
+              <div
                 key={item.id}
-                html={item.textHtml}
                 className="styled-html-content"
+                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
               />
             ))}
         </div>

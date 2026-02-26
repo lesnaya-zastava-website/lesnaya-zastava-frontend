@@ -42,6 +42,12 @@ export const apiClient = {
     return res.data.data;
   },
 
+  // Media Center (Holiday Camp)
+  getMediaCenterGallery: async () => {
+    const res = await api.get('/media-czentr-lageryas?populate=*');
+    return res.data.data;
+  },
+
   // Safety Text
   getSafetyText: async () => {
     const res = await api.get('/bezopasnost-teksts?populate=*');

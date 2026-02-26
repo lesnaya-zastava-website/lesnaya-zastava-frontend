@@ -2,7 +2,6 @@ import type React from 'react';
 import { useForParentsText } from '@/entities/forParents/text/model/useForParentsText';
 import { SlideOutNavigation } from '@/features/SlideOutNavigation';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const ForParents: React.FC = () => {
   const {
@@ -33,7 +32,7 @@ export const ForParents: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>

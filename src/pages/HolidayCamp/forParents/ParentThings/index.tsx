@@ -1,7 +1,6 @@
 import type React from 'react';
 import { useParentThingsText } from '@/entities/forParents/parentThings/text/model/useParentThingsText';
 import { Loader } from '@/shared/ui/components/ui/loader';
-import { processCkeditorHtml } from '@/lib/utils';
 
 export const ParentThings: React.FC = () => {
   const {
@@ -30,7 +29,7 @@ export const ParentThings: React.FC = () => {
               <div
                 key={item.id}
                 className="styled-html-content"
-                dangerouslySetInnerHTML={{ __html: processCkeditorHtml(item.textHtml) }}
+                dangerouslySetInnerHTML={{ __html: item.textHtml }}
               />
             ))}
         </div>
