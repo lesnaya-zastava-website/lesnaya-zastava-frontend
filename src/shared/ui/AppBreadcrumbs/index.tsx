@@ -34,6 +34,7 @@ const PATH_NAMES: Record<string, string> = {
   ['parent-documents']: 'Список необходимых документов',
   ['parent-rules']: `Правила пребывания в ДОЛ "Лесная застава"`,
   booking: 'Бронирование путёвок',
+  actual: 'Актуальное',
 };
 
 export const AppBreadcrumbs = () => {

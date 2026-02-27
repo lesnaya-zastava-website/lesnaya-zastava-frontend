@@ -1,4 +1,3 @@
-import { useEntertainmentOffer } from '@entities/entertainmentPrograms/offer/model/useEntertainmentOffer';
 import { useEntertainmentPrice } from '@entities/entertainmentPrograms/price/model/useEntertainmentPrice';
 import { PageHeading } from '@/shared/ui/PageHeading';
 import { PhotoGallery } from '@/shared/ui/PhotoGallery';
@@ -11,13 +10,6 @@ export const EntertainmentPrograms: React.FC = () => {
     isError: isErrorPrices,
     isSuccess: isSuccessPrices,
   } = useEntertainmentPrice();
-
-  const {
-    data: entertainmentOffers,
-    isLoading: isLoadingOffers,
-    isError: isErrorOffers,
-    isSuccess: isSuccessOffers,
-  } = useEntertainmentOffer();
 
   return (
     <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
@@ -43,35 +35,6 @@ export const EntertainmentPrograms: React.FC = () => {
             photos={
               isSuccessPrices
                 ? entertainmentPrices?.flatMap(item =>
-                    item.photo.map(p => ({
-                      url: p.url,
-                      name: p.name,
-                    }))
-                  ) || []
-                : []
-            }
-          />
-        </section>
-
-        <section className="flex flex-col gap-8 py-16">
-          <PageHeading>Актуальные предложения</PageHeading>
-
-          {isLoadingOffers && <Loader />}
-
-          {isErrorOffers && (
-            <p className="text-red-500">Ошибка при загрузке цен на услуги.</p>
-          )}
-
-          {!isLoadingOffers &&
-            !isErrorOffers &&
-            entertainmentOffers?.length === 0 && (
-              <p className="mt-4">Цены на услуги пока что отсутствуют.</p>
-            )}
-
-          <PhotoGallery
-            photos={
-              isSuccessOffers
-                ? entertainmentOffers?.flatMap(item =>
                     item.photo.map(p => ({
                       url: p.url,
                       name: p.name,

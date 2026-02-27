@@ -29,6 +29,7 @@ import { ProYouth } from '@/pages/projects/our/proYouth';
 import { Safety } from '@/pages/about/safety';
 import { Booking } from '@/pages/projects/booking';
 import { BookingForm } from '@/pages/projects/booking/form';
+import { Actual } from '@/pages/projects/actual';
 
 export const routes: RouteObject[] = [
   {
@@ -138,6 +139,10 @@ export const routes: RouteObject[] = [
       {
         path: '/projects/yours',
         element: <Yours />,
+      },
+      {
+        path: '/projects/actual',
+        element: <Actual />,
       },
       {
         path: '/projects/booking',

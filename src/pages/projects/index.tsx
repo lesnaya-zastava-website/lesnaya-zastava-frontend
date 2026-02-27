@@ -26,7 +26,7 @@ export const Projects: React.FC = () => {
             title="Актуальное"
             srcImage="/bgCard.png"
             altDesc="Картинка"
-            linkTo="/recreationOrganizedGroups/entertainmentPrograms"
+            linkTo="actual"
           />
           <SectionCard
             title="Бронирование путёвок"
