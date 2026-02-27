@@ -217,6 +217,68 @@ export const FormFields: React.FC<FormFieldsProps> = ({
           </div>
         );
 
+      case 'radiolimit':
+        return (
+          <div key={field.name} className="space-y-3">
+            <Label>
+              {field.label}
+              {isRequired && <span className="text-destructive ml-1">*</span>}
+            </Label>
+            {field.description && (
+              <p className="text-sm text-muted-foreground">{field.description}</p>
+            )}
+            <div className="space-y-2">
+              {field.options?.map((option) => {
+                const remaining = (option.maxLimit ?? 0) - (option.currentCount ?? 0);
+                const isDisabled = option.disabled || option.isFull || remaining <= 0;
+
+                return (
+                  <div
+                    key={option.value}
+                    className={cn(
+                      'flex items-center justify-between rounded-md border px-3 py-2',
+                      isDisabled ? 'opacity-50 bg-muted' : 'bg-background'
+                    )}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        id={`${field.name}-${option.value}`}
+                        name={field.name}
+                        value={option.value}
+                        checked={value === option.value}
+                        disabled={isDisabled}
+                        onChange={(e) => onChange(field.name, e.target.value)}
+                        className="h-4 w-4 border-primary text-primary focus:ring-ring disabled:cursor-not-allowed"
+                      />
+                      <Label
+                        htmlFor={`${field.name}-${option.value}`}
+                        className={cn(
+                          'text-sm font-normal',
+                          isDisabled ? 'cursor-not-allowed text-muted-foreground' : 'cursor-pointer'
+                        )}
+                      >
+                        {option.label}
+                      </Label>
+                    </div>
+                    <span
+                      className={cn(
+                        'text-xs font-medium whitespace-nowrap ml-2',
+                        isDisabled ? 'text-destructive' : 'text-muted-foreground'
+                      )}
+                    >
+                      {isDisabled
+                        ? 'Мест нет'
+                        : `Осталось мест: ${remaining} из ${option.maxLimit}`}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {error && <p className="text-sm text-destructive">{error}</p>}
+          </div>
+        );
+
       case 'select':
       case 'choice':
         return (

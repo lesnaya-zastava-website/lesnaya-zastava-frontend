@@ -1,3 +1,13 @@
+export interface FormFieldOption {
+  label: string;
+  value: string;
+  maxLimit?: number;
+  currentCount?: number;
+  disabled?: boolean;
+  isFull?: boolean;
+  isManuallyDisabled?: boolean;
+}
+
 export interface FormField {
   name: string;
   type: string;
@@ -7,7 +17,7 @@ export interface FormField {
   validation?: {
     required?: boolean;
   };
-  options?: Array<{ label: string; value: string }>;
+  options?: FormFieldOption[];
 }
 
 export interface FormConfig {

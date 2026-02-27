@@ -4,6 +4,7 @@ import { useFormSubmission } from '../model/useFormSubmission';
 import { FormFields } from './FormFields';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/components/ui/card';
 import { Button } from '@/shared/ui/components/ui/button';
+import { useQueryClient } from '@tanstack/react-query';
 import type { Form } from '../model/types';
 
 interface FormModalProps {
@@ -12,10 +13,12 @@ interface FormModalProps {
 }
 
 export const FormModal: React.FC<FormModalProps> = ({ form, onClose }) => {
+  const queryClient = useQueryClient();
   const { data: config, isLoading: configLoading } = useFormConfig(form.documentId);
   const submission = useFormSubmission();
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState<string | null>(null);
 
   useEffect(() => {
     if (config) {
@@ -69,6 +72,7 @@ export const FormModal: React.FC<FormModalProps> = ({ form, onClose }) => {
 
   const handleFieldChange = (name: string, value: any) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setServerError(null);
     if (errors[name]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -80,6 +84,7 @@ export const FormModal: React.FC<FormModalProps> = ({ form, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError(null);
     
     if (!config) return;
 
@@ -127,11 +132,19 @@ export const FormModal: React.FC<FormModalProps> = ({ form, onClose }) => {
       alert(form.successMessage || 'Форма успешно отправлена!');
       onClose();
     } catch (error: any) {
+      const status = error?.response?.status || error?.error?.status;
       const errorMessage = error?.response?.data?.error?.message || 
                           error?.message || 
                           form.errorMessage || 
                           'Произошла ошибка при отправке формы';
-      alert(errorMessage);
+      
+      setServerError(errorMessage);
+
+      // При 400 (лимит мест исчерпан) — обновляем конфигурацию формы,
+      // чтобы обновились счётчики и заблокировались заполненные опции
+      if (status === 400) {
+        await queryClient.invalidateQueries({ queryKey: ['api-forms-config', form.documentId] });
+      }
     }
   };
 
@@ -186,6 +199,12 @@ export const FormModal: React.FC<FormModalProps> = ({ form, onClose }) => {
               errors={errors}
               onChange={handleFieldChange}
             />
+
+            {serverError && (
+              <div className="rounded-md border border-destructive bg-destructive/10 p-3">
+                <p className="text-sm text-destructive">{serverError}</p>
+              </div>
+            )}
 
             <div className="flex gap-4 pt-4">
               <Button
