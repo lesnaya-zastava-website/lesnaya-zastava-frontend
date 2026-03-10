@@ -13,13 +13,15 @@ export const BookingForm: React.FC = () => {
   const { formId } = useParams<{ formId: string }>();
   const navigate = useNavigate();
   const { data: forms } = useForms();
-  const { data: config, isLoading: configLoading } = useFormConfig(formId || '');
+  const { data: config, isLoading: configLoading } = useFormConfig(
+    formId || '',
+  );
   const submission = useFormSubmission();
   const [formData, setFormData] = useState<Record<string, any>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Находим форму по documentId
-  const form = forms?.find((f) => f.documentId === formId);
+  const form = forms?.find(f => f.documentId === formId);
 
   useEffect(() => {
     if (!formId) {
@@ -41,10 +43,11 @@ export const BookingForm: React.FC = () => {
   useEffect(() => {
     if (config) {
       const initialData: Record<string, any> = {};
-      config.fields.fields.forEach((field) => {
+      config.fields.fields.forEach(field => {
         if (field.type === 'checkbox') {
           // Если есть options - это группа чекбоксов (массив), иначе одиночный чекбокс (boolean)
-          initialData[field.name] = field.options && field.options.length > 0 ? [] : false;
+          initialData[field.name] =
+            field.options && field.options.length > 0 ? [] : false;
         } else if (field.type === 'number') {
           initialData[field.name] = '';
         } else if (field.type === 'file') {
@@ -89,9 +92,9 @@ export const BookingForm: React.FC = () => {
   };
 
   const handleFieldChange = (name: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => {
+      setErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -101,12 +104,12 @@ export const BookingForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!config || !formId) return;
 
     // Валидация
     const newErrors: Record<string, string> = {};
-    config.fields.fields.forEach((field) => {
+    config.fields.fields.forEach(field => {
       const error = validateField(field, formData[field.name]);
       if (error) {
         newErrors[field.name] = error;
@@ -120,14 +123,14 @@ export const BookingForm: React.FC = () => {
 
     try {
       const referer = window.location.href;
-      
+
       // Подготовка данных для отправки
       const submissionData: Record<string, any> = {};
-      
+
       // Обрабатываем каждое поле
-      Object.keys(formData).forEach((key) => {
+      Object.keys(formData).forEach(key => {
         const value = formData[key];
-        
+
         // Для файлов конвертируем в base64 или отправляем как есть
         if (value instanceof File) {
           // Если бэкенд поддерживает файлы через FormData, можно будет переделать
@@ -137,21 +140,38 @@ export const BookingForm: React.FC = () => {
           submissionData[key] = value;
         }
       });
-      
+
+      console.log(submissionData);
+
+      fetch(
+        'https://dutfy3xnnmot4.elma365.ru/pub/v1/app/bronirovanie/semeinyi_festival_mayovka/create',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${'0dc99f54-f012-4f5d-994d-626387d3b5a6'}`,
+          },
+          body: submissionData,
+        },
+      )
+        .then(res => console.log(res))
+        .catch(res => console.log(res));
+
       await submission.mutateAsync({
         formId,
         submission: submissionData,
         referer,
       });
-      
+
       // Показываем сообщение об успехе
       alert(form?.successMessage || 'Форма успешно отправлена!');
       navigate('/projects/booking');
     } catch (error: any) {
-      const errorMessage = error?.response?.data?.error?.message || 
-                          error?.message || 
-                          form?.errorMessage || 
-                          'Произошла ошибка при отправке формы';
+      const errorMessage =
+        error?.response?.data?.error?.message ||
+        error?.message ||
+        form?.errorMessage ||
+        'Произошла ошибка при отправке формы';
       alert(errorMessage);
     }
   };
@@ -187,18 +207,22 @@ export const BookingForm: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>{form.title}</PageHeading>
 
-        <div className="mt-6 max-w-3xl mx-auto">
+        <div className="mx-auto mt-6 max-w-3xl">
           <Card>
             <CardHeader>
               {form.description && (
-                <div className="mb-4 p-4 bg-muted rounded-md">
-                  <p className="text-sm text-muted-foreground whitespace-pre-line">{form.description}</p>
+                <div className="mb-4 rounded-md bg-muted p-4">
+                  <p className="text-sm whitespace-pre-line text-muted-foreground">
+                    {form.description}
+                  </p>
                 </div>
               )}
             </CardHeader>
 
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6">
                 <FormFields
                   fields={config.fields.fields}
                   formData={formData}
@@ -210,15 +234,13 @@ export const BookingForm: React.FC = () => {
                   <Button
                     type="submit"
                     disabled={submission.isPending}
-                    className="flex-1"
-                  >
+                    className="flex-1">
                     {submission.isPending ? 'Отправка...' : 'Отправить'}
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => navigate('/projects/booking')}
-                  >
+                    onClick={() => navigate('/projects/booking')}>
                     Отмена
                   </Button>
                 </div>
@@ -230,4 +252,3 @@ export const BookingForm: React.FC = () => {
     </section>
   );
 };
-
