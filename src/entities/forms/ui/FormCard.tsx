@@ -21,11 +21,17 @@ export const FormCard: React.FC<FormCardProps> = ({ form }) => {
         {form.description && (
           <p className="text-sm text-muted-foreground">{form.description}</p>
         )}
-        <Button asChild disabled={!form.active}>
-          <Link to={`/projects/booking/${form.documentId}`}>
+        {form.active ? (
+          <Button asChild>
+            <Link to={`/projects/booking/${form.documentId}`}>
+              Заполнить
+            </Link>
+          </Button>
+        ) : (
+          <Button disabled>
             Заполнить
-          </Link>
-        </Button>
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

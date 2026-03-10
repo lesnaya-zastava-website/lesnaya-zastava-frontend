@@ -23,15 +23,20 @@ export const BookingForm: React.FC = () => {
 
   useEffect(() => {
     if (!formId) {
-      navigate('/projects/booking');
+      navigate('/projects/booking', { replace: true });
       return;
     }
 
     if (form && !form.active) {
-      navigate('/projects/booking');
+      navigate('/projects/booking', { replace: true });
       return;
     }
   }, [formId, form, navigate]);
+
+  // Не рендерим форму, пока не убедимся что она активна
+  if (form && !form.active) {
+    return null;
+  }
 
   useEffect(() => {
     if (config) {
