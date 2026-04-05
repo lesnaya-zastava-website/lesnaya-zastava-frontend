@@ -122,36 +122,41 @@ export const BookingForm: React.FC = () => {
     }
 
     try {
+      const module = await import('cyrillic-to-translit-js');
+      const translate = module.default()
+      
       const referer = window.location.href;
 
       // Подготовка данных для отправки
       const submissionData: Record<string, any> = {};
 
       // Обрабатываем каждое поле
-      Object.keys(formData).forEach(key => {
+      Object.keys(formData).forEach(key => {        
         const value = formData[key];
+        const translateKey = translate.transform(key);
 
         // Для файлов конвертируем в base64 или отправляем как есть
         if (value instanceof File) {
           // Если бэкенд поддерживает файлы через FormData, можно будет переделать
           // Пока отправляем имя файла
-          submissionData[key] = value.name;
+          submissionData[translateKey] = value.name;
         } else {
-          submissionData[key] = value;
+          submissionData[translateKey] = value;
         }
       });
 
-      console.log(submissionData);
-
       fetch(
-        'https://dutfy3xnnmot4.elma365.ru/pub/v1/app/bronirovanie/semeinyi_festival_mayovka/create',
+        'https://test-elma.zinc.ru/pub/v1/app/crm_lesnaya_zastava/neobrabotannye_zayavki/create',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${'0dc99f54-f012-4f5d-994d-626387d3b5a6'}`,
+            'Authorization': `Bearer ${import.meta.env.VITE_CRM_API_KEY}`,
           },
-          body: submissionData,
+          body: JSON.stringify({
+            __name: form?.title || 'Заголовок отсутствует',
+            ...submissionData
+          }),
         },
       )
         .then(res => console.log(res))
@@ -165,7 +170,7 @@ export const BookingForm: React.FC = () => {
 
       // Показываем сообщение об успехе
       alert(form?.successMessage || 'Форма успешно отправлена!');
-      navigate('/projects/booking');
+     // navigate('/projects/booking');
     } catch (error: any) {
       const errorMessage =
         error?.response?.data?.error?.message ||
