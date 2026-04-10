@@ -170,7 +170,7 @@ export const BookingForm: React.FC = () => {
 
       // Показываем сообщение об успехе
       alert(form?.successMessage || 'Форма успешно отправлена!');
-     // navigate('/projects/booking');
+      navigate('/projects/booking');
     } catch (error: any) {
       const errorMessage =
         error?.response?.data?.error?.message ||
