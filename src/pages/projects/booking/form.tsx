@@ -145,6 +145,9 @@ export const BookingForm: React.FC = () => {
         }
       });
 
+      console.log(submissionData);
+      
+
       fetch(
         'https://test-elma.zinc.ru/pub/v1/app/crm_lesnaya_zastava/neobrabotannye_zayavki/create',
         {
