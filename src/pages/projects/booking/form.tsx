@@ -17,7 +17,7 @@ export const BookingForm: React.FC = () => {
     formId || '',
   );
   const submission = useFormSubmission();
-  const [formData, setFormData] = useState<Record<string, any>>({});
+  const [formData, setFormData] = useState<Record<string, unknown>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Находим форму по documentId
@@ -35,14 +35,9 @@ export const BookingForm: React.FC = () => {
     }
   }, [formId, form, navigate]);
 
-  // Не рендерим форму, пока не убедимся что она активна
-  if (form && !form.active) {
-    return null;
-  }
-
   useEffect(() => {
     if (config) {
-      const initialData: Record<string, any> = {};
+      const initialData: Record<string, unknown> = {};
       config.fields.fields.forEach(field => {
         if (field.type === 'checkbox') {
           // Если есть options - это группа чекбоксов (массив), иначе одиночный чекбокс (boolean)
@@ -91,7 +86,7 @@ export const BookingForm: React.FC = () => {
     return '';
   };
 
-  const handleFieldChange = (name: string, value: any) => {
+  const handleFieldChange = (name: string, value: unknown) => {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors(prev => {
@@ -123,42 +118,34 @@ export const BookingForm: React.FC = () => {
 
     try {
       const module = await import('cyrillic-to-translit-js');
-      const translate = module.default()
-      
+      const translate = module.default();
+
       const referer = window.location.href;
 
       // Подготовка данных для отправки
-      const submissionData: Record<string, any> = {};
+      // В Strapi отправляем оригинальные ключи field.name,
+      // для CRM формируем отдельный payload c транслитом
+      const submissionForStrapi: Record<string, unknown> = {};
+      const submissionForCrm: Record<string, unknown> = {};
 
-      // Обрабатываем каждое поле
-      Object.keys(formData).forEach(key => {        
-        const value = formData[key];
-        const translateKey = translate.transform(key);
+      Object.keys(formData).forEach(key => {
+        const value =
+          formData[key] instanceof File ? formData[key].name : formData[key];
 
-        // Для файлов конвертируем в base64 или отправляем как есть
-        if (value instanceof File) {
-          // Если бэкенд поддерживает файлы через FormData, можно будет переделать
-          // Пока отправляем имя файла
-          submissionData[translateKey] = value.name;
-        } else {
-          submissionData[translateKey] = value;
-        }
+        submissionForStrapi[key] = value;
+        submissionForCrm[translate.transform(key)] = value;
       });
 
-      console.log(submissionData);
-      
-
       fetch(
-        'https://test-elma.zinc.ru/pub/v1/app/crm_lesnaya_zastava/neobrabotannye_zayavki/create',
+        'https://test-elma.zinc.ru/api/extensions/a3a54e31-beb0-4e1a-9297-302a5a12365d/script/sokhranit_zayavku_s_saita_lesnoi_zastavy',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_CRM_API_KEY}`,
           },
           body: JSON.stringify({
-            __name: form?.title || 'Заголовок отсутствует',
-            ...submissionData
+            __name: 'Заголовок отсутствует',
+            ...submissionForCrm,
           }),
         },
       )
@@ -167,7 +154,7 @@ export const BookingForm: React.FC = () => {
 
       await submission.mutateAsync({
         formId,
-        submission: submissionData,
+        submission: submissionForStrapi,
         referer,
       });
 
@@ -183,6 +170,11 @@ export const BookingForm: React.FC = () => {
       alert(errorMessage);
     }
   };
+
+  // Не рендерим форму, пока не убедимся что она активна
+  if (form && !form.active) {
+    return null;
+  }
 
   if (configLoading) {
     return (

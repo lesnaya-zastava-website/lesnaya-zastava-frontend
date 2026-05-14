@@ -10,6 +10,18 @@ export const apiClient = {
     return res.data.data;
   },
 
+  getPrivacy: async () => {
+    const res = await api.get(
+      '/politika-obrabotki-personalnyh-dannyhs?populate=*',
+    );
+    return res.data.data;
+  },
+
+  getCookieBanner: async () => {
+    const res = await api.get('/banner-cookies?populate=*');
+    return res.data.data;
+  },
+
   // Documents
   getDocuments: async () => {
     const res = await api.get('/dokuments?populate=*');
@@ -126,7 +138,9 @@ export const apiClient = {
     return res.data.data;
   },
   getTechnicalBasePhoto: async () => {
-    const res = await api.get('/materialno-tehnicheskaya-baza-photos?populate=*');
+    const res = await api.get(
+      '/materialno-tehnicheskaya-baza-photos?populate=*',
+    );
     return res.data.data;
   },
 
@@ -154,7 +168,9 @@ export const apiClient = {
     return res.data.data;
   },
   getParentRulesText: async () => {
-    const res = await api.get('/pravila-prebyvaniya-v-dol-lesnaya-zastavas?populate=*');
+    const res = await api.get(
+      '/pravila-prebyvaniya-v-dol-lesnaya-zastavas?populate=*',
+    );
     return res.data.data;
   },
 
@@ -167,7 +183,11 @@ export const apiClient = {
     const res = await api.get(`/api-forms/form/${formId}`);
     return res.data;
   },
-  submitForm: async (formId: string, submission: Record<string, any>, referer?: string) => {
+  submitForm: async (
+    formId: string,
+    submission: Record<string, any>,
+    referer?: string,
+  ) => {
     const res = await api.post('/api-forms/submission/post', {
       form: formId,
       submission,
@@ -176,4 +196,3 @@ export const apiClient = {
     return res.data;
   },
 };
-

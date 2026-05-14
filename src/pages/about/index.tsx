@@ -49,6 +49,12 @@ export const About: React.FC = () => {
             altDesc="Картинка"
             linkTo="safety"
           />
+          <SectionCard
+            title="Политика обработки персональных данных"
+            srcImage="/bgCard.png"
+            altDesc="Картинка"
+            linkTo="privacy"
+          />
         </div>
       </div>
     </section>

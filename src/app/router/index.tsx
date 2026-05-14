@@ -30,6 +30,7 @@ import { Safety } from '@/pages/about/safety';
 import { Booking } from '@/pages/projects/booking';
 import { BookingForm } from '@/pages/projects/booking/form';
 import { Actual } from '@/pages/projects/actual';
+import { Privacy } from '@/pages/about/privacy';
 
 export const routes: RouteObject[] = [
   {
@@ -107,6 +108,10 @@ export const routes: RouteObject[] = [
       {
         path: '/about/safety',
         element: <Safety />,
+      },
+      {
+        path: '/about/privacy',
+        element: <Privacy />,
       },
       {
         path: '/recreationOrganizedGroups',

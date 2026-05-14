@@ -35,6 +35,7 @@ const PATH_NAMES: Record<string, string> = {
   ['parent-rules']: `Правила пребывания в ДОЛ "Лесная застава"`,
   booking: 'Бронирование путёвок',
   actual: 'Актуальное',
+  privacy: 'Политика обработки персональных данных'
 };
 
 export const AppBreadcrumbs = () => {
