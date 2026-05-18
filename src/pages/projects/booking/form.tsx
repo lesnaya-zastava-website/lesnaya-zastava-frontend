@@ -13,13 +13,15 @@ export const BookingForm: React.FC = () => {
   const { formId } = useParams<{ formId: string }>();
   const navigate = useNavigate();
   const { data: forms } = useForms();
-  const { data: config, isLoading: configLoading } = useFormConfig(formId || '');
+  const { data: config, isLoading: configLoading } = useFormConfig(
+    formId || '',
+  );
   const submission = useFormSubmission();
-  const [formData, setFormData] = useState<Record<string, any>>({});
+  const [formData, setFormData] = useState<Record<string, unknown>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Находим форму по documentId
-  const form = forms?.find((f) => f.documentId === formId);
+  const form = forms?.find(f => f.documentId === formId);
 
   useEffect(() => {
     if (!formId) {
@@ -33,18 +35,14 @@ export const BookingForm: React.FC = () => {
     }
   }, [formId, form, navigate]);
 
-  // Не рендерим форму, пока не убедимся что она активна
-  if (form && !form.active) {
-    return null;
-  }
-
   useEffect(() => {
     if (config) {
-      const initialData: Record<string, any> = {};
-      config.fields.fields.forEach((field) => {
+      const initialData: Record<string, unknown> = {};
+      config.fields.fields.forEach(field => {
         if (field.type === 'checkbox') {
           // Если есть options - это группа чекбоксов (массив), иначе одиночный чекбокс (boolean)
-          initialData[field.name] = field.options && field.options.length > 0 ? [] : false;
+          initialData[field.name] =
+            field.options && field.options.length > 0 ? [] : false;
         } else if (field.type === 'number') {
           initialData[field.name] = '';
         } else if (field.type === 'file') {
@@ -88,10 +86,10 @@ export const BookingForm: React.FC = () => {
     return '';
   };
 
-  const handleFieldChange = (name: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleFieldChange = (name: string, value: unknown) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => {
+      setErrors(prev => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
@@ -101,12 +99,12 @@ export const BookingForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!config || !formId) return;
 
     // Валидация
     const newErrors: Record<string, string> = {};
-    config.fields.fields.forEach((field) => {
+    config.fields.fields.forEach(field => {
       const error = validateField(field, formData[field.name]);
       if (error) {
         newErrors[field.name] = error;
@@ -119,42 +117,64 @@ export const BookingForm: React.FC = () => {
     }
 
     try {
+      const module = await import('cyrillic-to-translit-js');
+      const translate = module.default();
+
       const referer = window.location.href;
-      
+
       // Подготовка данных для отправки
-      const submissionData: Record<string, any> = {};
-      
-      // Обрабатываем каждое поле
-      Object.keys(formData).forEach((key) => {
-        const value = formData[key];
-        
-        // Для файлов конвертируем в base64 или отправляем как есть
-        if (value instanceof File) {
-          // Если бэкенд поддерживает файлы через FormData, можно будет переделать
-          // Пока отправляем имя файла
-          submissionData[key] = value.name;
-        } else {
-          submissionData[key] = value;
-        }
+      // В Strapi отправляем оригинальные ключи field.name,
+      // для CRM формируем отдельный payload c транслитом
+      const submissionForStrapi: Record<string, unknown> = {};
+      const submissionForCrm: Record<string, unknown> = {};
+
+      Object.keys(formData).forEach(key => {
+        const value =
+          formData[key] instanceof File ? formData[key].name : formData[key];
+
+        submissionForStrapi[key] = value;
+        submissionForCrm[translate.transform(key)] = value;
       });
-      
+
+      fetch(
+        'https://test-elma.zinc.ru/api/extensions/a3a54e31-beb0-4e1a-9297-302a5a12365d/script/sokhranit_zayavku_s_saita_lesnoi_zastavy',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            __name: 'Заголовок отсутствует',
+            ...submissionForCrm,
+          }),
+        },
+      )
+        .then(res => console.log(res))
+        .catch(res => console.log(res));
+
       await submission.mutateAsync({
         formId,
-        submission: submissionData,
+        submission: submissionForStrapi,
         referer,
       });
-      
+
       // Показываем сообщение об успехе
       alert(form?.successMessage || 'Форма успешно отправлена!');
       navigate('/projects/booking');
     } catch (error: any) {
-      const errorMessage = error?.response?.data?.error?.message || 
-                          error?.message || 
-                          form?.errorMessage || 
-                          'Произошла ошибка при отправке формы';
+      const errorMessage =
+        error?.response?.data?.error?.message ||
+        error?.message ||
+        form?.errorMessage ||
+        'Произошла ошибка при отправке формы';
       alert(errorMessage);
     }
   };
+
+  // Не рендерим форму, пока не убедимся что она активна
+  if (form && !form.active) {
+    return null;
+  }
 
   if (configLoading) {
     return (
@@ -187,18 +207,22 @@ export const BookingForm: React.FC = () => {
       <div className="container mx-auto border-t border-gray-200 py-5">
         <PageHeading>{form.title}</PageHeading>
 
-        <div className="mt-6 max-w-3xl mx-auto">
+        <div className="mx-auto mt-6 max-w-3xl">
           <Card>
             <CardHeader>
               {form.description && (
-                <div className="mb-4 p-4 bg-muted rounded-md">
-                  <p className="text-sm text-muted-foreground whitespace-pre-line">{form.description}</p>
+                <div className="mb-4 rounded-md bg-muted p-4">
+                  <p className="text-sm whitespace-pre-line text-muted-foreground">
+                    {form.description}
+                  </p>
                 </div>
               )}
             </CardHeader>
 
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6">
                 <FormFields
                   fields={config.fields.fields}
                   formData={formData}
@@ -210,15 +234,13 @@ export const BookingForm: React.FC = () => {
                   <Button
                     type="submit"
                     disabled={submission.isPending}
-                    className="flex-1"
-                  >
+                    className="flex-1">
                     {submission.isPending ? 'Отправка...' : 'Отправить'}
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => navigate('/projects/booking')}
-                  >
+                    onClick={() => navigate('/projects/booking')}>
                     Отмена
                   </Button>
                 </div>
@@ -230,4 +252,3 @@ export const BookingForm: React.FC = () => {
     </section>
   );
 };
-

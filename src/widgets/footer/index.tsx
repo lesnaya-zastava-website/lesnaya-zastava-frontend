@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Footer: React.FC = () => {
   return (
     <footer className="border-t bg-primary-foreground px-4 sm:px-6 md:px-10 lg:px-20">
@@ -40,6 +42,13 @@ export const Footer: React.FC = () => {
                 className="font-medium break-all text-primary transition-colors hover:underline">
                 lesnayazastava@bk.ru
               </a>
+            </div>
+             <div className="h-full rounded-lg border p-4 shadow-sm">
+              <Link
+                to="about/privacy"
+                className="font-medium break-all text-primary transition-colors hover:underline">
+                Политика обработки персональных данных
+              </Link>
             </div>
           </div>
         </div>
